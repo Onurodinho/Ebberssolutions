@@ -645,7 +645,9 @@ address {
 
 .section-desc {
   color: var(--steel-700);
-  font-size: 1.05rem;
+  font-size: 1.075rem;
+  line-height: 1.65;
+  max-width: 52ch;
 }
 
 /* ── Bento services ── */
@@ -755,7 +757,8 @@ address {
 
 .bento-card p {
   color: var(--steel-700);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.7;
   flex: 1;
   margin-bottom: 1.5rem;
 }
@@ -1183,7 +1186,8 @@ address {
 }
 
 .value-card p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--steel-700);
 }
 
