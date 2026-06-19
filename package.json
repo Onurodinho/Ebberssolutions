@@ -5,7 +5,8 @@
   "scripts": {
     "preview": "python3 -m http.server 8080",
     "deploy": "netlify deploy --prod --dir=.",
-    "deploy:drop": "netlify deploy --prod --dir=. --allow-anonymous"
+    "deploy:drop": "netlify deploy --prod --dir=. --allow-anonymous",
+    "github:setup": "bash scripts/setup-github.sh"
   },
   "keywords": [],
   "author": "",
