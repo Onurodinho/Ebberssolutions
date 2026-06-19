@@ -1,7 +1,8 @@
 # Ebbers Solutions — website
 
-Live: https://ebbers-solutions.netlify.app  
-Beheer: https://ebbers-solutions.netlify.app/admin
+Live: https://ebbers-solutions.netlify.app *(opnieuw deployen — zie hieronder)*  
+Tijdelijk: https://onurodinho.github.io/Ebberssolutions/  
+Beheer: https://ebbers-solutions.netlify.app/admin *(werkt pas na Netlify-deploy)*
 
 ---
 
@@ -18,6 +19,20 @@ Via het beheerpaneel kun je zelf wijzigingen doorvoeren — zonder code. Na opsl
 | **Collectie** | Producten toevoegen, foto's, titels, beschrijvingen |
 
 Engels en Duits worden nog niet via het beheer bewerkt — daarvoor kan Onur helpen.
+
+### Site + admin werkt niet?
+
+Als `ebbers-solutions.netlify.app` “Site not found” toont, is het Netlify-project weg. De admin-link werkt dan ook niet. Oplossing:
+
+1. Ga naar [Netlify → Add new project → Import from Git](https://app.netlify.com/start)
+2. Kies repo **Onurodinho/Ebberssolutions**, branch **main**, publish directory **/** (root)
+3. Kopieer het **Site ID** (Project configuration → General → Project information)
+4. Voeg GitHub secrets toe (repo → Settings → Secrets → Actions):
+   - `NETLIFY_AUTH_TOKEN` — [Personal Access Token](https://app.netlify.com/user/applications#personal-access-tokens)
+   - `NETLIFY_SITE_ID` — het ID uit stap 3
+5. Ga naar **Actions → Deploy naar Netlify → Run workflow** (of push naar `main`)
+
+Daarna werkt de site én `/admin` weer. Voer daarna het Peter-script uit (hieronder).
 
 ### Eenmalige setup (door Onur, één keer)
 

@@ -84,7 +84,9 @@ def build_site_zip() -> bytes:
 
 
 def resolve_site(client: NetlifyClient) -> dict:
-    for candidate in (SITE_ID, SITE_NAME, f"{SITE_NAME}.netlify.app"):
+    env_site_id = os.environ.get("NETLIFY_SITE_ID", "").strip()
+    candidates = [c for c in (env_site_id, SITE_ID, SITE_NAME, f"{SITE_NAME}.netlify.app") if c]
+    for candidate in candidates:
         try:
             _, site = client.request("GET", f"/sites/{candidate}")
             return site
