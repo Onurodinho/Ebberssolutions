@@ -62,7 +62,28 @@
           <a href="contact.html" class="usa-button btn btn-primary">Interesse? Neem contact op</a>
         </div>
         <div class="gallery-grid" id="galleryGrid">
-          <p class="gallery-loading">Galerij laden…</p>
+          <!-- Static fallback — JS replaces dit met de volledige dynamische galerij -->
+          <button class="gallery-item gallery-item--featured" type="button"
+            data-full="assets/images/products/product-02.jpg"
+            data-alt="Eettafel met zwart ijzeren frame en zes houten stoelen"
+            aria-label="Eettafel met zwart ijzeren frame en zes houten stoelen">
+            <img src="assets/images/products/thumbs/product-02.jpg" alt="Eettafel met zwart ijzeren frame en zes houten stoelen" loading="eager" width="640" height="480">
+            <span class="gallery-item-overlay"><span class="gallery-zoom">Bekijk</span></span>
+          </button>
+          <button class="gallery-item" type="button"
+            data-full="assets/images/products/product-06.jpg"
+            data-alt="Handgemaakte ijzeren kruk met houten zitting"
+            aria-label="Handgemaakte ijzeren kruk met houten zitting">
+            <img src="assets/images/products/thumbs/product-06.jpg" alt="Handgemaakte ijzeren kruk met houten zitting" loading="lazy" width="640" height="480">
+            <span class="gallery-item-overlay"><span class="gallery-zoom">Bekijk</span></span>
+          </button>
+          <button class="gallery-item" type="button"
+            data-full="assets/images/products/product-10.jpg"
+            data-alt="Vier metalen onderstellen — overzicht collectie"
+            aria-label="Vier metalen onderstellen — overzicht collectie">
+            <img src="assets/images/products/thumbs/product-10.jpg" alt="Vier metalen onderstellen — overzicht collectie" loading="lazy" width="640" height="480">
+            <span class="gallery-item-overlay"><span class="gallery-zoom">Bekijk</span></span>
+          </button>
         </div>
       </div>
     </section>

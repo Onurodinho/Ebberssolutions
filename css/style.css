@@ -1025,6 +1025,7 @@ address {
   grid-template-columns: 1fr 1fr;
   gap: clamp(2.5rem, 5vw, 4rem);
   align-items: center;
+  padding: clamp(3rem, 6vh, 5rem) 0;
 }
 
 .service-block.reverse .service-content {
@@ -1086,6 +1087,34 @@ address {
   justify-content: center;
 }
 
+/* Service image — full-width proportional photo */
+.service-img {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.service-img img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.service-img figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem 1.25rem 0.875rem;
+  background: linear-gradient(to top, rgba(26,34,40,.7) 0%, transparent 100%);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--concrete-light);
+}
+
 /* ── About page ── */
 .about-full {
   max-width: 720px;
@@ -1132,6 +1161,17 @@ address {
 
 .value-card:hover::before {
   transform: scaleX(1);
+}
+
+.value-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 0.75rem;
 }
 
 .value-card h3 {
