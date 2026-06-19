@@ -1,0 +1,14 @@
+# Dependencies & tooling
+node_modules/
+.tools/
+
+# Netlify local state
+.netlify/
+
+# OS & editor
+.DS_Store
+.vscode/
+.grok/
+
+# Logs
+*.log

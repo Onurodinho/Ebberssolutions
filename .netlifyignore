@@ -1,0 +1,8 @@
+node_modules
+.tools
+.grok
+.vscode
+scripts
+partials
+package.json
+package-lock.json
