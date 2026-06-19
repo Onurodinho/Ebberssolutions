@@ -46,6 +46,24 @@
     "category": "stoelen"
   },
   {
+    "id": "product-17",
+    "title": "Houten tuinbank",
+    "desc": "Naturel houten planken op zwart stalen frame met rugleuning.",
+    "src": "assets/images/products/product-17.jpg",
+    "thumb": "assets/images/products/thumbs/product-17.jpg",
+    "alt": "Houten tuinbank met zwart metalen frame — zijaanzicht",
+    "category": "banken"
+  },
+  {
+    "id": "product-18",
+    "title": "Houten tuinbank",
+    "desc": "Identiek model — tweede bank uit de set van twee.",
+    "src": "assets/images/products/product-18.jpg",
+    "thumb": "assets/images/products/thumbs/product-18.jpg",
+    "alt": "Houten tuinbank met zwart metalen frame — vooraanzicht",
+    "category": "banken"
+  },
+  {
     "id": "product-4",
     "title": "Geometrisch frame",
     "desc": "Strakke lijnen en zichtbare constructie.",

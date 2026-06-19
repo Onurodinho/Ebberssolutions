@@ -29,14 +29,14 @@ const I18N_STRINGS = {
     'config.hours': 'Ma – Vr: 07:30 – 16:30',
 
     'cta.contact': 'Neem contact op', 'cta.quote': 'Offerte aanvragen',
-    'cta.viewCollection': 'Bekijk collectie', 'cta.allProducts': 'Alle 16 producten bekijken',
+    'cta.viewCollection': 'Bekijk collectie', 'cta.allProducts': 'Alle 18 producten bekijken',
     'cta.fullCollection': 'Volledige collectie →',
 
     'common.scrollTop': 'Terug naar boven', 'common.required': 'verplicht',
     'common.products': 'producten', 'common.product': 'product',
     'common.zoom': 'Vergroot', 'common.view': 'Bekijk',
 
-    'cat.alles': 'Alles', 'cat.tafels': 'Tafels', 'cat.stoelen': 'Stoelen', 'cat.details': 'Details',
+    'cat.alles': 'Alles', 'cat.tafels': 'Tafels', 'cat.stoelen': 'Stoelen', 'cat.banken': 'Banken', 'cat.details': 'Details',
 
     'stats.years': 'Jaar ervaring', 'stats.products': 'Unieke producten',
     'stats.specializations': 'Specialisaties', 'stats.custom': 'Maatwerk',
@@ -187,14 +187,14 @@ const I18N_STRINGS = {
     'config.hours': 'Mon – Fri: 07:30 – 16:30',
 
     'cta.contact': 'Get in touch', 'cta.quote': 'Request a quote',
-    'cta.viewCollection': 'View collection', 'cta.allProducts': 'View all 16 products',
+    'cta.viewCollection': 'View collection', 'cta.allProducts': 'View all 18 products',
     'cta.fullCollection': 'Full collection →',
 
     'common.scrollTop': 'Back to top', 'common.required': 'required',
     'common.products': 'products', 'common.product': 'product',
     'common.zoom': 'Enlarge', 'common.view': 'View',
 
-    'cat.alles': 'All', 'cat.tafels': 'Tables', 'cat.stoelen': 'Chairs', 'cat.details': 'Details',
+    'cat.alles': 'All', 'cat.tafels': 'Tables', 'cat.stoelen': 'Chairs', 'cat.banken': 'Benches', 'cat.details': 'Details',
 
     'stats.years': 'Years experience', 'stats.products': 'Unique products',
     'stats.specializations': 'Specialisations', 'stats.custom': 'Custom work',
@@ -345,14 +345,14 @@ const I18N_STRINGS = {
     'config.hours': 'Mo – Fr: 07:30 – 16:30',
 
     'cta.contact': 'Kontakt aufnehmen', 'cta.quote': 'Angebot anfordern',
-    'cta.viewCollection': 'Kollektion ansehen', 'cta.allProducts': 'Alle 16 Produkte ansehen',
+    'cta.viewCollection': 'Kollektion ansehen', 'cta.allProducts': 'Alle 18 Produkte ansehen',
     'cta.fullCollection': 'Gesamte Kollektion →',
 
     'common.scrollTop': 'Nach oben', 'common.required': 'Pflichtfeld',
     'common.products': 'Produkte', 'common.product': 'Produkt',
     'common.zoom': 'Vergrößern', 'common.view': 'Ansehen',
 
-    'cat.alles': 'Alle', 'cat.tafels': 'Tische', 'cat.stoelen': 'Stühle', 'cat.details': 'Details',
+    'cat.alles': 'Alle', 'cat.tafels': 'Tische', 'cat.stoelen': 'Stühle', 'cat.banken': 'Bänke', 'cat.details': 'Details',
 
     'stats.years': 'Jahre Erfahrung', 'stats.products': 'Einzigartige Produkte',
     'stats.specializations': 'Spezialisierungen', 'stats.custom': 'Maßarbeit',
@@ -506,6 +506,8 @@ const I18N_PRODUCTS = {
   'product-14': { title: { nl: 'Constructiedetail', en: 'Construction detail', de: 'Konstruktionsdetail' }, desc: { nl: 'Close-up van las- en montagewerk.', en: 'Close-up of welding and assembly work.', de: 'Nahaufnahme von Schweiß- und Montagearbeit.' } },
   'product-1': { title: { nl: 'Werkplaatsframe', en: 'Workshop frame', de: 'Werkstattrahmen' }, desc: { nl: 'Ijzeren frame in productie — Neede.', en: 'Iron frame in production — Neede.', de: 'Eisenrahmen in Produktion — Neede.' } },
   'product-15': { title: { nl: 'De werkplaats', en: 'The workshop', de: 'Die Werkstatt' }, desc: { nl: 'Stalen rekken en houten planken — waar alles ontstaat.', en: 'Steel racks and wooden planks — where everything begins.', de: 'Stahlregale und Holzbretter — wo alles entsteht.' } },
+  'product-17': { title: { nl: 'Houten tuinbank', en: 'Wooden garden bench', de: 'Holz-Gartenbank' }, desc: { nl: 'Naturel houten planken op zwart stalen frame met rugleuning.', en: 'Natural wood planks on black steel frame with backrest.', de: 'Natürliche Holzbretter auf schwarzem Stahlrahmen mit Rückenlehne.' } },
+  'product-18': { title: { nl: 'Houten tuinbank', en: 'Wooden garden bench', de: 'Holz-Gartenbank' }, desc: { nl: 'Identiek model — tweede bank uit de set van twee.', en: 'Identical model — second bench from the set of two.', de: 'Identisches Modell — zweite Bank aus dem Zweierset.' } },
 };
 
 let currentLang = 'nl';

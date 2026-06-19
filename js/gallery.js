@@ -79,6 +79,7 @@ function updateFilterCounts() {
     alles: allItems.length,
     tafels: allItems.filter(i => i.category === 'tafels').length,
     stoelen: allItems.filter(i => i.category === 'stoelen').length,
+    banken: allItems.filter(i => i.category === 'banken').length,
     details: allItems.filter(i => i.category === 'details').length,
   };
 

@@ -23,7 +23,7 @@ async function initHomeCollection() {
 function pickPreviewItems(items, count) {
   const featured = items.find(i => i.featured) || items[0];
   const rest = items.filter(i => i.id !== featured.id);
-  const categories = ['stoelen', 'tafels', 'details'];
+  const categories = ['banken', 'stoelen', 'tafels', 'details'];
 
   const picked = [featured];
   categories.forEach(cat => {
