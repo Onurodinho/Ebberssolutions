@@ -1,3 +1,9 @@
+const CATEGORY_LABELS = {
+  tafels: 'Tafels',
+  stoelen: 'Stoelen',
+  details: 'Details',
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
   await initGallery();
   initLightbox();
@@ -5,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 let allItems = [];
+let activeFilter = 'alles';
 
 async function initGallery() {
   const grid = document.getElementById('galleryGrid');
@@ -14,6 +21,8 @@ async function initGallery() {
     const res = await fetch('assets/images/products/manifest.json');
     allItems = await res.json();
     renderGallery(allItems, grid);
+    updateFilterCounts();
+    updateGalleryCount(allItems.length);
   } catch {
     grid.innerHTML = '<p class="gallery-error">Galerij kon niet geladen worden.</p>';
   }
@@ -21,16 +30,56 @@ async function initGallery() {
 
 function renderGallery(items, grid) {
   if (!grid) return;
-  grid.innerHTML = items.map((item, i) => `
-    <button class="gallery-item${i === 0 ? ' gallery-item--featured' : ''}" type="button"
-      data-full="${item.src}" data-alt="${item.alt}" data-category="${item.category || 'details'}"
-      aria-label="${item.alt}">
+
+  const featuredIndex = items.findIndex(item => item.featured);
+  const featuredAt = featuredIndex >= 0 ? featuredIndex : 0;
+
+  grid.innerHTML = items.map((item, i) => {
+    const cat = item.category || 'details';
+    const catLabel = CATEGORY_LABELS[cat] || 'Details';
+    const title = item.title || item.alt;
+    const desc = item.desc || '';
+
+    return `
+    <button class="gallery-item${i === featuredAt && activeFilter === 'alles' ? ' gallery-item--featured' : ''}" type="button"
+      data-full="${item.src}" data-alt="${item.alt}" data-category="${cat}"
+      data-title="${title}" aria-label="${item.alt}">
       <img src="${item.thumb}" alt="${item.alt}" loading="${i < 4 ? 'eager' : 'lazy'}" width="640" height="480">
-      <span class="gallery-item-overlay">
-        <span class="gallery-zoom">Bekijk</span>
+      <span class="gallery-item-tag">${catLabel}</span>
+      <span class="gallery-item-info">
+        <span class="gallery-item-title">${title}</span>
+        ${desc ? `<span class="gallery-item-desc">${desc}</span>` : ''}
       </span>
-    </button>
-  `).join('');
+      <span class="gallery-item-overlay">
+        <span class="gallery-zoom">Vergroot</span>
+      </span>
+    </button>`;
+  }).join('');
+}
+
+function updateFilterCounts() {
+  const filterBar = document.getElementById('galleryFilter');
+  if (!filterBar) return;
+
+  const counts = {
+    alles: allItems.length,
+    tafels: allItems.filter(i => i.category === 'tafels').length,
+    stoelen: allItems.filter(i => i.category === 'stoelen').length,
+    details: allItems.filter(i => i.category === 'details').length,
+  };
+
+  filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+    const cat = btn.dataset.filter;
+    const count = counts[cat] ?? 0;
+    const label = btn.textContent.replace(/\s*\(\d+\)/, '');
+    btn.textContent = `${label} (${count})`;
+  });
+}
+
+function updateGalleryCount(count) {
+  const el = document.getElementById('galleryCount');
+  if (!el) return;
+  el.textContent = `${count} ${count === 1 ? 'product' : 'producten'}`;
 }
 
 function initFilter() {
@@ -44,10 +93,14 @@ function initFilter() {
     filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    const cat = btn.dataset.filter;
+    activeFilter = btn.dataset.filter;
     const grid = document.getElementById('galleryGrid');
-    const filtered = cat === 'alles' ? allItems : allItems.filter(i => i.category === cat);
+    const filtered = activeFilter === 'alles'
+      ? allItems
+      : allItems.filter(i => i.category === activeFilter);
+
     renderGallery(filtered, grid);
+    updateGalleryCount(filtered.length);
   });
 }
 
@@ -70,7 +123,8 @@ function initLightbox() {
     const item = items[current];
     img.src = item.full;
     img.alt = item.alt;
-    caption.textContent = `${item.alt} — ${current + 1} / ${items.length}`;
+    const title = item.title ? `${item.title} — ` : '';
+    caption.textContent = `${title}${item.alt} · ${current + 1} / ${items.length}`;
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
   };
@@ -93,6 +147,7 @@ function initLightbox() {
     items = [...document.querySelectorAll('.gallery-item')].map(el => ({
       full: el.dataset.full,
       alt: el.dataset.alt,
+      title: el.dataset.title,
     }));
     const index = items.findIndex(i => i.full === item.dataset.full);
     open(index >= 0 ? index : 0);

@@ -85,35 +85,40 @@
 
   <main>
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero hero--editorial">
       <div class="grid-container container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> Industrieterrein Neede · sinds 2017</p>
-          <h1>Handgemaakt ijzer.<em>Hout dat blijft.</em></h1>
-          <p class="hero-lead">Ijzeren stoelen, tafels en meubels — elk stuk uniek, gebouwd in onze werkplaats in Neede. Metaalbewerking en design onder één dak.</p>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Vakmanschap · Neede · sinds 2017</p>
+          <h1>IJZER.<em>Ambacht.</em>Op maat.</h1>
+          <p class="hero-lead">Handgemaakte stoelen, tafels en frames — gebouwd in onze werkplaats. Metaalbewerking, constructie en onderhoud onder één dak.</p>
           <div class="hero-actions">
             <a href="collectie.html" class="usa-button btn btn-primary">Bekijk collectie</a>
             <a href="contact.html" class="usa-button usa-button--outline btn btn-outline">Offerte aanvragen</a>
           </div>
-          <div class="hero-stats">
-            <div>
-              <span class="hero-stat-num">2017</span>
-              <span class="hero-stat-label">Opgericht</span>
-            </div>
-            <div>
-              <span class="hero-stat-num">16+</span>
-              <span class="hero-stat-label">Producten</span>
-            </div>
-            <div>
-              <span class="hero-stat-num">3</span>
-              <span class="hero-stat-label">Specialisaties</span>
-            </div>
-          </div>
+          <ul class="hero-trust" aria-label="Waarom Ebbers Solutions">
+            <li>
+              <span class="hero-trust-num">01</span>
+              <span class="hero-trust-text"><strong>Handgemaakt</strong> Elk stuk uit onze werkplaats in Neede</span>
+            </li>
+            <li>
+              <span class="hero-trust-num">02</span>
+              <span class="hero-trust-text"><strong>Op maat</strong> Afmeting, houtsoort en design naar wens</span>
+            </li>
+            <li>
+              <span class="hero-trust-num">03</span>
+              <span class="hero-trust-text"><strong>Direct contact</strong> U spreekt met degene die het maakt</span>
+            </li>
+          </ul>
         </div>
         <aside class="hero-panel reveal reveal-delay-2">
           <div class="hero-photo">
+            <span class="hero-photo-tag">Collectie 2026</span>
             <img src="assets/images/products/product-02.jpg" alt="Complete eettafel met zwart ijzeren frame en zes houten stoelen" width="1280" height="1280" loading="eager">
-            <span class="hero-photo-badge">Handgemaakt in Neede</span>
+            <div class="hero-photo-card">
+              <span class="hero-photo-card-cat">Tafels</span>
+              <span class="hero-photo-card-title">Eettafel set</span>
+              <span class="hero-photo-card-desc">Zwart staal · zes houten stoelen</span>
+            </div>
           </div>
         </aside>
       </div>
@@ -250,24 +255,19 @@
     <!-- Collectie preview -->
     <section class="section section-dark" id="projecten">
       <div class="grid-container container">
-        <div class="section-header section-header--center reveal">
-          <p class="section-label">Ons werk</p>
-          <h2>Collectie</h2>
-          <p class="section-desc">16 foto's van onze handgemaakte ijzeren meubels — stoelen, tafels en frames.</p>
+        <div class="section-header section-header--split reveal">
+          <div>
+            <p class="section-label">Ons werk</p>
+            <h2>Collectie</h2>
+            <p class="section-desc">Handgemaakte ijzeren meubels — stoelen, tafels en frames uit de Achterhoek.</p>
+          </div>
+          <a href="collectie.html" class="section-header-link">Volledige collectie →</a>
         </div>
-        <div class="projects-grid reveal reveal-delay-1">
-          <a href="collectie.html" class="project-card project-card--featured">
-            <img src="assets/images/products/thumbs/product-02.jpg" alt="Eettafel met ijzeren frame en houten stoelen" loading="lazy">
-          </a>
-          <a href="collectie.html" class="project-card">
-            <img src="assets/images/products/thumbs/product-06.jpg" alt="Ijzeren kruk met houten zitting" loading="lazy">
-          </a>
-          <a href="collectie.html" class="project-card">
-            <img src="assets/images/products/thumbs/product-07.jpg" alt="Industriële stoel met geperforeerde rugleuning" loading="lazy">
-          </a>
+        <div class="projects-grid projects-grid--catalog reveal reveal-delay-1" id="homeCollection">
+          <!-- Geladen via manifest.json -->
         </div>
         <div class="section-cta reveal">
-          <a href="collectie.html" class="usa-button usa-button--outline btn btn-outline btn-on-dark">Alle 16 foto's bekijken</a>
+          <a href="collectie.html" class="usa-button usa-button--outline btn btn-outline btn-on-dark">Alle 16 producten bekijken</a>
         </div>
       </div>
     </section>
@@ -332,5 +332,6 @@
   <script src="assets/uswds/dist/js/uswds.min.js"></script>
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/home-collection.js"></script>
 </body>
 </html>

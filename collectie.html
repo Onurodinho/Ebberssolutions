@@ -64,16 +64,22 @@
     <section class="section">
       <div class="grid-container container">
         <div class="gallery-intro reveal">
-          <p>Onze meubels combineren <strong>zwart ijzer</strong> met <strong>houten zittingen</strong>. Geometrische frames, zichtbare bouten en vakmanschap uit de Achterhoek.</p>
+          <div class="gallery-intro-copy">
+            <p>Onze meubels combineren <strong>zwart ijzer</strong> met <strong>houten zittingen</strong>. Geometrische frames, zichtbare bouten en vakmanschap uit de Achterhoek.</p>
+            <p class="gallery-intro-note">Elk stuk is op maat te bestellen — afmeting, houtsoort en design naar uw wens.</p>
+          </div>
           <a href="contact.html" class="usa-button btn btn-primary">Interesse? Neem contact op</a>
         </div>
-        <div class="gallery-filter" id="galleryFilter" role="group" aria-label="Filter op categorie">
-          <button class="filter-btn active" data-filter="alles">Alles</button>
-          <button class="filter-btn" data-filter="tafels">Tafels</button>
-          <button class="filter-btn" data-filter="stoelen">Stoelen</button>
-          <button class="filter-btn" data-filter="details">Details</button>
+        <div class="gallery-toolbar reveal">
+          <div class="gallery-filter" id="galleryFilter" role="group" aria-label="Filter op categorie">
+            <button class="filter-btn active" data-filter="alles">Alles</button>
+            <button class="filter-btn" data-filter="tafels">Tafels</button>
+            <button class="filter-btn" data-filter="stoelen">Stoelen</button>
+            <button class="filter-btn" data-filter="details">Details</button>
+          </div>
+          <p class="gallery-count" id="galleryCount" aria-live="polite"></p>
         </div>
-        <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-grid gallery-grid--catalog" id="galleryGrid">
           <!-- Static fallback — JS replaces dit met de volledige dynamische galerij -->
           <button class="gallery-item gallery-item--featured" type="button"
             data-full="assets/images/products/product-02.jpg"
