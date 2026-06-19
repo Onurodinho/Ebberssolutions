@@ -21,14 +21,25 @@ Engels en Duits worden nog niet via het beheer bewerkt — daarvoor kan Onur hel
 
 ### Eenmalige setup (door Onur, één keer)
 
-Voordat Peter kan inloggen, moet dit in het **Netlify-dashboard** (https://app.netlify.com):
+**Automatisch (aanbevolen):**
 
-1. Open het project **ebbers-solutions**
-2. Ga naar **Site configuration → Identity**
-3. Klik **Enable Identity**
-4. Onder **Identity → Services → Git Gateway** → **Enable Git Gateway**
-5. Ga naar **Identity → Invite users** → nodig `peterebbers67@gmail.com` uit
-6. Peter ontvangt een e-mail om een wachtwoord in te stellen
+1. Maak een token: [Netlify Personal Access Token](https://app.netlify.com/user/applications#personal-access-tokens)
+2. Voer in de terminal uit:
+
+```bash
+cd ebbers-solutions
+export NETLIFY_AUTH_TOKEN='jouw-token-hier'
+python3 scripts/setup-peter-access.py
+```
+
+Het script zet de site live, schakelt Identity + Git Gateway in en nodigt Peter uit.
+
+**Handmatig** (als het script niet werkt): in [Netlify Dashboard](https://app.netlify.com):
+
+1. Open **ebbers-solutions** → koppel GitHub-repo `Onurodinho/Ebberssolutions` als dat nog niet zo is
+2. **Site configuration → Identity** → **Enable Identity**
+3. **Identity → Services → Git Gateway** → **Enable Git Gateway**
+4. **Identity → Invite users** → `peterebbers67@gmail.com`
 
 ### Inloggen en bewerken
 
