@@ -34,13 +34,13 @@ function initSiteConfig() {
         el.href = `mailto:${contact.email}`;
         break;
       case 'hours':
-        el.textContent = contact.hours;
+        el.textContent = window.EbbersI18n ? EbbersI18n.t('config.hours') : contact.hours;
         break;
       case 'kvk':
         el.textContent = company.kvk;
         break;
       case 'tagline':
-        el.textContent = company.tagline;
+        el.textContent = window.EbbersI18n ? EbbersI18n.t('config.tagline') : company.tagline;
         break;
       case 'address-full':
         el.innerHTML = `${contact.street}<br>${contact.postcode} ${contact.city}<br>${contact.region}`;
@@ -129,10 +129,10 @@ function initContactForm() {
   };
 
   const messages = {
-    naam: 'Vul uw naam in (minimaal 2 tekens).',
-    email: 'Vul een geldig e-mailadres in.',
-    onderwerp: 'Kies een onderwerp.',
-    bericht: 'Vul een bericht in (minimaal 10 tekens).',
+    naam: () => EbbersI18n?.t('contact.form.err.name') ?? 'Vul uw naam in (minimaal 2 tekens).',
+    email: () => EbbersI18n?.t('contact.form.err.email') ?? 'Vul een geldig e-mailadres in.',
+    onderwerp: () => EbbersI18n?.t('contact.form.err.subject') ?? 'Kies een onderwerp.',
+    bericht: () => EbbersI18n?.t('contact.form.err.message') ?? 'Vul een bericht in (minimaal 10 tekens).',
   };
 
   form.addEventListener('submit', e => {
@@ -146,7 +146,7 @@ function initContactForm() {
       const group = el.closest('.usa-form-group') || el.closest('.form-group');
       if (group) group.classList.toggle('usa-form-group--error', !isValid);
       el.classList.toggle('error', !isValid);
-      error.textContent = isValid ? '' : messages[key];
+      error.textContent = isValid ? '' : messages[key]();
       if (!isValid) valid = false;
     });
 

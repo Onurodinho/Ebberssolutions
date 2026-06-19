@@ -11,6 +11,9 @@
   <meta property="og:description" content="16 foto's van handgemaakte ijzeren stoelen, tafels en frames uit Neede.">
   <meta property="og:image" content="https://ebbers-solutions.netlify.app/assets/images/products/product-02.jpg">
   <meta property="og:locale" content="nl_NL">
+  <link rel="alternate" hreflang="nl" href="https://ebbers-solutions.netlify.app/collectie.html">
+  <link rel="alternate" hreflang="en" href="https://ebbers-solutions.netlify.app/collectie.html">
+  <link rel="alternate" hreflang="de" href="https://ebbers-solutions.netlify.app/collectie.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +22,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body data-page="collectie">
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -34,19 +37,19 @@
           <span class="logo-text">Ebbers Solutions<span>Metaal · Neede</span></span>
         </a>
       </div>
-      <button class="usa-menu-btn" type="button">Menu</button>
+      <button class="usa-menu-btn" type="button" data-i18n="nav.menu">Menu</button>
     </div>
-    <nav aria-label="Hoofdnavigatie" class="usa-nav">
+    <nav class="usa-nav" data-i18n-aria="nav.label" aria-label="Hoofdnavigatie">
       <div class="usa-nav__inner">
         <button class="usa-nav__close" type="button">
-          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="Sluiten">
+          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="" data-i18n-aria="nav.close">
         </button>
         <ul class="usa-nav__primary usa-accordion">
-        <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link"><span>Home</span></a></li>
-        <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span>Diensten</span></a></li>
-        <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link usa-current"><span>Collectie</span></a></li>
-        <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span>Over ons</span></a></li>
-        <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span>Contact</span></a></li>
+        <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link"><span data-i18n="nav.home">Home</span></a></li>
+        <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span data-i18n="nav.services">Diensten</span></a></li>
+        <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link usa-current"><span data-i18n="nav.collection">Collectie</span></a></li>
+        <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span data-i18n="nav.about">Over ons</span></a></li>
+        <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span data-i18n="nav.contact">Contact</span></a></li>
         </ul>
       </div>
     </nav>
@@ -55,9 +58,9 @@
   <main>
     <section class="page-hero">
       <div class="grid-container container reveal">
-        <p class="section-label">Handgemaakt in Neede</p>
-        <h1>Collectie</h1>
-        <p class="page-hero-desc">Ijzeren stoelen, tafels en frames — elk stuk uniek, gebouwd in onze werkplaats. Klik op een foto voor het grote formaat.</p>
+        <p class="section-label" data-i18n="collectie.hero.label">Handgemaakt in Neede</p>
+        <h1 data-i18n="collectie.hero.title">Collectie</h1>
+        <p class="page-hero-desc" data-i18n="collectie.hero.desc">Ijzeren stoelen, tafels en frames — elk stuk uniek, gebouwd in onze werkplaats. Klik op een foto voor het grote formaat.</p>
       </div>
     </section>
 
@@ -65,13 +68,13 @@
       <div class="grid-container container">
         <div class="gallery-intro reveal">
           <div class="gallery-intro-copy">
-            <p>Onze meubels combineren <strong>zwart ijzer</strong> met <strong>houten zittingen</strong>. Geometrische frames, zichtbare bouten en vakmanschap uit de Achterhoek.</p>
-            <p class="gallery-intro-note">Elk stuk is op maat te bestellen — afmeting, houtsoort en design naar uw wens.</p>
+            <p data-i18n-html="collectie.intro">Onze meubels combineren <strong>zwart ijzer</strong> met <strong>houten zittingen</strong>. Geometrische frames, zichtbare bouten en vakmanschap uit de Achterhoek.</p>
+            <p class="gallery-intro-note" data-i18n="collectie.introNote">Elk stuk is op maat te bestellen — afmeting, houtsoort en design naar uw wens.</p>
           </div>
-          <a href="contact.html" class="usa-button btn btn-primary">Interesse? Neem contact op</a>
+          <a href="contact.html" class="usa-button btn btn-primary" data-i18n="collectie.ctaBtn">Interesse? Neem contact op</a>
         </div>
         <div class="gallery-toolbar reveal">
-          <div class="gallery-filter" id="galleryFilter" role="group" aria-label="Filter op categorie">
+          <div class="gallery-filter" id="galleryFilter" role="group" data-i18n-aria="collectie.filterLabel" aria-label="Filter op categorie">
             <button class="filter-btn active" data-filter="alles">Alles</button>
             <button class="filter-btn" data-filter="tafels">Tafels</button>
             <button class="filter-btn" data-filter="stoelen">Stoelen</button>
@@ -109,15 +112,15 @@
     <section class="cta-band">
       <div class="grid-container container cta-inner reveal">
         <div>
-          <h2>Op maat laten maken?</h2>
-          <p>Elk meubel kan aangepast worden op afmeting, houtsoort en design. Vraag een vrijblijvende offerte aan.</p>
+          <h2 data-i18n="collectie.cta.title">Op maat laten maken?</h2>
+          <p data-i18n="collectie.cta.desc">Elk meubel kan aangepast worden op afmeting, houtsoort en design. Vraag een vrijblijvende offerte aan.</p>
         </div>
-        <a href="contact.html" class="usa-button usa-button--big btn btn-primary btn-lg">Offerte aanvragen</a>
+        <a href="contact.html" class="usa-button usa-button--big btn btn-primary btn-lg" data-i18n="cta.quote">Offerte aanvragen</a>
       </div>
     </section>
   </main>
 
-  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto vergrowen">
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" data-i18n-aria="collectie.lightbox" aria-label="Foto vergroten">
     <button class="lightbox-close" type="button" aria-label="Sluiten">&times;</button>
     <button class="lightbox-prev" type="button" aria-label="Vorige foto">&#8592;</button>
     <button class="lightbox-next" type="button" aria-label="Volgende foto">&#8594;</button>
@@ -142,17 +145,17 @@
         <p data-contact="tagline">Metalen oplossingen op maat uit Neede.</p>
       </div>
       <div class="footer-links">
-        <h4>Navigatie</h4>
+        <h4 data-i18n="footer.nav">Navigatie</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="diensten.html">Diensten</a></li>
-          <li><a href="collectie.html">Collectie</a></li>
-          <li><a href="over-ons.html">Over ons</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="diensten.html" data-i18n="nav.services">Diensten</a></li>
+          <li><a href="collectie.html" data-i18n="nav.collection">Collectie</a></li>
+          <li><a href="over-ons.html" data-i18n="nav.about">Over ons</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-contact">
-        <h4>Contact</h4>
+        <h4 data-i18n="footer.contact">Contact</h4>
         <address>
           <p data-contact="street">Veldhoekweg 1</p>
           <p data-contact="postcode-city">7161 RW Neede</p>
@@ -162,17 +165,18 @@
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>&copy; 2026 Ebbers Solutions · KVK <span data-contact="kvk">68518102</span></p>
+      <p><span data-i18n="footer.copyright">© 2026 Ebbers Solutions · KVK</span> <span data-contact="kvk">68518102</span></p>
     </div>
   </footer>
 
-  <button id="scrollTop" aria-label="Terug naar boven">
+  <button id="scrollTop" data-i18n-aria="common.scrollTop" aria-label="Terug naar boven">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
       <polyline points="18 15 12 9 6 15"/>
     </svg>
   </button>
   <script src="assets/uswds/dist/js/uswds.min.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/gallery.js"></script>
 </body>

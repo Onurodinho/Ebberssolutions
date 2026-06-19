@@ -1,10 +1,7 @@
-const HOME_CATEGORY_LABELS = {
-  tafels: 'Tafels',
-  stoelen: 'Stoelen',
-  details: 'Details',
-};
-
-document.addEventListener('DOMContentLoaded', initHomeCollection);
+document.addEventListener('DOMContentLoaded', () => {
+  initHomeCollection();
+  document.addEventListener('langchange', initHomeCollection);
+});
 
 async function initHomeCollection() {
   const grid = document.getElementById('homeCollection');
@@ -44,8 +41,9 @@ function pickPreviewItems(items, count) {
 }
 
 function renderPreviewCard(item, featured) {
-  const cat = HOME_CATEGORY_LABELS[item.category] || 'Details';
-  const title = item.title || item.alt;
+  const cat = window.EbbersI18n?.cat(item.category) ?? item.category;
+  const title = window.EbbersI18n?.product(item.id, 'title') || item.title || item.alt;
+  const desc = window.EbbersI18n?.product(item.id, 'desc') || item.desc || '';
 
   return `
     <a href="collectie.html" class="project-card${featured ? ' project-card--featured' : ''}">
@@ -53,7 +51,7 @@ function renderPreviewCard(item, featured) {
       <span class="project-card-tag">${cat}</span>
       <span class="project-card-info">
         <span class="project-card-title">${title}</span>
-        ${item.desc ? `<span class="project-card-desc">${item.desc}</span>` : ''}
+        ${desc ? `<span class="project-card-desc">${desc}</span>` : ''}
       </span>
     </a>`;
 }

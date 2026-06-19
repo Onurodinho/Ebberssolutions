@@ -11,6 +11,9 @@
   <meta property="og:description" content="Bel, mail of stuur een bericht. Ebbers Solutions — Veldhoekweg 1, Neede.">
   <meta property="og:image" content="https://ebbers-solutions.netlify.app/assets/images/products/product-02.jpg">
   <meta property="og:locale" content="nl_NL">
+  <link rel="alternate" hreflang="nl" href="https://ebbers-solutions.netlify.app/contact.html">
+  <link rel="alternate" hreflang="en" href="https://ebbers-solutions.netlify.app/contact.html">
+  <link rel="alternate" hreflang="de" href="https://ebbers-solutions.netlify.app/contact.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +22,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body data-page="contact">
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -34,19 +37,19 @@
           <span class="logo-text">Ebbers Solutions<span>Metaal · Neede</span></span>
         </a>
       </div>
-      <button class="usa-menu-btn" type="button">Menu</button>
+      <button class="usa-menu-btn" type="button" data-i18n="nav.menu">Menu</button>
     </div>
-    <nav aria-label="Hoofdnavigatie" class="usa-nav">
+    <nav class="usa-nav" data-i18n-aria="nav.label" aria-label="Hoofdnavigatie">
       <div class="usa-nav__inner">
         <button class="usa-nav__close" type="button">
-          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="Sluiten">
+          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="" data-i18n-aria="nav.close">
         </button>
         <ul class="usa-nav__primary usa-accordion">
-        <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link"><span>Home</span></a></li>
-        <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span>Diensten</span></a></li>
-        <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span>Collectie</span></a></li>
-        <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span>Over ons</span></a></li>
-        <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta usa-current"><span>Contact</span></a></li>
+          <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link"><span data-i18n="nav.home">Home</span></a></li>
+          <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span data-i18n="nav.services">Diensten</span></a></li>
+          <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span data-i18n="nav.collection">Collectie</span></a></li>
+          <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span data-i18n="nav.about">Over ons</span></a></li>
+          <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta usa-current"><span data-i18n="nav.contact">Contact</span></a></li>
         </ul>
       </div>
     </nav>
@@ -55,81 +58,95 @@
   <main>
     <section class="page-hero">
       <div class="grid-container container reveal">
-        <p class="section-label">Laten we praten</p>
-        <h1>Contact</h1>
-        <p class="page-hero-desc">Bel, mail of vul het formulier in. Wij reageren zo snel mogelijk.</p>
+        <p class="section-label" data-i18n="contact.hero.label">Laten we praten</p>
+        <h1 data-i18n="contact.hero.title">Contact</h1>
+        <p class="page-hero-desc" data-i18n="contact.hero.desc">Bel, mail of vul het formulier in. Wij reageren zo snel mogelijk.</p>
       </div>
     </section>
+
+    <div class="contact-quick">
+      <div class="grid-container container">
+        <div class="contact-quick-grid">
+          <a href="tel:+31543000000" class="contact-quick-btn" data-i18n="contact.quick.call">Bel direct</a>
+          <a href="mailto:peterebbers67@gmail.com" class="contact-quick-btn contact-quick-btn--outline" data-i18n="contact.quick.mail">Stuur e-mail</a>
+          <a href="https://www.openstreetmap.org/directions?to=52.1445%2C6.7410" class="contact-quick-btn contact-quick-btn--outline" target="_blank" rel="noopener" data-i18n="contact.quick.route">Route plannen</a>
+        </div>
+      </div>
+    </div>
 
     <section class="section">
       <div class="grid-container container contact-grid">
         <div class="contact-info reveal">
-          <h2>Gegevens</h2>
-          <div class="contact-item">
-            <h4>Adres</h4>
+          <h2 data-i18n="contact.info.title">Gegevens</h2>
+          <div class="contact-item contact-card">
+            <h4 data-i18n="contact.info.address">Adres</h4>
             <address data-contact="address-full">
               Veldhoekweg 1<br>
               7161 RW Neede<br>
               Industrieterrein Neede, Berkelland
             </address>
           </div>
-          <div class="contact-item">
-            <h4>Telefoon</h4>
+          <div class="contact-item contact-card">
+            <h4 data-i18n="contact.info.phone">Telefoon</h4>
             <p><a data-contact="phone" href="tel:+31543000000">+31 (0)543 00 00 00</a></p>
           </div>
-          <div class="contact-item">
-            <h4>E-mail</h4>
+          <div class="contact-item contact-card">
+            <h4 data-i18n="contact.info.email">E-mail</h4>
             <p><a data-contact="email" href="mailto:peterebbers67@gmail.com">peterebbers67@gmail.com</a></p>
           </div>
-          <div class="contact-item">
-            <h4>Openingstijden</h4>
+          <div class="contact-item contact-card">
+            <h4 data-i18n="contact.info.hours">Openingstijden</h4>
             <p data-contact="hours">Ma – Vr: 07:30 – 16:30</p>
           </div>
-          <div class="contact-item">
-            <h4>Bereikbaarheid</h4>
-            <p>Industrieterrein Neede, Achterhoek. Makkelijk bereikbaar vanaf de A18.</p>
+          <div class="contact-item contact-card">
+            <h4 data-i18n="contact.info.access">Bereikbaarheid</h4>
+            <p data-i18n="contact.info.accessDesc">Industrieterrein Neede, Achterhoek. Makkelijk bereikbaar vanaf de A18.</p>
+          </div>
+          <div class="map-embed-wrap map-embed-wrap--contact">
+            <iframe class="map-embed" title="Ebbers Solutions locatie Neede" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=6.7350%2C52.1420%2C6.7470%2C52.1470&amp;layer=mapnik&amp;marker=52.1445%2C6.7410"></iframe>
           </div>
         </div>
 
         <form class="usa-form contact-form reveal reveal-delay-1" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
           <input type="hidden" name="form-name" value="contact">
           <p class="usa-sr-only"><label>Niet invullen: <input name="bot-field"></label></p>
-          <h2>Stuur een bericht</h2>
+          <h2 data-i18n="contact.form.title">Stuur een bericht</h2>
           <div class="usa-form-group">
-            <label class="usa-label" for="naam">Naam <abbr title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
+            <label class="usa-label" for="naam"><span data-i18n="contact.form.name">Naam</span> <abbr data-i18n="common.required" title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
             <input class="usa-input" type="text" id="naam" name="naam" required autocomplete="name">
             <span class="usa-error-message" id="naamError" role="alert"></span>
           </div>
           <div class="usa-form-group">
-            <label class="usa-label" for="email">E-mail <abbr title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
+            <label class="usa-label" for="email"><span data-i18n="contact.form.email">E-mail</span> <abbr data-i18n="common.required" title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
             <input class="usa-input" type="email" id="email" name="email" required autocomplete="email">
             <span class="usa-error-message" id="emailError" role="alert"></span>
           </div>
           <div class="usa-form-group">
-            <label class="usa-label" for="bedrijf">Bedrijf</label>
+            <label class="usa-label" for="bedrijf" data-i18n="contact.form.company">Bedrijf</label>
             <input class="usa-input" type="text" id="bedrijf" name="bedrijf" autocomplete="organization">
           </div>
           <div class="usa-form-group">
-            <label class="usa-label" for="onderwerp">Onderwerp <abbr title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
+            <label class="usa-label" for="onderwerp"><span data-i18n="contact.form.subject">Onderwerp</span> <abbr data-i18n="common.required" title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
             <select class="usa-select" id="onderwerp" name="onderwerp" required>
-              <option value="">Kies een onderwerp</option>
-              <option value="offerte">Offerte aanvragen</option>
-              <option value="constructie">Constructiewerken</option>
-              <option value="bewerking">Metaalbewerking</option>
-              <option value="onderhoud">Machine-onderhoud</option>
-              <option value="anders">Anders</option>
+              <option value="" data-i18n="contact.form.subjectEmpty">Kies een onderwerp</option>
+              <option value="offerte" data-i18n="contact.form.subjectQuote">Offerte aanvragen</option>
+              <option value="constructie" data-i18n="contact.form.subjectConstructie">Constructiewerken</option>
+              <option value="bewerking" data-i18n="contact.form.subjectBewerking">Metaalbewerking</option>
+              <option value="onderhoud" data-i18n="contact.form.subjectOnderhoud">Machine-onderhoud</option>
+              <option value="anders" data-i18n="contact.form.subjectOther">Anders</option>
             </select>
             <span class="usa-error-message" id="onderwerpError" role="alert"></span>
           </div>
           <div class="usa-form-group">
-            <label class="usa-label" for="bericht">Bericht <abbr title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
-            <textarea class="usa-textarea" id="bericht" name="bericht" rows="5" required placeholder="Beschrijf uw project of vraag..."></textarea>
+            <label class="usa-label" for="bericht"><span data-i18n="contact.form.message">Bericht</span> <abbr data-i18n="common.required" title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
+            <textarea class="usa-textarea" id="bericht" name="bericht" rows="5" required data-i18n-placeholder="contact.form.placeholder" placeholder="Beschrijf uw project of vraag..."></textarea>
             <span class="usa-error-message" id="berichtError" role="alert"></span>
           </div>
-          <button type="submit" class="usa-button usa-button--big btn btn-primary btn-lg">Verstuur bericht</button>
+          <button type="submit" class="usa-button usa-button--big btn btn-primary btn-lg" data-i18n="contact.form.submit">Verstuur bericht</button>
           <div class="usa-alert usa-alert--success" id="formSuccess" hidden>
             <div class="usa-alert__body">
-              <p class="usa-alert__text">Bedankt voor uw bericht. Wij nemen zo snel mogelijk contact met u op.</p>
+              <p class="usa-alert__text" data-i18n="contact.form.success">Bedankt voor uw bericht. Wij nemen zo snel mogelijk contact met u op.</p>
             </div>
           </div>
         </form>
@@ -152,17 +169,17 @@
         <p data-contact="tagline">Metalen oplossingen op maat uit Neede.</p>
       </div>
       <div class="footer-links">
-        <h4>Navigatie</h4>
+        <h4 data-i18n="footer.nav">Navigatie</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="diensten.html">Diensten</a></li>
-          <li><a href="collectie.html">Collectie</a></li>
-          <li><a href="over-ons.html">Over ons</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="diensten.html" data-i18n="nav.services">Diensten</a></li>
+          <li><a href="collectie.html" data-i18n="nav.collection">Collectie</a></li>
+          <li><a href="over-ons.html" data-i18n="nav.about">Over ons</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-contact">
-        <h4>Contact</h4>
+        <h4 data-i18n="footer.contact">Contact</h4>
         <address>
           <p data-contact="street">Veldhoekweg 1</p>
           <p data-contact="postcode-city">7161 RW Neede</p>
@@ -172,17 +189,18 @@
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>&copy; 2026 Ebbers Solutions · KVK <span data-contact="kvk">68518102</span></p>
+      <p><span data-i18n="footer.copyright">© 2026 Ebbers Solutions · KVK</span> <span data-contact="kvk">68518102</span></p>
     </div>
   </footer>
 
-  <button id="scrollTop" aria-label="Terug naar boven">
+  <button id="scrollTop" data-i18n-aria="common.scrollTop" aria-label="Terug naar boven">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
       <polyline points="18 15 12 9 6 15"/>
     </svg>
   </button>
   <script src="assets/uswds/dist/js/uswds.min.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

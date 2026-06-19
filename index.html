@@ -13,6 +13,9 @@
   <meta property="og:description" content="Handgemaakte ijzeren meubels, constructiewerken en machine-onderhoud uit Neede, Achterhoek.">
   <meta property="og:image" content="https://ebbers-solutions.netlify.app/assets/images/products/product-02.jpg">
   <meta property="og:locale" content="nl_NL">
+  <link rel="alternate" hreflang="nl" href="https://ebbers-solutions.netlify.app/">
+  <link rel="alternate" hreflang="en" href="https://ebbers-solutions.netlify.app/">
+  <link rel="alternate" hreflang="de" href="https://ebbers-solutions.netlify.app/">
 
   <!-- JSON-LD LocalBusiness -->
   <script type="application/ld+json">
@@ -50,7 +53,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body data-page="home">
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -65,19 +68,19 @@
           <span class="logo-text">Ebbers Solutions<span>Metaal · Neede</span></span>
         </a>
       </div>
-      <button class="usa-menu-btn" type="button">Menu</button>
+      <button class="usa-menu-btn" type="button" data-i18n="nav.menu">Menu</button>
     </div>
-    <nav aria-label="Hoofdnavigatie" class="usa-nav">
+    <nav class="usa-nav" data-i18n-aria="nav.label" aria-label="Hoofdnavigatie">
       <div class="usa-nav__inner">
         <button class="usa-nav__close" type="button">
-          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="Sluiten">
+          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="" data-i18n-aria="nav.close">
         </button>
         <ul class="usa-nav__primary usa-accordion">
-          <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link usa-current"><span>Home</span></a></li>
-          <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span>Diensten</span></a></li>
-          <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span>Collectie</span></a></li>
-          <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span>Over ons</span></a></li>
-          <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span>Contact</span></a></li>
+          <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link usa-current"><span data-i18n="nav.home">Home</span></a></li>
+          <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span data-i18n="nav.services">Diensten</span></a></li>
+          <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span data-i18n="nav.collection">Collectie</span></a></li>
+          <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span data-i18n="nav.about">Over ons</span></a></li>
+          <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span data-i18n="nav.contact">Contact</span></a></li>
         </ul>
       </div>
     </nav>
@@ -88,36 +91,36 @@
     <section class="hero hero--editorial">
       <div class="grid-container container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> Vakmanschap · Neede · sinds 2017</p>
-          <h1>IJZER.<em>Ambacht.</em>Op maat.</h1>
-          <p class="hero-lead">Handgemaakte stoelen, tafels en frames — gebouwd in onze werkplaats. Metaalbewerking, constructie en onderhoud onder één dak.</p>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="home.hero.eyebrow">Vakmanschap · Neede · sinds 2017</span></p>
+          <h1 data-i18n-html="home.hero.title">IJZER.<em>Ambacht.</em>Op maat.</h1>
+          <p class="hero-lead" data-i18n="home.hero.lead">Handgemaakte stoelen, tafels en frames — gebouwd in onze werkplaats. Metaalbewerking, constructie en onderhoud onder één dak.</p>
           <div class="hero-actions">
-            <a href="collectie.html" class="usa-button btn btn-primary">Bekijk collectie</a>
-            <a href="contact.html" class="usa-button usa-button--outline btn btn-outline">Offerte aanvragen</a>
+            <a href="collectie.html" class="usa-button btn btn-primary" data-i18n="cta.viewCollection">Bekijk collectie</a>
+            <a href="contact.html" class="usa-button usa-button--outline btn btn-outline" data-i18n="cta.quote">Offerte aanvragen</a>
           </div>
-          <ul class="hero-trust" aria-label="Waarom Ebbers Solutions">
+          <ul class="hero-trust" data-i18n-aria="home.hero.trustLabel" aria-label="Waarom Ebbers Solutions">
             <li>
               <span class="hero-trust-num">01</span>
-              <span class="hero-trust-text"><strong>Handgemaakt</strong> Elk stuk uit onze werkplaats in Neede</span>
+              <span class="hero-trust-text"><strong data-i18n="home.hero.trust1.title">Handgemaakt</strong> <span data-i18n="home.hero.trust1.desc">Elk stuk uit onze werkplaats in Neede</span></span>
             </li>
             <li>
               <span class="hero-trust-num">02</span>
-              <span class="hero-trust-text"><strong>Op maat</strong> Afmeting, houtsoort en design naar wens</span>
+              <span class="hero-trust-text"><strong data-i18n="home.hero.trust2.title">Op maat</strong> <span data-i18n="home.hero.trust2.desc">Afmeting, houtsoort en design naar wens</span></span>
             </li>
             <li>
               <span class="hero-trust-num">03</span>
-              <span class="hero-trust-text"><strong>Direct contact</strong> U spreekt met degene die het maakt</span>
+              <span class="hero-trust-text"><strong data-i18n="home.hero.trust3.title">Direct contact</strong> <span data-i18n="home.hero.trust3.desc">U spreekt met degene die het maakt</span></span>
             </li>
           </ul>
         </div>
         <aside class="hero-panel reveal reveal-delay-2">
           <div class="hero-photo">
-            <span class="hero-photo-tag">Collectie 2026</span>
+            <span class="hero-photo-tag" data-i18n="home.hero.tag">Collectie 2026</span>
             <img src="assets/images/products/product-02.jpg" alt="Complete eettafel met zwart ijzeren frame en zes houten stoelen" width="1280" height="1280" loading="eager">
             <div class="hero-photo-card">
-              <span class="hero-photo-card-cat">Tafels</span>
-              <span class="hero-photo-card-title">Eettafel set</span>
-              <span class="hero-photo-card-desc">Zwart staal · zes houten stoelen</span>
+              <span class="hero-photo-card-cat" data-i18n="home.hero.cardCat">Tafels</span>
+              <span class="hero-photo-card-title" data-i18n="home.hero.cardTitle">Eettafel set</span>
+              <span class="hero-photo-card-desc" data-i18n="home.hero.cardDesc">Zwart staal · zes houten stoelen</span>
             </div>
           </div>
         </aside>
@@ -126,24 +129,24 @@
     </section>
 
     <!-- Statistieken balk -->
-    <div class="stats-band" aria-label="Bedrijfscijfers">
+    <div class="stats-band" data-i18n-aria="home.stats.label" aria-label="Bedrijfscijfers">
       <div class="grid-container container">
         <div class="stats-grid">
           <div class="stat-item">
             <span class="stat-value">8<em>+</em></span>
-            <span class="stat-label">Jaar ervaring</span>
+            <span class="stat-label" data-i18n="stats.years">Jaar ervaring</span>
           </div>
           <div class="stat-item">
             <span class="stat-value">16<em>+</em></span>
-            <span class="stat-label">Unieke producten</span>
+            <span class="stat-label" data-i18n="stats.products">Unieke producten</span>
           </div>
           <div class="stat-item">
             <span class="stat-value">3</span>
-            <span class="stat-label">Specialisaties</span>
+            <span class="stat-label" data-i18n="stats.specializations">Specialisaties</span>
           </div>
           <div class="stat-item">
             <span class="stat-value">100<em>%</em></span>
-            <span class="stat-label">Maatwerk</span>
+            <span class="stat-label" data-i18n="stats.custom">Maatwerk</span>
           </div>
         </div>
       </div>
@@ -153,28 +156,28 @@
     <section class="section" id="diensten-preview">
       <div class="grid-container container">
         <div class="section-header reveal">
-          <p class="section-label">Wat wij doen</p>
-          <h2>Drie specialisaties,<br>één werkplaats.</h2>
-          <p class="section-desc">Eén aanspreekpunt voor onderhoud, constructie en bewerking. U belt ons — wij lossen het op.</p>
+          <p class="section-label" data-i18n="home.services.label">Wat wij doen</p>
+          <h2 data-i18n-html="home.services.title">Drie specialisaties,<br>één werkplaats.</h2>
+          <p class="section-desc" data-i18n="home.services.desc">Eén aanspreekpunt voor onderhoud, constructie en bewerking. U belt ons — wij lossen het op.</p>
         </div>
         <div class="bento-grid">
           <article class="bento-card bento-featured reveal">
-            <span class="bento-num">Onderhoud</span>
-            <h3>Machine-onderhoud</h3>
-            <p>Een stilstaande machine kost meer dan de reparatie. Wij onderhouden preventief en repareren op spoed — zodat uw productie doorloopt zonder dat u hoeft te bellen naar drie partijen.</p>
-            <a href="diensten.html#onderhoud" class="card-link">Hoe wij machines onderhouden</a>
+            <span class="bento-num" data-i18n="home.services.s1.tag">Onderhoud</span>
+            <h3 data-i18n="home.services.s1.title">Machine-onderhoud</h3>
+            <p data-i18n="home.services.s1.desc">Een stilstaande machine kost meer dan de reparatie. Wij onderhouden preventief en repareren op spoed — zodat uw productie doorloopt.</p>
+            <a href="diensten.html#onderhoud" class="card-link" data-i18n="home.services.s1.link">Hoe wij machines onderhouden</a>
           </article>
           <article class="bento-card reveal reveal-delay-1">
-            <span class="bento-num">Constructie</span>
-            <h3>Constructiewerken</h3>
-            <p>Staalconstructies op maat — van enkelstuks tot kleine series, gebouwd volgens uw tekening of samen uitgewerkt in de werkplaats.</p>
-            <a href="diensten.html#constructie" class="card-link">Constructiewerken bekijken</a>
+            <span class="bento-num" data-i18n="home.services.s2.tag">Constructie</span>
+            <h3 data-i18n="home.services.s2.title">Constructiewerken</h3>
+            <p data-i18n="home.services.s2.desc">Staalconstructies op maat — van enkelstuks tot kleine series, gebouwd volgens uw tekening of samen uitgewerkt in de werkplaats.</p>
+            <a href="diensten.html#constructie" class="card-link" data-i18n="home.services.s2.link">Constructiewerken bekijken</a>
           </article>
           <article class="bento-card reveal reveal-delay-2">
-            <span class="bento-num">Bewerking</span>
-            <h3>Metaalbewerking</h3>
-            <p>MIG, TIG, plasma- en lasersnijden, kanten en afwerken. Als het van staal is, bewerken wij het — in eigen werkplaats, op maat.</p>
-            <a href="diensten.html#bewerking" class="card-link">Alle technieken bekijken</a>
+            <span class="bento-num" data-i18n="home.services.s3.tag">Bewerking</span>
+            <h3 data-i18n="home.services.s3.title">Metaalbewerking</h3>
+            <p data-i18n="home.services.s3.desc">MIG, TIG, plasma- en lasersnijden, kanten en afwerken. Als het van staal is, bewerken wij het — in eigen werkplaats, op maat.</p>
+            <a href="diensten.html#bewerking" class="card-link" data-i18n="home.services.s3.link">Alle technieken bekijken</a>
           </article>
         </div>
       </div>
@@ -184,38 +187,38 @@
     <section class="section section-muted">
       <div class="grid-container container">
         <div class="section-header reveal">
-          <p class="section-label">Hoe het werkt</p>
-          <h2>Van idee tot oplevering.</h2>
-          <p class="section-desc">Een helder proces zonder verrassingen — u weet altijd waar u aan toe bent.</p>
+          <p class="section-label" data-i18n="home.process.label">Hoe het werkt</p>
+          <h2 data-i18n="home.process.title">Van idee tot oplevering.</h2>
+          <p class="section-desc" data-i18n="home.process.desc">Een helder proces zonder verrassingen — u weet altijd waar u aan toe bent.</p>
         </div>
         <div class="werkwijze-grid reveal reveal-delay-1">
           <div class="werkwijze-stap">
-            <span class="stap-num">Stap 01</span>
+            <span class="stap-num" data-i18n="home.process.s1">Stap 01</span>
             <svg class="stap-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M8 32 L20 8 L32 32"/>
               <line x1="13" y1="24" x2="27" y2="24"/>
             </svg>
-            <h3>Overleg</h3>
-            <p>U belt of mailt ons met uw vraag of tekening. Wij denken direct mee over de beste aanpak en geven een eerlijke inschatting.</p>
+            <h3 data-i18n="home.process.s1.title">Overleg</h3>
+            <p data-i18n="home.process.s1.desc">U belt of mailt ons met uw vraag of tekening. Wij denken direct mee over de beste aanpak en geven een eerlijke inschatting.</p>
           </div>
           <div class="werkwijze-stap">
-            <span class="stap-num">Stap 02</span>
+            <span class="stap-num" data-i18n="home.process.s2">Stap 02</span>
             <svg class="stap-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <rect x="6" y="10" width="28" height="20" rx="1"/>
               <line x1="12" y1="18" x2="28" y2="18"/>
               <line x1="12" y1="23" x2="22" y2="23"/>
             </svg>
-            <h3>Maatwerk</h3>
-            <p>In onze werkplaats bouwen wij uw product met precisie — van enkelstuks tot kleine series, alles met de hand vervaardigd.</p>
+            <h3 data-i18n="home.process.s2.title">Maatwerk</h3>
+            <p data-i18n="home.process.s2.desc">In onze werkplaats bouwen wij uw product met precisie — van enkelstuks tot kleine series, alles met de hand vervaardigd.</p>
           </div>
           <div class="werkwijze-stap">
-            <span class="stap-num">Stap 03</span>
+            <span class="stap-num" data-i18n="home.process.s3">Stap 03</span>
             <svg class="stap-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <circle cx="20" cy="20" r="12"/>
               <polyline points="14,20 18,24 26,16"/>
             </svg>
-            <h3>Oplevering</h3>
-            <p>Het eindresultaat wordt gecontroleerd en op tijd geleverd. U spreekt altijd met dezelfde persoon — van offerte tot oplevering.</p>
+            <h3 data-i18n="home.process.s3.title">Oplevering</h3>
+            <p data-i18n="home.process.s3.desc">Het eindresultaat wordt gecontroleerd en op tijd geleverd. U spreekt altijd met dezelfde persoon — van offerte tot oplevering.</p>
           </div>
         </div>
       </div>
@@ -225,24 +228,24 @@
     <section class="section">
       <div class="grid-container container about-preview">
         <div class="about-text reveal">
-          <p class="section-label">Over Ebbers Solutions</p>
-          <h2>Een werkplaats.<br>Direct contact.</h2>
-          <p>Gevestigd op het industrieterrein in Neede werken wij voor bedrijven die kwaliteit en korte lijnen waarderen — niet voor wie een groot bedrijf met wachtlijsten zoekt.</p>
+          <p class="section-label" data-i18n="home.about.label">Over Ebbers Solutions</p>
+          <h2 data-i18n-html="home.about.title">Een werkplaats.<br>Direct contact.</h2>
+          <p data-i18n="home.about.desc">Gevestigd op het industrieterrein in Neede werken wij voor bedrijven die kwaliteit en korte lijnen waarderen.</p>
           <div class="about-points">
             <div class="about-point">
               <span class="about-point-mark">01</span>
-              <p>U spreekt met degene die uw project maakt</p>
+              <p data-i18n="home.about.p1">U spreekt met degene die uw project maakt</p>
             </div>
             <div class="about-point">
               <span class="about-point-mark">02</span>
-              <p>Maatwerk zonder standaardoplossingen die niet passen</p>
+              <p data-i18n="home.about.p2">Maatwerk zonder standaardoplossingen die niet passen</p>
             </div>
             <div class="about-point">
               <span class="about-point-mark">03</span>
-              <p>Actief in de Achterhoek sinds 2017</p>
+              <p data-i18n="home.about.p3">Actief in de Achterhoek sinds 2017</p>
             </div>
           </div>
-          <a href="over-ons.html" class="usa-button usa-button--secondary btn btn-secondary">Ons verhaal</a>
+          <a href="over-ons.html" class="usa-button usa-button--secondary btn btn-secondary" data-i18n="home.about.link">Ons verhaal</a>
         </div>
         <div class="about-visual reveal reveal-delay-1">
           <div class="img-placeholder img-loaded">
@@ -257,17 +260,17 @@
       <div class="grid-container container">
         <div class="section-header section-header--split reveal">
           <div>
-            <p class="section-label">Ons werk</p>
-            <h2>Collectie</h2>
-            <p class="section-desc">Handgemaakte ijzeren meubels — stoelen, tafels en frames uit de Achterhoek.</p>
+            <p class="section-label" data-i18n="home.collection.label">Ons werk</p>
+            <h2 data-i18n="home.collection.title">Collectie</h2>
+            <p class="section-desc" data-i18n="home.collection.desc">Handgemaakte ijzeren meubels — stoelen, tafels en frames uit de Achterhoek.</p>
           </div>
-          <a href="collectie.html" class="section-header-link">Volledige collectie →</a>
+          <a href="collectie.html" class="section-header-link" data-i18n="cta.fullCollection">Volledige collectie →</a>
         </div>
         <div class="projects-grid projects-grid--catalog reveal reveal-delay-1" id="homeCollection">
           <!-- Geladen via manifest.json -->
         </div>
         <div class="section-cta reveal">
-          <a href="collectie.html" class="usa-button usa-button--outline btn btn-outline btn-on-dark">Alle 16 producten bekijken</a>
+          <a href="collectie.html" class="usa-button usa-button--outline btn btn-outline btn-on-dark" data-i18n="cta.allProducts">Alle 16 producten bekijken</a>
         </div>
       </div>
     </section>
@@ -276,10 +279,10 @@
     <section class="cta-band">
       <div class="grid-container container cta-inner reveal">
         <div>
-          <h2>Project bespreken?</h2>
-          <p>Vertel ons wat u nodig heeft. Wij reageren snel met een concreet voorstel.</p>
+          <h2 data-i18n="home.cta.title">Project bespreken?</h2>
+          <p data-i18n="home.cta.desc">Vertel ons wat u nodig heeft. Wij reageren snel met een concreet voorstel.</p>
         </div>
-        <a href="contact.html" class="usa-button usa-button--big btn btn-primary btn-lg">Neem contact op</a>
+        <a href="contact.html" class="usa-button usa-button--big btn btn-primary btn-lg" data-i18n="cta.contact">Neem contact op</a>
       </div>
     </section>
   </main>
@@ -299,17 +302,17 @@
         <p data-contact="tagline">Metalen oplossingen op maat uit Neede.</p>
       </div>
       <div class="footer-links">
-        <h4>Navigatie</h4>
+        <h4 data-i18n="footer.nav">Navigatie</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="diensten.html">Diensten</a></li>
-          <li><a href="collectie.html">Collectie</a></li>
-          <li><a href="over-ons.html">Over ons</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="diensten.html" data-i18n="nav.services">Diensten</a></li>
+          <li><a href="collectie.html" data-i18n="nav.collection">Collectie</a></li>
+          <li><a href="over-ons.html" data-i18n="nav.about">Over ons</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-contact">
-        <h4>Contact</h4>
+        <h4 data-i18n="footer.contact">Contact</h4>
         <address>
           <p data-contact="street">Veldhoekweg 1</p>
           <p data-contact="postcode-city">7161 RW Neede</p>
@@ -319,11 +322,11 @@
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>&copy; 2026 Ebbers Solutions · KVK <span data-contact="kvk">68518102</span></p>
+      <p><span data-i18n="footer.copyright">© 2026 Ebbers Solutions · KVK</span> <span data-contact="kvk">68518102</span></p>
     </div>
   </footer>
 
-  <button id="scrollTop" aria-label="Terug naar boven">
+  <button id="scrollTop" data-i18n-aria="common.scrollTop" aria-label="Terug naar boven">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
       <polyline points="18 15 12 9 6 15"/>
     </svg>
@@ -331,6 +334,7 @@
 
   <script src="assets/uswds/dist/js/uswds.min.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
   <script src="js/home-collection.js"></script>
 </body>

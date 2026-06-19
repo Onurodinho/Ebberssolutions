@@ -1,13 +1,14 @@
-const CATEGORY_LABELS = {
-  tafels: 'Tafels',
-  stoelen: 'Stoelen',
-  details: 'Details',
-};
-
 document.addEventListener('DOMContentLoaded', async () => {
   await initGallery();
   initLightbox();
   initFilter();
+  document.addEventListener('langchange', () => {
+    const grid = document.getElementById('galleryGrid');
+    const filtered = activeFilter === 'alles' ? allItems : allItems.filter(i => i.category === activeFilter);
+    renderGallery(filtered, grid);
+    updateFilterCounts();
+    updateGalleryCount(filtered.length);
+  });
 });
 
 let allItems = [];
@@ -24,8 +25,21 @@ async function initGallery() {
     updateFilterCounts();
     updateGalleryCount(allItems.length);
   } catch {
-    grid.innerHTML = '<p class="gallery-error">Galerij kon niet geladen worden.</p>';
+    grid.innerHTML = `<p class="gallery-error">${getT('collectie.error')}</p>`;
   }
+}
+
+function getT(key) {
+  return window.EbbersI18n?.t(key) ?? key;
+}
+
+function getCatLabel(cat) {
+  return window.EbbersI18n?.cat(cat) ?? cat;
+}
+
+function getProductField(item, field) {
+  const translated = window.EbbersI18n?.product(item.id, field);
+  return translated || item[field] || item.alt;
 }
 
 function renderGallery(items, grid) {
@@ -36,9 +50,9 @@ function renderGallery(items, grid) {
 
   grid.innerHTML = items.map((item, i) => {
     const cat = item.category || 'details';
-    const catLabel = CATEGORY_LABELS[cat] || 'Details';
-    const title = item.title || item.alt;
-    const desc = item.desc || '';
+    const catLabel = getCatLabel(cat);
+    const title = getProductField(item, 'title') || item.alt;
+    const desc = getProductField(item, 'desc') || item.desc || '';
 
     return `
     <button class="gallery-item${i === featuredAt && activeFilter === 'alles' ? ' gallery-item--featured' : ''}" type="button"
@@ -51,7 +65,7 @@ function renderGallery(items, grid) {
         ${desc ? `<span class="gallery-item-desc">${desc}</span>` : ''}
       </span>
       <span class="gallery-item-overlay">
-        <span class="gallery-zoom">Vergroot</span>
+        <span class="gallery-zoom">${getT('common.zoom')}</span>
       </span>
     </button>`;
   }).join('');
@@ -71,7 +85,7 @@ function updateFilterCounts() {
   filterBar.querySelectorAll('.filter-btn').forEach(btn => {
     const cat = btn.dataset.filter;
     const count = counts[cat] ?? 0;
-    const label = btn.textContent.replace(/\s*\(\d+\)/, '');
+    const label = getCatLabel(cat);
     btn.textContent = `${label} (${count})`;
   });
 }
@@ -79,7 +93,7 @@ function updateFilterCounts() {
 function updateGalleryCount(count) {
   const el = document.getElementById('galleryCount');
   if (!el) return;
-  el.textContent = `${count} ${count === 1 ? 'product' : 'producten'}`;
+  el.textContent = `${count} ${count === 1 ? getT('common.product') : getT('common.products')}`;
 }
 
 function initFilter() {

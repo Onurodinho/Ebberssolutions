@@ -11,6 +11,9 @@
   <meta property="og:description" content="Een werkplaats in Neede met korte lijnen, persoonlijk contact en vakmanschap als standaard.">
   <meta property="og:image" content="https://ebbers-solutions.netlify.app/assets/images/products/product-01.jpg">
   <meta property="og:locale" content="nl_NL">
+  <link rel="alternate" hreflang="nl" href="https://ebbers-solutions.netlify.app/over-ons.html">
+  <link rel="alternate" hreflang="en" href="https://ebbers-solutions.netlify.app/over-ons.html">
+  <link rel="alternate" hreflang="de" href="https://ebbers-solutions.netlify.app/over-ons.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +22,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
-<body>
+<body data-page="about">
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -34,19 +37,19 @@
           <span class="logo-text">Ebbers Solutions<span>Metaal · Neede</span></span>
         </a>
       </div>
-      <button class="usa-menu-btn" type="button">Menu</button>
+      <button class="usa-menu-btn" type="button" data-i18n="nav.menu">Menu</button>
     </div>
-    <nav aria-label="Hoofdnavigatie" class="usa-nav">
+    <nav class="usa-nav" data-i18n-aria="nav.label" aria-label="Hoofdnavigatie">
       <div class="usa-nav__inner">
         <button class="usa-nav__close" type="button">
-          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="Sluiten">
+          <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="" data-i18n-aria="nav.close">
         </button>
         <ul class="usa-nav__primary usa-accordion">
-        <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link"><span>Home</span></a></li>
-        <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span>Diensten</span></a></li>
-        <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span>Collectie</span></a></li>
-        <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link usa-current"><span>Over ons</span></a></li>
-        <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span>Contact</span></a></li>
+          <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link"><span data-i18n="nav.home">Home</span></a></li>
+          <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span data-i18n="nav.services">Diensten</span></a></li>
+          <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span data-i18n="nav.collection">Collectie</span></a></li>
+          <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link usa-current"><span data-i18n="nav.about">Over ons</span></a></li>
+          <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span data-i18n="nav.contact">Contact</span></a></li>
         </ul>
       </div>
     </nav>
@@ -55,35 +58,62 @@
   <main>
     <section class="page-hero">
       <div class="grid-container container reveal">
-        <p class="section-label">Wie wij zijn</p>
-        <h1>Over ons</h1>
-        <p class="page-hero-desc">Een werkplaats in Neede met korte lijnen, persoonlijk contact en vakmanschap als standaard.</p>
+        <p class="section-label" data-i18n="about.hero.label">Wie wij zijn</p>
+        <h1 data-i18n="about.hero.title">Over ons</h1>
+        <p class="page-hero-desc" data-i18n="about.hero.desc">Een werkplaats in Neede met korte lijnen, persoonlijk contact en vakmanschap als standaard.</p>
       </div>
     </section>
+
+    <div class="stats-band" data-i18n-aria="home.stats.label" aria-label="Bedrijfscijfers">
+      <div class="grid-container container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-value">2017</span>
+            <span class="stat-label" data-i18n="stats.founded">Opgericht</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">8<em>+</em></span>
+            <span class="stat-label" data-i18n="stats.years">Jaar ervaring</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">3</span>
+            <span class="stat-label" data-i18n="stats.specializations">Specialisaties</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">100<em>%</em></span>
+            <span class="stat-label" data-i18n="stats.custom">Maatwerk</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section class="section">
       <div class="grid-container container about-full">
         <div class="about-story reveal">
-          <h2>Ons verhaal</h2>
-          <p>Ebbers Solutions is in 2017 opgericht en gevestigd op het industrieterrein aan de Veldhoekweg in Neede. Vanuit de Achterhoek helpen wij bedrijven met machine-onderhoud, metaalbewerking en constructiewerken.</p>
-          <p>Als eenmanszaak combineren wij vakmanschap met persoonlijke service. U spreekt met degene die uw project uitvoert — geen wachttijden, geen tussenlagen.</p>
+          <h2 data-i18n="about.story.title">Ons verhaal</h2>
+          <p data-i18n="about.story.p1">Ebbers Solutions is in 2017 opgericht en gevestigd op het industrieterrein aan de Veldhoekweg in Neede. Vanuit de Achterhoek helpen wij bedrijven met machine-onderhoud, metaalbewerking en constructiewerken.</p>
+          <p data-i18n="about.story.p2">Als eenmanszaak combineren wij vakmanschap met persoonlijke service. U spreekt met degene die uw project uitvoert — geen wachttijden, geen tussenlagen.</p>
         </div>
         <div class="values-grid reveal reveal-delay-1">
           <div class="value-card">
-            <h3>Vakmanschap</h3>
-            <p>Elk stuk dat onze werkplaats verlaat is gemaakt met de hand en gecontroleerd door dezelfde persoon.</p>
+            <span class="value-num">01</span>
+            <h3 data-i18n="about.v1.title">Vakmanschap</h3>
+            <p data-i18n="about.v1.desc">Elk stuk dat onze werkplaats verlaat is gemaakt met de hand en gecontroleerd door dezelfde persoon.</p>
           </div>
           <div class="value-card">
-            <h3>Betrouwbaarheid</h3>
-            <p>Wij halen deadlines. Als er een probleem is, hoort u dat van ons — niet andersom.</p>
+            <span class="value-num">02</span>
+            <h3 data-i18n="about.v2.title">Betrouwbaarheid</h3>
+            <p data-i18n="about.v2.desc">Wij halen deadlines. Als er een probleem is, hoort u dat van ons — niet andersom.</p>
           </div>
           <div class="value-card">
-            <h3>Flexibiliteit</h3>
-            <p>Van een enkel onderdeel tot een complete constructie. Wij passen het proces aan op uw situatie.</p>
+            <span class="value-num">03</span>
+            <h3 data-i18n="about.v3.title">Flexibiliteit</h3>
+            <p data-i18n="about.v3.desc">Van een enkel onderdeel tot een complete constructie. Wij passen het proces aan op uw situatie.</p>
           </div>
           <div class="value-card">
-            <h3>Korte lijnen</h3>
-            <p>U spreekt met de persoon die het werk uitvoert. Geen doorverbinden, geen wachttijden.</p>
+            <span class="value-num">04</span>
+            <h3 data-i18n="about.v4.title">Korte lijnen</h3>
+            <p data-i18n="about.v4.desc">U spreekt met de persoon die het werk uitvoert. Geen doorverbinden, geen wachttijden.</p>
           </div>
         </div>
       </div>
@@ -93,12 +123,28 @@
       <div class="grid-container container about-image-row">
         <figure class="service-img reveal">
           <img src="assets/images/products/product-01.jpg" alt="Werkplaats Ebbers Solutions — metaalbewerking in Neede" loading="lazy">
-          <figcaption>Werkplaats · Veldhoekweg 1, Neede</figcaption>
+          <figcaption data-i18n="about.location.caption">Werkplaats · Veldhoekweg 1, Neede</figcaption>
         </figure>
         <div class="about-image-text reveal reveal-delay-1">
-          <p class="section-label">Onze locatie</p>
-          <h2>Industrieterrein Neede</h2>
-          <p>Onze werkplaats ligt aan de Veldhoekweg op het industrieterrein in Neede. Goed bereikbaar vanaf de A18, voor klanten in de regio en daarbuiten.</p>
+          <p class="section-label" data-i18n="about.location.label">Onze locatie</p>
+          <h2 data-i18n="about.location.title">Industrieterrein Neede</h2>
+          <p data-i18n="about.location.desc">Onze werkplaats ligt aan de Veldhoekweg op het industrieterrein in Neede. Goed bereikbaar vanaf de A18, voor klanten in de regio en daarbuiten.</p>
+          <a href="contact.html" class="usa-button btn btn-primary" data-i18n="contact.quick.route">Route plannen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-map">
+      <div class="grid-container container">
+        <div class="map-block reveal">
+          <div class="map-block-header">
+            <h2 data-i18n="contact.map.title">Locatie</h2>
+            <p data-i18n="contact.map.desc">Veldhoekweg 1 · Industrieterrein Neede</p>
+          </div>
+          <div class="map-embed-wrap">
+            <iframe class="map-embed" title="Ebbers Solutions locatie Neede" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=6.7350%2C52.1420%2C6.7470%2C52.1470&amp;layer=mapnik&amp;marker=52.1445%2C6.7410"></iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -106,29 +152,29 @@
     <section class="section">
       <div class="grid-container container">
         <div class="section-header reveal">
-          <p class="section-label">Waarom Ebbers Solutions</p>
-          <h2>Wat ons onderscheidt</h2>
+          <p class="section-label" data-i18n="about.diff.label">Waarom Ebbers Solutions</p>
+          <h2 data-i18n="about.diff.title">Wat ons onderscheidt</h2>
         </div>
         <div class="features-list reveal reveal-delay-1">
           <div class="feature-item">
             <span class="feature-num">01</span>
             <div>
-              <h4>Korte lijnen</h4>
-              <p>Direct contact met de mensen die uw project uitvoeren. Geen tussenlagen, geen verwarring.</p>
+              <h4 data-i18n="about.f1.title">Korte lijnen</h4>
+              <p data-i18n="about.f1.desc">Direct contact met de mensen die uw project uitvoeren. Geen tussenlagen, geen verwarring.</p>
             </div>
           </div>
           <div class="feature-item">
             <span class="feature-num">02</span>
             <div>
-              <h4>Regionaal verankerd</h4>
-              <p>Gevestigd in Neede, actief in de Achterhoek. Dichtbij, bereikbaar en betrokken.</p>
+              <h4 data-i18n="about.f2.title">Regionaal verankerd</h4>
+              <p data-i18n="about.f2.desc">Gevestigd in Neede, actief in de Achterhoek. Dichtbij, bereikbaar en betrokken.</p>
             </div>
           </div>
           <div class="feature-item">
             <span class="feature-num">03</span>
             <div>
-              <h4>Maatwerk als norm</h4>
-              <p>Geen standaardoplossingen die niet passen. Wij maken wat u nodig heeft.</p>
+              <h4 data-i18n="about.f3.title">Maatwerk als norm</h4>
+              <p data-i18n="about.f3.desc">Geen standaardoplossingen die niet passen. Wij maken wat u nodig heeft.</p>
             </div>
           </div>
         </div>
@@ -138,10 +184,10 @@
     <section class="cta-band">
       <div class="grid-container container cta-inner reveal">
         <div>
-          <h2>Samenwerken?</h2>
-          <p>Ontdek wat Ebbers Solutions voor uw bedrijf kan betekenen.</p>
+          <h2 data-i18n="about.cta.title">Samenwerken?</h2>
+          <p data-i18n="about.cta.desc">Ontdek wat Ebbers Solutions voor uw bedrijf kan betekenen.</p>
         </div>
-        <a href="contact.html" class="usa-button usa-button--big btn btn-primary btn-lg">Neem contact op</a>
+        <a href="contact.html" class="usa-button usa-button--big btn btn-primary btn-lg" data-i18n="cta.contact">Neem contact op</a>
       </div>
     </section>
   </main>
@@ -161,17 +207,17 @@
         <p data-contact="tagline">Metalen oplossingen op maat uit Neede.</p>
       </div>
       <div class="footer-links">
-        <h4>Navigatie</h4>
+        <h4 data-i18n="footer.nav">Navigatie</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="diensten.html">Diensten</a></li>
-          <li><a href="collectie.html">Collectie</a></li>
-          <li><a href="over-ons.html">Over ons</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="diensten.html" data-i18n="nav.services">Diensten</a></li>
+          <li><a href="collectie.html" data-i18n="nav.collection">Collectie</a></li>
+          <li><a href="over-ons.html" data-i18n="nav.about">Over ons</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-contact">
-        <h4>Contact</h4>
+        <h4 data-i18n="footer.contact">Contact</h4>
         <address>
           <p data-contact="street">Veldhoekweg 1</p>
           <p data-contact="postcode-city">7161 RW Neede</p>
@@ -181,17 +227,18 @@
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>&copy; 2026 Ebbers Solutions · KVK <span data-contact="kvk">68518102</span></p>
+      <p><span data-i18n="footer.copyright">© 2026 Ebbers Solutions · KVK</span> <span data-contact="kvk">68518102</span></p>
     </div>
   </footer>
 
-  <button id="scrollTop" aria-label="Terug naar boven">
+  <button id="scrollTop" data-i18n-aria="common.scrollTop" aria-label="Terug naar boven">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
       <polyline points="18 15 12 9 6 15"/>
     </svg>
   </button>
   <script src="assets/uswds/dist/js/uswds.min.js"></script>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
