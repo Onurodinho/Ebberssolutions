@@ -1,0 +1,150 @@
+# Decap CMS — Ebbers Solutions beheer
+# Eenmalige setup: zie README.md → "Beheer voor Peter"
+
+backend:
+  name: git-gateway
+  branch: main
+
+display_url: https://ebbers-solutions.netlify.app
+site_url: https://ebbers-solutions.netlify.app
+
+locale: nl
+
+media_folder: assets/images/products
+public_folder: /assets/images/products
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: bedrijf
+    label: Bedrijfsgegevens
+    files:
+      - name: settings
+        label: Contact & bedrijf
+        file: content/settings.json
+        format: json
+        fields:
+          - label: Bedrijf
+            name: company
+            widget: object
+            fields:
+              - { label: Naam, name: name, widget: string }
+              - { label: Slogan (korte tekst), name: tagline, widget: string }
+              - { label: Oprichtingsjaar, name: founded, widget: number }
+              - { label: KVK-nummer, name: kvk, widget: string }
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: Straat + huisnummer, name: street, widget: string }
+              - { label: Postcode, name: postcode, widget: string }
+              - { label: Plaats, name: city, widget: string }
+              - { label: Regio / bereikbaarheid, name: region, widget: string }
+              - { label: Telefoon (weergave), name: phone, widget: string, hint: "Bijv. +31 (0)543 123 456" }
+              - { label: Telefoon (link), name: phoneHref, widget: string, hint: "Alleen cijfers, bijv. +31543123456" }
+              - { label: E-mail, name: email, widget: string }
+              - { label: Openingstijden, name: hours, widget: string }
+
+  - name: teksten
+    label: Teksten (Nederlands)
+    files:
+      - name: nl
+        label: Homepage & contact
+        file: content/nl.json
+        format: json
+        fields:
+          - label: Algemeen
+            name: algemeen
+            widget: object
+            fields:
+              - { label: Slogan in footer, name: tagline, widget: string }
+              - { label: Openingstijden, name: openingstijden, widget: string }
+          - label: Homepage — bovenaan
+            name: homepage
+            widget: object
+            fields:
+              - label: Hero (grote tekst bovenaan)
+                name: hero
+                widget: object
+                fields:
+                  - { label: Kleine regel boven titel, name: eyebrow, widget: string }
+                  - { label: Hoofdtitel, name: titel, widget: text, hint: "Gebruik <em>tekst</em> voor cursief accent" }
+                  - { label: Introductietekst, name: intro, widget: text }
+                  - { label: Voordeel 1 — titel, name: trust1_titel, widget: string }
+                  - { label: Voordeel 1 — tekst, name: trust1_tekst, widget: string }
+                  - { label: Voordeel 2 — titel, name: trust2_titel, widget: string }
+                  - { label: Voordeel 2 — tekst, name: trust2_tekst, widget: string }
+                  - { label: Voordeel 3 — titel, name: trust3_titel, widget: string }
+                  - { label: Voordeel 3 — tekst, name: trust3_tekst, widget: string }
+              - label: Diensten op homepage
+                name: diensten
+                widget: object
+                fields:
+                  - { label: Kleine kop, name: label, widget: string }
+                  - { label: Titel, name: titel, widget: text }
+                  - { label: Intro, name: intro, widget: text }
+                  - { label: Machine-onderhoud — titel, name: onderhoud_titel, widget: string }
+                  - { label: Machine-onderhoud — tekst, name: onderhoud_tekst, widget: text }
+                  - { label: Constructie — titel, name: constructie_titel, widget: string }
+                  - { label: Constructie — tekst, name: constructie_tekst, widget: text }
+                  - { label: Metaalbewerking — titel, name: bewerking_titel, widget: string }
+                  - { label: Metaalbewerking — tekst, name: bewerking_tekst, widget: text }
+              - label: Over ons op homepage
+                name: over_ons
+                widget: object
+                fields:
+                  - { label: Kleine kop, name: label, widget: string }
+                  - { label: Titel, name: titel, widget: text }
+                  - { label: Intro, name: intro, widget: text }
+                  - { label: Punt 1, name: punt1, widget: string }
+                  - { label: Punt 2, name: punt2, widget: string }
+                  - { label: Punt 3, name: punt3, widget: string }
+              - label: Collectie op homepage
+                name: collectie
+                widget: object
+                fields:
+                  - { label: Kleine kop, name: label, widget: string }
+                  - { label: Titel, name: titel, widget: string }
+                  - { label: Intro, name: intro, widget: text }
+              - label: Onderaan homepage (call-to-action)
+                name: cta
+                widget: object
+                fields:
+                  - { label: Titel, name: titel, widget: string }
+                  - { label: Tekst, name: tekst, widget: text }
+          - label: Contactpagina
+            name: contact
+            widget: object
+            fields:
+              - { label: Intro onder titel, name: intro, widget: text }
+
+  - name: collectie
+    label: Collectie
+    files:
+      - name: catalogus
+        label: Producten
+        file: assets/images/products/manifest.json
+        format: json
+        fields:
+          - label: Producten
+            name: products
+            widget: list
+            summary: "{{fields.title}} ({{fields.category}})"
+            fields:
+              - { label: ID, name: id, widget: string, hint: "Uniek, bijv. product-19" }
+              - { label: Titel, name: title, widget: string }
+              - { label: Beschrijving, name: desc, widget: text }
+              - { label: Foto (groot), name: src, widget: image, hint: "Upload of kies bestaande foto" }
+              - { label: Miniaturen (optioneel), name: thumb, widget: image, required: false, hint: "Laat leeg om dezelfde foto te gebruiken" }
+              - { label: Alt-tekst (voor zoekmachines & blinden), name: alt, widget: string }
+              - label: Categorie
+                name: category
+                widget: select
+                options:
+                  - { label: Tafels, value: tafels }
+                  - { label: Stoelen, value: stoelen }
+                  - { label: Banken, value: banken }
+                  - { label: Details, value: details }
+              - { label: Uitgelicht op homepage, name: featured, widget: boolean, default: false, required: false }

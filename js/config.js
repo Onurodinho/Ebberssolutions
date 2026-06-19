@@ -1,5 +1,6 @@
 /**
- * Centrale bedrijfsconfiguratie — pas hier alles aan wanneer echte gegevens beschikbaar zijn.
+ * Fallback bedrijfsconfiguratie.
+ * Peter bewerkt de live gegevens via /admin → Bedrijfsgegevens (content/settings.json).
  */
 const SITE_CONFIG = {
   company: {

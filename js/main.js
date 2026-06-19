@@ -1,10 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
+function bootMain() {
   initSiteConfig();
   initImages();
   initHeader();
   initReveal();
   initContactForm();
   initScrollTop();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.__cmsLoaded) {
+    bootMain();
+    return;
+  }
+  document.addEventListener('contentready', bootMain, { once: true });
 });
 
 function initSiteConfig() {

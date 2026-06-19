@@ -1,165 +1,167 @@
-[
-  {
-    "id": "product-2",
-    "title": "Eettafel set",
-    "desc": "Zwart staal met zes houten stoelen — complete eetgroep op maat.",
-    "src": "assets/images/products/product-02.jpg",
-    "thumb": "assets/images/products/thumbs/product-02.jpg",
-    "alt": "Eettafel met zwart ijzeren frame en zes houten stoelen",
-    "category": "tafels",
-    "featured": true
-  },
-  {
-    "id": "product-5",
-    "title": "Live-edge tafel",
-    "desc": "Natuurlijk houten blad op gebogen metalen poot.",
-    "src": "assets/images/products/product-05.jpg",
-    "thumb": "assets/images/products/thumbs/product-05.jpg",
-    "alt": "Eettafel met live-edge houten blad en gebogen metalen poot",
-    "category": "tafels"
-  },
-  {
-    "id": "product-6",
-    "title": "Ijzeren kruk",
-    "desc": "Compact onderstel met warme houten zitting.",
-    "src": "assets/images/products/product-06.jpg",
-    "thumb": "assets/images/products/thumbs/product-06.jpg",
-    "alt": "Handgemaakte ijzeren kruk met houten zitting",
-    "category": "stoelen"
-  },
-  {
-    "id": "product-7",
-    "title": "Industriële stoel",
-    "desc": "Geperforeerde rugleuning en strak staalframe.",
-    "src": "assets/images/products/product-07.jpg",
-    "thumb": "assets/images/products/thumbs/product-07.jpg",
-    "alt": "Industriële stoel met geperforeerde rugleuning",
-    "category": "stoelen"
-  },
-  {
-    "id": "product-16",
-    "title": "Werkplaatsstoel",
-    "desc": "Hout en ijzer — gebouwd in onze werkplaats Neede.",
-    "src": "assets/images/products/product-16.jpg",
-    "thumb": "assets/images/products/thumbs/product-16.jpg",
-    "alt": "Houten stoel met ijzeren frame in de werkplaats",
-    "category": "stoelen"
-  },
-  {
-    "id": "product-17",
-    "title": "Houten tuinbank",
-    "desc": "Naturel houten planken op zwart stalen frame met rugleuning.",
-    "src": "assets/images/products/product-17.jpg",
-    "thumb": "assets/images/products/thumbs/product-17.jpg",
-    "alt": "Houten tuinbank met zwart metalen frame — zijaanzicht",
-    "category": "banken"
-  },
-  {
-    "id": "product-18",
-    "title": "Houten tuinbank",
-    "desc": "Identiek model — tweede bank uit de set van twee.",
-    "src": "assets/images/products/product-18.jpg",
-    "thumb": "assets/images/products/thumbs/product-18.jpg",
-    "alt": "Houten tuinbank met zwart metalen frame — vooraanzicht",
-    "category": "banken"
-  },
-  {
-    "id": "product-4",
-    "title": "Geometrisch frame",
-    "desc": "Strakke lijnen en zichtbare constructie.",
-    "src": "assets/images/products/product-04.jpg",
-    "thumb": "assets/images/products/thumbs/product-04.jpg",
-    "alt": "Geometrisch ijzeren stoelframe",
-    "category": "stoelen"
-  },
-  {
-    "id": "product-8",
-    "title": "Bijzettafel",
-    "desc": "Geometrische uitsparingen in zwart staal.",
-    "src": "assets/images/products/product-08.jpg",
-    "thumb": "assets/images/products/thumbs/product-08.jpg",
-    "alt": "Design bijzettafel met geometrische uitsparingen",
-    "category": "tafels"
-  },
-  {
-    "id": "product-12",
-    "title": "Kettingtafel",
-    "desc": "Industrieel design met opvallend onderstel.",
-    "src": "assets/images/products/product-12.jpg",
-    "thumb": "assets/images/products/thumbs/product-12.jpg",
-    "alt": "Kettingtafel — industrieel design",
-    "category": "tafels"
-  },
-  {
-    "id": "product-3",
-    "title": "X-poot detail",
-    "desc": "Verbinding van hout en zwart staal.",
-    "src": "assets/images/products/product-03.jpg",
-    "thumb": "assets/images/products/thumbs/product-03.jpg",
-    "alt": "Detail: X-poot tafel met hout en zwart staal",
-    "category": "details"
-  },
-  {
-    "id": "product-9",
-    "title": "Hexagon poot",
-    "desc": "Metalen tafelpoot met zeshoekig design.",
-    "src": "assets/images/products/product-09.jpg",
-    "thumb": "assets/images/products/thumbs/product-09.jpg",
-    "alt": "Metalen tafelpoot met hexagon design",
-    "category": "details"
-  },
-  {
-    "id": "product-11",
-    "title": "Raster onderstel",
-    "desc": "Gelast frame met geometrisch patroon.",
-    "src": "assets/images/products/product-11.jpg",
-    "thumb": "assets/images/products/thumbs/product-11.jpg",
-    "alt": "Gelast metalen tafelonderstel met rasterpatroon",
-    "category": "details"
-  },
-  {
-    "id": "product-10",
-    "title": "Onderstellen",
-    "desc": "Vier metalen frames — overzicht collectie.",
-    "src": "assets/images/products/product-10.jpg",
-    "thumb": "assets/images/products/thumbs/product-10.jpg",
-    "alt": "Vier metalen onderstellen — overzicht collectie",
-    "category": "details"
-  },
-  {
-    "id": "product-13",
-    "title": "Meubelwerk",
-    "desc": "Handgemaakt ijzerwerk uit de werkplaats.",
-    "src": "assets/images/products/product-13.jpg",
-    "thumb": "assets/images/products/thumbs/product-13.jpg",
-    "alt": "Handgemaakt ijzeren meubelwerk",
-    "category": "details"
-  },
-  {
-    "id": "product-14",
-    "title": "Constructiedetail",
-    "desc": "Close-up van las- en montagewerk.",
-    "src": "assets/images/products/product-14.jpg",
-    "thumb": "assets/images/products/thumbs/product-14.jpg",
-    "alt": "Handgemaakt ijzeren meubelwerk — detailopname",
-    "category": "details"
-  },
-  {
-    "id": "product-1",
-    "title": "Werkplaatsframe",
-    "desc": "Ijzeren frame in productie — Neede.",
-    "src": "assets/images/products/product-01.jpg",
-    "thumb": "assets/images/products/thumbs/product-01.jpg",
-    "alt": "IJzeren frame in de werkplaats Neede",
-    "category": "details"
-  },
-  {
-    "id": "product-15",
-    "title": "De werkplaats",
-    "desc": "Stalen rekken en houten planken — waar alles ontstaat.",
-    "src": "assets/images/products/product-15.jpg",
-    "thumb": "assets/images/products/thumbs/product-15.jpg",
-    "alt": "Werkplaats Ebbers Solutions — stalen rekken en houten planken",
-    "category": "details"
-  }
-]
+{
+  "products": [
+    {
+      "id": "product-2",
+      "title": "Eettafel set",
+      "desc": "Zwart staal met zes houten stoelen — complete eetgroep op maat.",
+      "src": "assets/images/products/product-02.jpg",
+      "thumb": "assets/images/products/thumbs/product-02.jpg",
+      "alt": "Eettafel met zwart ijzeren frame en zes houten stoelen",
+      "category": "tafels",
+      "featured": true
+    },
+    {
+      "id": "product-5",
+      "title": "Live-edge tafel",
+      "desc": "Natuurlijk houten blad op gebogen metalen poot.",
+      "src": "assets/images/products/product-05.jpg",
+      "thumb": "assets/images/products/thumbs/product-05.jpg",
+      "alt": "Eettafel met live-edge houten blad en gebogen metalen poot",
+      "category": "tafels"
+    },
+    {
+      "id": "product-6",
+      "title": "Ijzeren kruk",
+      "desc": "Compact onderstel met warme houten zitting.",
+      "src": "assets/images/products/product-06.jpg",
+      "thumb": "assets/images/products/thumbs/product-06.jpg",
+      "alt": "Handgemaakte ijzeren kruk met houten zitting",
+      "category": "stoelen"
+    },
+    {
+      "id": "product-7",
+      "title": "Industriële stoel",
+      "desc": "Geperforeerde rugleuning en strak staalframe.",
+      "src": "assets/images/products/product-07.jpg",
+      "thumb": "assets/images/products/thumbs/product-07.jpg",
+      "alt": "Industriële stoel met geperforeerde rugleuning",
+      "category": "stoelen"
+    },
+    {
+      "id": "product-16",
+      "title": "Werkplaatsstoel",
+      "desc": "Hout en ijzer — gebouwd in onze werkplaats Neede.",
+      "src": "assets/images/products/product-16.jpg",
+      "thumb": "assets/images/products/thumbs/product-16.jpg",
+      "alt": "Houten stoel met ijzeren frame in de werkplaats",
+      "category": "stoelen"
+    },
+    {
+      "id": "product-17",
+      "title": "Houten tuinbank",
+      "desc": "Naturel houten planken op zwart stalen frame met rugleuning.",
+      "src": "assets/images/products/product-17.jpg",
+      "thumb": "assets/images/products/thumbs/product-17.jpg",
+      "alt": "Houten tuinbank met zwart metalen frame — zijaanzicht",
+      "category": "banken"
+    },
+    {
+      "id": "product-18",
+      "title": "Houten tuinbank",
+      "desc": "Identiek model — tweede bank uit de set van twee.",
+      "src": "assets/images/products/product-18.jpg",
+      "thumb": "assets/images/products/thumbs/product-18.jpg",
+      "alt": "Houten tuinbank met zwart metalen frame — vooraanzicht",
+      "category": "banken"
+    },
+    {
+      "id": "product-4",
+      "title": "Geometrisch frame",
+      "desc": "Strakke lijnen en zichtbare constructie.",
+      "src": "assets/images/products/product-04.jpg",
+      "thumb": "assets/images/products/thumbs/product-04.jpg",
+      "alt": "Geometrisch ijzeren stoelframe",
+      "category": "stoelen"
+    },
+    {
+      "id": "product-8",
+      "title": "Bijzettafel",
+      "desc": "Geometrische uitsparingen in zwart staal.",
+      "src": "assets/images/products/product-08.jpg",
+      "thumb": "assets/images/products/thumbs/product-08.jpg",
+      "alt": "Design bijzettafel met geometrische uitsparingen",
+      "category": "tafels"
+    },
+    {
+      "id": "product-12",
+      "title": "Kettingtafel",
+      "desc": "Industrieel design met opvallend onderstel.",
+      "src": "assets/images/products/product-12.jpg",
+      "thumb": "assets/images/products/thumbs/product-12.jpg",
+      "alt": "Kettingtafel — industrieel design",
+      "category": "tafels"
+    },
+    {
+      "id": "product-3",
+      "title": "X-poot detail",
+      "desc": "Verbinding van hout en zwart staal.",
+      "src": "assets/images/products/product-03.jpg",
+      "thumb": "assets/images/products/thumbs/product-03.jpg",
+      "alt": "Detail: X-poot tafel met hout en zwart staal",
+      "category": "details"
+    },
+    {
+      "id": "product-9",
+      "title": "Hexagon poot",
+      "desc": "Metalen tafelpoot met zeshoekig design.",
+      "src": "assets/images/products/product-09.jpg",
+      "thumb": "assets/images/products/thumbs/product-09.jpg",
+      "alt": "Metalen tafelpoot met hexagon design",
+      "category": "details"
+    },
+    {
+      "id": "product-11",
+      "title": "Raster onderstel",
+      "desc": "Gelast frame met geometrisch patroon.",
+      "src": "assets/images/products/product-11.jpg",
+      "thumb": "assets/images/products/thumbs/product-11.jpg",
+      "alt": "Gelast metalen tafelonderstel met rasterpatroon",
+      "category": "details"
+    },
+    {
+      "id": "product-10",
+      "title": "Onderstellen",
+      "desc": "Vier metalen frames — overzicht collectie.",
+      "src": "assets/images/products/product-10.jpg",
+      "thumb": "assets/images/products/thumbs/product-10.jpg",
+      "alt": "Vier metalen onderstellen — overzicht collectie",
+      "category": "details"
+    },
+    {
+      "id": "product-13",
+      "title": "Meubelwerk",
+      "desc": "Handgemaakt ijzerwerk uit de werkplaats.",
+      "src": "assets/images/products/product-13.jpg",
+      "thumb": "assets/images/products/thumbs/product-13.jpg",
+      "alt": "Handgemaakt ijzeren meubelwerk",
+      "category": "details"
+    },
+    {
+      "id": "product-14",
+      "title": "Constructiedetail",
+      "desc": "Close-up van las- en montagewerk.",
+      "src": "assets/images/products/product-14.jpg",
+      "thumb": "assets/images/products/thumbs/product-14.jpg",
+      "alt": "Handgemaakt ijzeren meubelwerk — detailopname",
+      "category": "details"
+    },
+    {
+      "id": "product-1",
+      "title": "Werkplaatsframe",
+      "desc": "Ijzeren frame in productie — Neede.",
+      "src": "assets/images/products/product-01.jpg",
+      "thumb": "assets/images/products/thumbs/product-01.jpg",
+      "alt": "IJzeren frame in de werkplaats Neede",
+      "category": "details"
+    },
+    {
+      "id": "product-15",
+      "title": "De werkplaats",
+      "desc": "Stalen rekken en houten planken — waar alles ontstaat.",
+      "src": "assets/images/products/product-15.jpg",
+      "thumb": "assets/images/products/thumbs/product-15.jpg",
+      "alt": "Werkplaats Ebbers Solutions — stalen rekken en houten planken",
+      "category": "details"
+    }
+  ]
+}

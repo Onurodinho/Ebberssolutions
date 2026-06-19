@@ -618,5 +618,4 @@ function initI18n() {
 }
 
 window.EbbersI18n = { t: i18nT, product: i18nProduct, cat: i18nCat, getLang: () => currentLang, apply: i18nApply };
-
-document.addEventListener('DOMContentLoaded', initI18n);
+window.initI18n = initI18n;

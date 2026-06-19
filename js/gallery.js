@@ -1,18 +1,43 @@
-document.addEventListener('DOMContentLoaded', async () => {
+async function bootGallery() {
   await initGallery();
   initLightbox();
   initFilter();
-  document.addEventListener('langchange', () => {
-    const grid = document.getElementById('galleryGrid');
-    const filtered = activeFilter === 'alles' ? allItems : allItems.filter(i => i.category === activeFilter);
-    renderGallery(filtered, grid);
-    updateFilterCounts();
-    updateGalleryCount(filtered.length);
-  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.__cmsLoaded) {
+    bootGallery();
+    return;
+  }
+  document.addEventListener('contentready', bootGallery, { once: true });
+});
+
+document.addEventListener('langchange', () => {
+  const grid = document.getElementById('galleryGrid');
+  const filtered = activeFilter === 'alles' ? allItems : allItems.filter(i => i.category === activeFilter);
+  renderGallery(filtered, grid);
+  updateFilterCounts();
+  updateGalleryCount(filtered.length);
 });
 
 let allItems = [];
 let activeFilter = 'alles';
+
+function normalizeImagePath(path) {
+  if (!path) return path;
+  if (path.startsWith('assets/')) return path;
+  if (path.startsWith('/assets/')) return path.slice(1);
+  return `assets/images/products/${path.replace(/^\//, '')}`;
+}
+
+function normalizeManifest(data) {
+  const items = Array.isArray(data) ? data : data.products || [];
+  return items.map(item => ({
+    ...item,
+    src: normalizeImagePath(item.src),
+    thumb: normalizeImagePath(item.thumb || item.src),
+  }));
+}
 
 async function initGallery() {
   const grid = document.getElementById('galleryGrid');
@@ -20,7 +45,8 @@ async function initGallery() {
 
   try {
     const res = await fetch('assets/images/products/manifest.json');
-    allItems = await res.json();
+    const data = await res.json();
+    allItems = normalizeManifest(data);
     renderGallery(allItems, grid);
     updateFilterCounts();
     updateGalleryCount(allItems.length);

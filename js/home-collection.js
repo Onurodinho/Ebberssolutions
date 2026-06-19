@@ -1,7 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
+function normalizeImagePath(path) {
+  if (!path) return path;
+  if (path.startsWith('assets/')) return path;
+  if (path.startsWith('/assets/')) return path.slice(1);
+  return `assets/images/products/${path.replace(/^\//, '')}`;
+}
+
+function normalizeManifestItems(data) {
+  const items = Array.isArray(data) ? data : data.products || [];
+  return items.map(item => ({
+    ...item,
+    src: normalizeImagePath(item.src),
+    thumb: normalizeImagePath(item.thumb || item.src),
+  }));
+}
+
+function scheduleHomeCollection() {
   initHomeCollection();
-  document.addEventListener('langchange', initHomeCollection);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.__cmsLoaded) {
+    scheduleHomeCollection();
+    return;
+  }
+  document.addEventListener('contentready', scheduleHomeCollection, { once: true });
 });
+
+document.addEventListener('langchange', initHomeCollection);
 
 async function initHomeCollection() {
   const grid = document.getElementById('homeCollection');
@@ -9,7 +34,8 @@ async function initHomeCollection() {
 
   try {
     const res = await fetch('assets/images/products/manifest.json');
-    const items = await res.json();
+    const data = await res.json();
+    const items = normalizeManifestItems(data);
     const preview = pickPreviewItems(items, 4);
     grid.innerHTML = preview.map((item, i) => renderPreviewCard(item, i === 0)).join('');
   } catch {

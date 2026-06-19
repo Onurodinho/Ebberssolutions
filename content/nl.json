@@ -1,0 +1,50 @@
+{
+  "algemeen": {
+    "tagline": "Metalen oplossingen op maat uit Neede.",
+    "openingstijden": "Ma – Vr: 07:30 – 16:30"
+  },
+  "homepage": {
+    "hero": {
+      "eyebrow": "Vakmanschap · Neede · sinds 2017",
+      "titel": "IJZER.<em>Ambacht.</em>Op maat.",
+      "intro": "Handgemaakte stoelen, tafels en frames — gebouwd in onze werkplaats. Metaalbewerking, constructie en onderhoud onder één dak.",
+      "trust1_titel": "Handgemaakt",
+      "trust1_tekst": "Elk stuk uit onze werkplaats in Neede",
+      "trust2_titel": "Op maat",
+      "trust2_tekst": "Afmeting, houtsoort en design naar wens",
+      "trust3_titel": "Direct contact",
+      "trust3_tekst": "U spreekt met degene die het maakt"
+    },
+    "diensten": {
+      "label": "Wat wij doen",
+      "titel": "Drie specialisaties,<br>één werkplaats.",
+      "intro": "Eén aanspreekpunt voor onderhoud, constructie en bewerking. U belt ons — wij lossen het op.",
+      "onderhoud_titel": "Machine-onderhoud",
+      "onderhoud_tekst": "Een stilstaande machine kost meer dan de reparatie. Wij onderhouden preventief en repareren op spoed — zodat uw productie doorloopt.",
+      "constructie_titel": "Constructiewerken",
+      "constructie_tekst": "Staalconstructies op maat — van enkelstuks tot kleine series, gebouwd volgens uw tekening of samen uitgewerkt in de werkplaats.",
+      "bewerking_titel": "Metaalbewerking",
+      "bewerking_tekst": "MIG, TIG, plasma- en lasersnijden, kanten en afwerken. Als het van staal is, bewerken wij het — in eigen werkplaats, op maat."
+    },
+    "over_ons": {
+      "label": "Over Ebbers Solutions",
+      "titel": "Een werkplaats.<br>Direct contact.",
+      "intro": "Gevestigd op het industrieterrein in Neede werken wij voor bedrijven die kwaliteit en korte lijnen waarderen.",
+      "punt1": "U spreekt met degene die uw project maakt",
+      "punt2": "Maatwerk zonder standaardoplossingen die niet passen",
+      "punt3": "Actief in de Achterhoek sinds 2017"
+    },
+    "collectie": {
+      "label": "Ons werk",
+      "titel": "Collectie",
+      "intro": "Handgemaakte ijzeren meubels — stoelen, tafels en frames uit de Achterhoek."
+    },
+    "cta": {
+      "titel": "Project bespreken?",
+      "tekst": "Vertel ons wat u nodig heeft. Wij reageren snel met een concreet voorstel."
+    }
+  },
+  "contact": {
+    "intro": "Bel, mail of vul het formulier in. Wij reageren zo snel mogelijk."
+  }
+}

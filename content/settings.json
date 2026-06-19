@@ -1,0 +1,18 @@
+{
+  "company": {
+    "name": "Ebbers Solutions",
+    "tagline": "Metalen oplossingen op maat uit Neede.",
+    "founded": 2017,
+    "kvk": "68518102"
+  },
+  "contact": {
+    "street": "Veldhoekweg 1",
+    "postcode": "7161 RW",
+    "city": "Neede",
+    "region": "Industrieterrein Neede, Berkelland",
+    "phone": "+31 (0)543 00 00 00",
+    "phoneHref": "+31543000000",
+    "email": "peterebbers67@gmail.com",
+    "hours": "Ma – Vr: 07:30 – 16:30"
+  }
+}
