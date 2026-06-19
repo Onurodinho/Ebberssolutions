@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
   await initGallery();
   initLightbox();
+  initFilter();
 });
+
+let allItems = [];
 
 async function initGallery() {
   const grid = document.getElementById('galleryGrid');
@@ -9,19 +12,43 @@ async function initGallery() {
 
   try {
     const res = await fetch('assets/images/products/manifest.json');
-    const items = await res.json();
-    grid.innerHTML = items.map((item, i) => `
-      <button class="gallery-item${i === 0 ? ' gallery-item--featured' : ''}" type="button"
-        data-full="${item.src}" data-alt="${item.alt}" aria-label="${item.alt}">
-        <img src="${item.thumb}" alt="${item.alt}" loading="lazy" width="640" height="480">
-        <span class="gallery-item-overlay">
-          <span class="gallery-zoom">Bekijk</span>
-        </span>
-      </button>
-    `).join('');
+    allItems = await res.json();
+    renderGallery(allItems, grid);
   } catch {
     grid.innerHTML = '<p class="gallery-error">Galerij kon niet geladen worden.</p>';
   }
+}
+
+function renderGallery(items, grid) {
+  if (!grid) return;
+  grid.innerHTML = items.map((item, i) => `
+    <button class="gallery-item${i === 0 ? ' gallery-item--featured' : ''}" type="button"
+      data-full="${item.src}" data-alt="${item.alt}" data-category="${item.category || 'details'}"
+      aria-label="${item.alt}">
+      <img src="${item.thumb}" alt="${item.alt}" loading="${i < 4 ? 'eager' : 'lazy'}" width="640" height="480">
+      <span class="gallery-item-overlay">
+        <span class="gallery-zoom">Bekijk</span>
+      </span>
+    </button>
+  `).join('');
+}
+
+function initFilter() {
+  const filterBar = document.getElementById('galleryFilter');
+  if (!filterBar) return;
+
+  filterBar.addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+
+    filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cat = btn.dataset.filter;
+    const grid = document.getElementById('galleryGrid');
+    const filtered = cat === 'alles' ? allItems : allItems.filter(i => i.category === cat);
+    renderGallery(filtered, grid);
+  });
 }
 
 function initLightbox() {
@@ -43,7 +70,7 @@ function initLightbox() {
     const item = items[current];
     img.src = item.full;
     img.alt = item.alt;
-    caption.textContent = item.alt;
+    caption.textContent = `${item.alt} — ${current + 1} / ${items.length}`;
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
   };

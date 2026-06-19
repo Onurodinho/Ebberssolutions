@@ -5,6 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Ebbers Solutions — metaalbewerking, constructiewerken en machine-onderhoud in Neede. Vakkundige metalen oplossingen op maat.">
   <title>Ebbers Solutions | Metalen oplossingen op maat</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ebbers-solutions.netlify.app/">
+  <meta property="og:title" content="Ebbers Solutions | Metalen oplossingen op maat">
+  <meta property="og:description" content="Handgemaakte ijzeren meubels, constructiewerken en machine-onderhoud uit Neede, Achterhoek.">
+  <meta property="og:image" content="https://ebbers-solutions.netlify.app/assets/images/products/product-02.jpg">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Ebbers Solutions",
+    "description": "Metaalbewerking, constructiewerken en machine-onderhoud in Neede, Achterhoek.",
+    "url": "https://ebbers-solutions.netlify.app",
+    "telephone": "+31543000000",
+    "email": "peterebbers67@gmail.com",
+    "foundingDate": "2017",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Veldhoekweg 1",
+      "postalCode": "7161 RW",
+      "addressLocality": "Neede",
+      "addressCountry": "NL"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "07:30",
+      "closes": "16:30"
+    },
+    "image": "https://ebbers-solutions.netlify.app/assets/images/products/product-02.jpg"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
@@ -36,17 +73,18 @@
           <img src="assets/uswds/dist/img/usa-icons/close.svg" role="img" alt="Sluiten">
         </button>
         <ul class="usa-nav__primary usa-accordion">
-        <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link usa-current"><span>Home</span></a></li>
-        <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span>Diensten</span></a></li>
-        <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span>Collectie</span></a></li>
-        <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span>Over ons</span></a></li>
-        <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span>Contact</span></a></li>
+          <li class="usa-nav__primary-item"><a href="index.html" class="usa-nav__link usa-current"><span>Home</span></a></li>
+          <li class="usa-nav__primary-item"><a href="diensten.html" class="usa-nav__link"><span>Diensten</span></a></li>
+          <li class="usa-nav__primary-item"><a href="collectie.html" class="usa-nav__link"><span>Collectie</span></a></li>
+          <li class="usa-nav__primary-item"><a href="over-ons.html" class="usa-nav__link"><span>Over ons</span></a></li>
+          <li class="usa-nav__primary-item"><a href="contact.html" class="usa-nav__link site-nav-cta"><span>Contact</span></a></li>
         </ul>
       </div>
     </nav>
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero">
       <div class="grid-container container hero-grid">
         <div class="hero-copy reveal">
@@ -74,7 +112,7 @@
         </div>
         <aside class="hero-panel reveal reveal-delay-2">
           <div class="hero-photo">
-            <img src="assets/images/products/product-02.jpg" alt="Complete eettafel met zwart ijzeren frame en zes houten stoelen" width="1280" height="1280">
+            <img src="assets/images/products/product-02.jpg" alt="Complete eettafel met zwart ijzeren frame en zes houten stoelen" width="1280" height="1280" loading="eager">
             <span class="hero-photo-badge">Handgemaakt in Neede</span>
           </div>
         </aside>
@@ -82,6 +120,31 @@
       <div class="weld-seam" aria-hidden="true"></div>
     </section>
 
+    <!-- Statistieken balk -->
+    <div class="stats-band" aria-label="Bedrijfscijfers">
+      <div class="grid-container container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-value">8<em>+</em></span>
+            <span class="stat-label">Jaar ervaring</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">16<em>+</em></span>
+            <span class="stat-label">Unieke producten</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Specialisaties</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value"><em>1</em></span>
+            <span class="stat-label">Werkplaats, Neede</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diensten bento -->
     <section class="section" id="diensten-preview">
       <div class="grid-container container">
         <div class="section-header reveal">
@@ -112,6 +175,48 @@
       </div>
     </section>
 
+    <!-- Werkwijze -->
+    <section class="section section-muted">
+      <div class="grid-container container">
+        <div class="section-header reveal">
+          <p class="section-label">Hoe het werkt</p>
+          <h2>Van idee tot oplevering.</h2>
+          <p class="section-desc">Een helder proces zonder verrassingen — u weet altijd waar u aan toe bent.</p>
+        </div>
+        <div class="werkwijze-grid reveal reveal-delay-1">
+          <div class="werkwijze-stap">
+            <span class="stap-num">Stap 01</span>
+            <svg class="stap-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M8 32 L20 8 L32 32"/>
+              <line x1="13" y1="24" x2="27" y2="24"/>
+            </svg>
+            <h3>Overleg</h3>
+            <p>U belt of mailt ons met uw vraag of tekening. Wij denken direct mee over de beste aanpak en geven een eerlijke inschatting.</p>
+          </div>
+          <div class="werkwijze-stap">
+            <span class="stap-num">Stap 02</span>
+            <svg class="stap-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="6" y="10" width="28" height="20" rx="1"/>
+              <line x1="12" y1="18" x2="28" y2="18"/>
+              <line x1="12" y1="23" x2="22" y2="23"/>
+            </svg>
+            <h3>Maatwerk</h3>
+            <p>In onze werkplaats bouwen wij uw product met precisie — van enkelstuks tot kleine series, alles met de hand vervaardigd.</p>
+          </div>
+          <div class="werkwijze-stap">
+            <span class="stap-num">Stap 03</span>
+            <svg class="stap-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="20" cy="20" r="12"/>
+              <polyline points="14,20 18,24 26,16"/>
+            </svg>
+            <h3>Oplevering</h3>
+            <p>Het eindresultaat wordt gecontroleerd en op tijd geleverd. U spreekt altijd met dezelfde persoon — van offerte tot oplevering.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Over ons preview -->
     <section class="section">
       <div class="grid-container container about-preview">
         <div class="about-text reveal">
@@ -135,13 +240,14 @@
           <a href="over-ons.html" class="usa-button usa-button--secondary btn btn-secondary">Ons verhaal</a>
         </div>
         <div class="about-visual reveal reveal-delay-1">
-          <div class="img-placeholder img-loaded" data-image="workshop">
-            <img src="assets/images/products/product-01.jpg" alt="Ijzeren frame in de werkplaats Neede" loading="lazy">
+          <div class="img-placeholder img-loaded">
+            <img src="assets/images/products/product-01.jpg" alt="IJzeren frame in de werkplaats Neede" loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Collectie preview -->
     <section class="section section-dark" id="projecten">
       <div class="grid-container container">
         <div class="section-header section-header--center reveal">
@@ -150,14 +256,14 @@
           <p class="section-desc">16 foto's van onze handgemaakte ijzeren meubels — stoelen, tafels en frames.</p>
         </div>
         <div class="projects-grid reveal reveal-delay-1">
-          <a href="collectie.html" class="project-card project-card--featured" data-image="project-1">
-            <img src="assets/images/products/thumbs/product-02.jpg" alt="Eettafel met ijzeren frame" loading="lazy">
+          <a href="collectie.html" class="project-card project-card--featured">
+            <img src="assets/images/products/thumbs/product-02.jpg" alt="Eettafel met ijzeren frame en houten stoelen" loading="lazy">
           </a>
-          <a href="collectie.html" class="project-card" data-image="project-2">
+          <a href="collectie.html" class="project-card">
             <img src="assets/images/products/thumbs/product-06.jpg" alt="Ijzeren kruk met houten zitting" loading="lazy">
           </a>
-          <a href="collectie.html" class="project-card" data-image="project-3">
-            <img src="assets/images/products/thumbs/product-10.jpg" alt="Vier metalen onderstellen" loading="lazy">
+          <a href="collectie.html" class="project-card">
+            <img src="assets/images/products/thumbs/product-07.jpg" alt="Industriële stoel met geperforeerde rugleuning" loading="lazy">
           </a>
         </div>
         <div class="section-cta reveal">
@@ -166,6 +272,7 @@
       </div>
     </section>
 
+    <!-- CTA band -->
     <section class="cta-band">
       <div class="grid-container container cta-inner reveal">
         <div>
@@ -187,10 +294,7 @@
               <line x1="7" y1="14" x2="17" y2="14" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </div>
-          <span class="logo-text">
-            Ebbers Solutions
-            <span>Metaal · Neede</span>
-          </span>
+          <span class="logo-text">Ebbers Solutions<span>Metaal · Neede</span></span>
         </a>
         <p data-contact="tagline">Metalen oplossingen op maat uit Neede.</p>
       </div>
@@ -218,6 +322,12 @@
       <p>&copy; 2026 Ebbers Solutions · KVK <span data-contact="kvk">68518102</span></p>
     </div>
   </footer>
+
+  <button id="scrollTop" aria-label="Terug naar boven">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
 
   <script src="assets/uswds/dist/js/uswds.min.js"></script>
   <script src="js/config.js"></script>

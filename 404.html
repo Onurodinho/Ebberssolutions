@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina niet gevonden | Ebbers Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
+  <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: var(--concrete-light);
+    }
+    .error-inner {
+      max-width: 540px;
+      text-align: center;
+    }
+    .error-code {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .error-num {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 15vw, 9rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: var(--steel-900);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .error-num em {
+      color: var(--copper);
+      font-style: normal;
+    }
+    .error-msg {
+      font-size: 1.1rem;
+      color: var(--steel-700);
+      margin-bottom: 2.5rem;
+      line-height: 1.65;
+    }
+    .error-links {
+      display: flex;
+      gap: 0.875rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="error-inner">
+      <span class="error-code">Fout 404</span>
+      <span class="error-num">4<em>0</em>4</span>
+      <p class="error-msg">Deze pagina bestaat niet (meer).<br>Gebruik de links hieronder om verder te gaan.</p>
+      <div class="error-links">
+        <a href="index.html" class="usa-button btn btn-primary">Naar home</a>
+        <a href="collectie.html" class="usa-button usa-button--outline btn btn-outline">Bekijk collectie</a>
+        <a href="contact.html" class="usa-button usa-button--outline btn btn-outline">Contact</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

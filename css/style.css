@@ -1949,6 +1949,238 @@ address {
   padding-bottom: 0;
 }
 
+/* ── Scroll-to-top ── */
+#scrollTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 300;
+  width: 44px;
+  height: 44px;
+  background: var(--steel-900);
+  color: var(--concrete-light);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+}
+
+#scrollTop.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#scrollTop:hover {
+  background: var(--copper);
+}
+
+#scrollTop svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Werkwijze (process) section ── */
+.werkwijze-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.werkwijze-stap {
+  background: var(--surface);
+  padding: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.werkwijze-stap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--copper);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.werkwijze-stap:hover::before {
+  transform: scaleX(1);
+}
+
+.stap-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 1.25rem;
+}
+
+.stap-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--steel-900);
+  margin-bottom: 1.25rem;
+  opacity: 0.7;
+}
+
+.werkwijze-stap h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.werkwijze-stap p {
+  font-size: 0.95rem;
+  color: var(--steel-700);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .werkwijze-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Galerij categorie filter ── */
+.gallery-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.1rem;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--steel-700);
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+
+.filter-btn:hover {
+  border-color: var(--steel-900);
+  color: var(--steel-900);
+}
+
+.filter-btn.active {
+  background: var(--steel-900);
+  border-color: var(--steel-900);
+  color: var(--concrete-light);
+}
+
+/* ── Page-hero versterking ── */
+.page-hero {
+  background: var(--concrete);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 28px,
+    rgba(26, 34, 40, 0.025) 28px,
+    rgba(26, 34, 40, 0.025) 29px
+  );
+  pointer-events: none;
+}
+
+/* ── Section weld divider ── */
+.section-divider {
+  height: 3px;
+  background: linear-gradient(90deg, var(--copper) 0%, var(--copper-bright) 40%, transparent 100%);
+  border: none;
+  margin: 0;
+  opacity: 0.5;
+}
+
+/* ── Statistieken balk ── */
+.stats-band {
+  background: var(--steel-900);
+  padding: 2.5rem 0;
+  border-top: 3px solid var(--copper);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+}
+
+.stat-item {
+  padding: 1.5rem 2rem;
+  background: var(--steel-900);
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--concrete-light);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(232,227,219,0.45);
+  margin-top: 0.5rem;
+}
+
+.stat-value em {
+  font-style: normal;
+  color: var(--copper);
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Rijkere footer ── */
+.site-footer {
+  border-top: 3px solid var(--copper);
+}
+
 .usa-alert.usa-alert--success {
   margin-top: 1.25rem;
 }
