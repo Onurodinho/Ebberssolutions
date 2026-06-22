@@ -21,8 +21,8 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE_ID = "1819af13-e955-477e-9570-cdaa6c1e24aa"
-SITE_NAME = "ebbers-solutions"
+SITE_ID = "06de34eb-2df6-4ae4-ac83-0fa936d9f40b"
+SITE_NAME = "euphonious-boba-7a95cf"
 PETER_EMAIL = "peterebbers67@gmail.com"
 SITE_URL = "https://ebberssolutions.com"
 GITHUB_REPO = "Onurodinho/Ebberssolutions"
@@ -94,18 +94,15 @@ def resolve_site(client: NetlifyClient) -> dict:
         except RuntimeError as err:
             if "HTTP 404" not in str(err):
                 raise
-    print("Site niet gevonden — nieuwe site aanmaken …")
-    _, site = client.request("POST", "/sites", {
-        "name": SITE_NAME,
-        "repo": {
-            "provider": "github",
-            "repo": GITHUB_REPO,
-            "branch": "main",
-            "dir": "/",
-            "cmd": "",
-        },
-    })
-    return site
+    _, sites = client.request("GET", "/sites")
+    for site in sites or []:
+        domain = (site.get("custom_domain") or "").lower()
+        url = (site.get("ssl_url") or site.get("url") or "").lower()
+        if "ebberssolutions.com" in domain or "ebberssolutions.com" in url:
+            return site
+    raise RuntimeError(
+        "Site niet gevonden. Koppel eerst GitHub in Netlify of zet NETLIFY_SITE_ID."
+    )
 
 
 def deploy_zip(client: NetlifyClient, site_id: str) -> None:
@@ -137,18 +134,30 @@ def deploy_zip(client: NetlifyClient, site_id: str) -> None:
         time.sleep(5)
 
 
+def get_identity_id(client: NetlifyClient, site_id: str) -> str:
+    try:
+        _, identity = client.request("GET", f"/sites/{site_id}/identity")
+        identity_id = identity.get("identity_id") or identity.get("id")
+        if identity_id:
+            return identity_id
+    except RuntimeError:
+        pass
+    _, site = client.request("GET", f"/sites/{site_id}")
+    identity_id = site.get("identity_instance_id")
+    if not identity_id:
+        raise RuntimeError("Geen identity_instance_id — schakel Identity handmatig in Netlify in.")
+    return identity_id
+
+
 def enable_identity(client: NetlifyClient, site_id: str) -> str:
     print("Netlify Identity inschakelen …")
     try:
-        _, identity = client.request("POST", f"/sites/{site_id}/identity")
+        client.request("POST", f"/sites/{site_id}/identity")
     except RuntimeError as err:
-        if "HTTP 422" in str(err) or "already" in str(err).lower():
-            _, identity = client.request("GET", f"/sites/{site_id}/identity")
-        else:
+        if "HTTP 422" not in str(err) and "already" not in str(err).lower():
             raise
-    identity_id = identity.get("identity_id") or identity.get("id")
-    if not identity_id:
-        raise RuntimeError(f"Geen identity_id in response: {identity}")
+        print("  Identity was al actief")
+    identity_id = get_identity_id(client, site_id)
     client.request("PUT", f"/sites/{site_id}/identity/{identity_id}", {
         "disable_signup": True,
     })
@@ -160,32 +169,45 @@ def enable_git_gateway(client: NetlifyClient, site_id: str) -> None:
     print("Git Gateway inschakelen …")
     try:
         client.request("POST", f"/sites/{site_id}/services/git-gateway/instances", {})
+        print("  Git Gateway actief")
     except RuntimeError as err:
         if "HTTP 422" in str(err) or "already" in str(err).lower():
             print("  Git Gateway was al actief")
             return
-        raise
+        print("  Git Gateway API niet beschikbaar — handmatig inschakelen:")
+        print("    Netlify → Site configuration → Identity → Services → Git Gateway → Enable")
 
 
 def invite_peter(client: NetlifyClient, site_id: str, identity_id: str) -> None:
     print(f"Peter uitnodigen ({PETER_EMAIL}) …")
-    payloads = [
-        f"/sites/{site_id}/identity/{identity_id}/invite",
-        f"/sites/{site_id}/identity/{identity_id}/users/invite",
-        f"/sites/{site_id}/identity/invite",
-    ]
-    last_err = None
-    for path in payloads:
-        try:
-            client.request("POST", path, {"email": PETER_EMAIL})
-            return
-        except RuntimeError as err:
-            if "HTTP 422" in str(err) or "already" in str(err).lower():
-                print("  Peter was al uitgenodigd of bestaat al")
+    user_id = None
+    try:
+        _, user = client.request("POST", f"/sites/{site_id}/identity/{identity_id}/users", {
+            "email": PETER_EMAIL,
+        })
+        user_id = user.get("id")
+        print("  Account aangemaakt")
+    except RuntimeError as err:
+        if "HTTP 422" not in str(err) and "already" not in str(err).lower():
+            raise
+        print("  Account bestaat al — wachtwoord-reset sturen")
+    if user_id:
+        client.request("POST", f"/sites/{site_id}/identity/{identity_id}/users/{user_id}/recover")
+        print("  Uitnodiging / wachtwoord-mail verstuurd")
+        return
+    try:
+        _, users = client.request("GET", f"/sites/{site_id}/identity/{identity_id}/users")
+        for user in users or []:
+            if (user.get("email") or "").lower() == PETER_EMAIL.lower():
+                client.request(
+                    "POST",
+                    f"/sites/{site_id}/identity/{identity_id}/users/{user['id']}/recover",
+                )
+                print("  Wachtwoord-reset opnieuw verstuurd")
                 return
-            last_err = err
-    if last_err:
-        raise last_err
+    except RuntimeError as err:
+        print(f"  Kon gebruikers niet ophalen: {err}")
+    print("  Nodig Peter handmatig uit via Netlify → Identity → Invite users")
 
 
 def check_contact_form(client: NetlifyClient, site_id: str) -> None:
@@ -208,7 +230,7 @@ def check_contact_form(client: NetlifyClient, site_id: str) -> None:
 def print_form_notification_guide() -> None:
     print("")
     print("Formuliernotificaties (eenmalig in Netlify UI — geen API beschikbaar):")
-    print("  1. https://app.netlify.com → ebbers-solutions → Forms")
+    print("  1. https://app.netlify.com → euphonious-boba-7a95cf → Forms")
     print("  2. Klik 'Form notification settings' of 'Add notification'")
     print("  3. Kies 'Email notification'")
     print(f"  4. E-mailadres: {PETER_EMAIL}")
