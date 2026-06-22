@@ -1,5 +1,6 @@
 # Niet uploaden — alleen statische site
 node_modules/
+.wrangler/
 .git/
 .github/
 .netlify/

@@ -1,6 +1,2 @@
-# Admin (Decap CMS)
-/admin      /admin/index.html      200
-/admin/*    /admin/index.html      200
-
-# www → apex
-https://www.ebberssolutions.com/*  https://ebberssolutions.com/:splat  301
+# Decap CMS — alleen exact /admin (geen /* — voorkomt loop met index.html)
+/admin  /admin/index.html  200
