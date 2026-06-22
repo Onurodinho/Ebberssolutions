@@ -2623,16 +2623,53 @@ address {
     visibility: visible !important;
   }
 
-  /* Force full foreground on mobile Safari - covers the page content/text below header */
-  body.mobile-menu-open .usa-header.site-header .usa-nav {
-    top: var(--header-h) !important;
+  /* Portaled naar body — buiten header stacking context (Safari iOS) */
+  body > .usa-nav.mobile-nav-portal.is-visible {
+    display: block !important;
+    position: fixed !important;
+    top: var(--mobile-nav-top, var(--header-h)) !important;
     left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
     width: 100% !important;
-    height: calc(100vh - var(--header-h)) !important;
-    z-index: 999999 !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: calc(100dvh - var(--mobile-nav-top, var(--header-h))) !important;
+    z-index: 2147483646 !important;
     transform: none !important;
-    box-shadow: 0 0 0 9999px rgba(26, 34, 40, 0.6) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: var(--concrete-light) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
     padding-top: 1rem !important;
+    margin: 0 !important;
+  }
+
+  body > .usa-overlay.mobile-overlay-portal.is-visible {
+    display: block !important;
+    position: fixed !important;
+    top: var(--mobile-nav-top, var(--header-h)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 2147483645 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: rgba(26, 34, 40, 0.5) !important;
+  }
+
+  body.mobile-menu-open .usa-header.site-header {
+    z-index: 2147483647 !important;
+  }
+
+  .usa-header.site-header .usa-menu-btn {
+    position: relative;
+    z-index: 2147483647;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 44px;
+    min-width: 44px;
   }
 
   .usa-header.site-header .usa-nav__inner {
@@ -2828,14 +2865,7 @@ address {
 
 
 
-/* Mobile menu open: lift entire header above page content (sliders, hero, etc.) */
-body.mobile-menu-open .usa-header.site-header {
-  z-index: 200000 !important;
-}
 
-body.mobile-menu-open .usa-overlay.is-visible {
-  z-index: 199999 !important;
-}
 
 /* ── Werkwijze (process) section ── */
 .werkwijze-grid {
@@ -3776,12 +3806,6 @@ body.mobile-menu-open .usa-overlay.is-visible {
     overflow: hidden !important;
   }
 
-  /* Force menu to foreground on any scroll position - high z, solid, covers content */
-  body.mobile-menu-open .usa-header.site-header .usa-nav.is-visible {
-    z-index: 999999 !important;
-    background: var(--concrete-light) !important;
-    box-shadow: 0 0 0 9999px rgba(26, 34, 40, 0.6) !important; /* extra coverage behind */
-  }
 }
 
 @media (min-width: 64em) {

@@ -6,11 +6,17 @@ function bootMain() {
   initStatCounters();
   initContactForm();
   initScrollTop();
-  initMobileMenu();
   if (typeof initPhotoSliders === 'function') initPhotoSliders();
 }
 
+function bootMobileMenuEarly() {
+  if (document.documentElement.dataset.mobileMenuBooted === 'true') return;
+  document.documentElement.dataset.mobileMenuBooted = 'true';
+  initMobileMenu();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  bootMobileMenuEarly();
   if (window.__cmsLoaded) {
     bootMain();
     return;
@@ -266,103 +272,135 @@ function initScrollTop() {
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-/* Reliable mobile menu for Safari.
-   Clicking the Menu button (from any scroll position) opens the drawer with the links.
-   Overlay blocks background. Close works on X or overlay.
-   Body scroll is locked while open.
-*/
+/* Mobile menu — Safari/iOS: portal nav + overlay naar body (buiten header stacking context). */
 function initMobileMenu() {
   const header = document.getElementById('header');
-  if (!header) return;
+  if (!header || header.dataset.mobileMenuInit === 'true') return;
+  header.dataset.mobileMenuInit = 'true';
 
   const btn = header.querySelector('.usa-menu-btn');
   const nav = header.querySelector('.usa-nav');
-  const close = header.querySelector('.usa-nav__close');
+  const close = nav?.querySelector('.usa-nav__close');
   const overlay = document.querySelector('.usa-overlay');
 
   if (!btn || !nav) return;
 
-  nav.setAttribute('aria-hidden', 'true');
+  const mobileMq = window.matchMedia('(max-width: 63.99em)');
+  const navHome = { parent: nav.parentNode, next: nav.nextSibling, marker: null };
+  const overlayHome = overlay
+    ? { parent: overlay.parentNode, next: overlay.nextSibling, marker: null }
+    : null;
 
   let scrollY = 0;
+  let openState = false;
 
-  function open() {
+  nav.setAttribute('aria-hidden', 'true');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('type', 'button');
+
+  function headerOffset() {
+    return header.getBoundingClientRect().height || 76;
+  }
+
+  function portalEl(el, home) {
+    if (!el || el.parentNode === document.body) return;
+    const marker = document.createComment('portal');
+    home.parent.insertBefore(marker, home.next);
+    document.body.appendChild(el);
+    home.marker = marker;
+  }
+
+  function restoreEl(el, home) {
+    if (!el || !home?.marker?.parentNode) return;
+    home.marker.parentNode.insertBefore(el, home.marker);
+    home.marker.remove();
+    home.marker = null;
+  }
+
+  function lockScroll() {
     scrollY = window.scrollY;
-    nav.classList.add('is-visible');
-    nav.setAttribute('aria-hidden', 'false');
-    if (overlay) overlay.classList.add('is-visible');
     document.documentElement.classList.add('mobile-menu-open');
     document.body.classList.add('mobile-menu-open');
-    // Simpler lock for Safari: overflow only, no position shift (avoids "behind white screen" and jump issues)
-    document.documentElement.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
-    btn.setAttribute('aria-expanded', 'true');
+  }
 
-    // Force the nav to full foreground on Safari - break any stacking context
-    const headerH = header.offsetHeight || 76;
-    nav.style.position = 'fixed';
-    nav.style.zIndex = '999999';
-    nav.style.left = '0';
-    nav.style.top = headerH + 'px';
-    nav.style.width = '100%';
-    nav.style.height = `calc(100vh - ${headerH}px)`;
-    nav.style.transform = 'none';
-    nav.style.opacity = '1';
-    nav.style.visibility = 'visible';
-    nav.style.boxShadow = '0 0 0 9999px rgba(26, 34, 40, 0.6)';
-    nav.style.paddingTop = '1rem';
+  function unlockScroll() {
+    document.documentElement.classList.remove('mobile-menu-open');
+    document.body.classList.remove('mobile-menu-open');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
+  }
+
+  function open() {
+    if (!mobileMq.matches || openState) return;
+    openState = true;
+
+    const top = headerOffset();
+    document.documentElement.style.setProperty('--mobile-nav-top', `${top}px`);
+
+    portalEl(overlay, overlayHome);
+    portalEl(nav, navHome);
+
+    nav.classList.add('is-visible', 'mobile-nav-portal');
+    nav.setAttribute('aria-hidden', 'false');
+    if (overlay) overlay.classList.add('is-visible', 'mobile-overlay-portal');
+    lockScroll();
+    btn.setAttribute('aria-expanded', 'true');
   }
 
   function closeMenu() {
-    nav.classList.remove('is-visible');
+    if (!openState) return;
+    openState = false;
+
+    nav.classList.remove('is-visible', 'mobile-nav-portal');
     nav.setAttribute('aria-hidden', 'true');
-    if (overlay) overlay.classList.remove('is-visible');
-    document.documentElement.classList.remove('mobile-menu-open');
-    document.body.classList.remove('mobile-menu-open');
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    window.scrollTo(0, scrollY);
+    if (overlay) overlay.classList.remove('is-visible', 'mobile-overlay-portal');
+    unlockScroll();
     btn.setAttribute('aria-expanded', 'false');
 
-    // Reset forced styles
-    nav.style.position = '';
-    nav.style.zIndex = '';
-    nav.style.left = '';
-    nav.style.top = '';
-    nav.style.width = '';
-    nav.style.height = '';
-    nav.style.transform = '';
-    nav.style.opacity = '';
-    nav.style.visibility = '';
-    nav.style.boxShadow = '';
-    nav.style.paddingTop = '';
+    restoreEl(nav, navHome);
+    restoreEl(overlay, overlayHome);
   }
 
-  btn.addEventListener('click', (e) => {
+  function toggleMenu(e) {
+    if (!mobileMq.matches) return;
     e.preventDefault();
     e.stopImmediatePropagation();
     e.stopPropagation();
-    if (nav.classList.contains('is-visible')) {
-      closeMenu();
-    } else {
-      open();
-    }
-  }, true); // capture to beat USWDS
+    if (openState) closeMenu();
+    else open();
+  }
+
+  btn.addEventListener('click', toggleMenu, true);
 
   if (close) close.addEventListener('click', closeMenu);
   if (overlay) overlay.addEventListener('click', closeMenu);
 
-  // Close on Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.classList.contains('is-visible')) {
-      closeMenu();
-    }
+    if (e.key === 'Escape' && openState) closeMenu();
   });
 
-  // Close after clicking a link (navigation)
   nav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      if (nav.classList.contains('is-visible')) setTimeout(closeMenu, 80);
+      if (openState) setTimeout(closeMenu, 80);
     });
+  });
+
+  mobileMq.addEventListener('change', (e) => {
+    if (!e.matches && openState) closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (openState) document.documentElement.style.setProperty('--mobile-nav-top', `${headerOffset()}px`);
   });
 }
