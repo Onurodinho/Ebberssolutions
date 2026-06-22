@@ -78,9 +78,10 @@ sleep 30
 
 STATUS=$(curl -sI --max-time 20 "https://$WWW/" 2>/dev/null | head -1 || echo "timeout")
 echo "Test https://$WWW/ → $STATUS"
-if echo "$STATUS" | grep -qE '301|302|200'; then
-  echo "✓ www werkt. Test in Safari privénavigatie."
+if echo "$STATUS" | grep -qE '301|302'; then
+  echo "✓ www redirect actief (snel — geen volledige pagina op www)."
+elif echo "$STATUS" | grep -q '200'; then
+  echo "⚠ www geeft nog 200 (traag). Controleer of de redirect rule actief is."
 else
-  echo "Nog geen 301/200. Dashboard: Workers → $WORKER → Domains → Add → $WWW"
-  echo "Daarna: Caching → Purge Everything"
+  echo "Nog geen 301. Caching → Purge Everything en opnieuw testen."
 fi
