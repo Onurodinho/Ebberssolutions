@@ -1,8 +1,8 @@
 # Ebbers Solutions — website
 
-Live: https://ebbers-solutions.netlify.app *(opnieuw deployen — zie hieronder)*  
+Live: https://ebberssolutions.com *(opnieuw deployen — zie hieronder)*  
 Tijdelijk: https://onurodinho.github.io/Ebberssolutions/  
-Beheer: https://ebbers-solutions.netlify.app/admin *(werkt pas na Netlify-deploy)*
+Beheer: https://ebberssolutions.com/admin *(werkt pas na Netlify-deploy)*
 
 ---
 
@@ -58,7 +58,7 @@ Het script zet de site live, schakelt Identity + Git Gateway in en nodigt Peter 
 
 ### Inloggen en bewerken
 
-1. Ga naar https://ebbers-solutions.netlify.app/admin
+1. Ga naar https://ebberssolutions.com/admin
 2. Klik **Login with Netlify Identity**
 3. Log in met e-mail + wachtwoord
 4. Kies links een onderdeel (Bedrijfsgegevens, Teksten, Collectie)

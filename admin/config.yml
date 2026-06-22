@@ -5,8 +5,8 @@ backend:
   name: git-gateway
   branch: main
 
-display_url: https://ebbers-solutions.netlify.app
-site_url: https://ebbers-solutions.netlify.app
+display_url: https://ebberssolutions.com
+site_url: https://ebberssolutions.com
 
 locale: nl
 

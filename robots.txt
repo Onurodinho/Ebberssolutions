@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ebbers-solutions.netlify.app/sitemap.xml
+Sitemap: https://ebberssolutions.com/sitemap.xml

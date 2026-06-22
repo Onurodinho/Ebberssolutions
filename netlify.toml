@@ -1,6 +1,31 @@
 [build]
   publish = "."
 
+# Primair domein
+[[redirects]]
+  from = "https://ebbers-solutions.netlify.app/*"
+  to = "https://ebberssolutions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://ebberssolutions.com/*"
+  to = "https://ebberssolutions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.ebberssolutions.com/*"
+  to = "https://ebberssolutions.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.ebberssolutions.com/*"
+  to = "https://ebberssolutions.com/:splat"
+  status = 301
+  force = true
+
 # Admin-paneel (Decap CMS)
 [[redirects]]
   from = "/admin"

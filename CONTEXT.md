@@ -6,7 +6,7 @@ Gedeelde taal voor mensen en AI-agents. Lees dit vóór wijzigingen aan de site.
 
 **Ebbers Solutions** is een statische bedrijfssite voor een metaalwerkplaats in Neede (Achterhoek): B2B (constructie, metaalbewerking, machine-onderhoud) en B2C (handgemaakte ijzer/hout-meubels).
 
-- **Live:** https://ebbers-solutions.netlify.app
+- **Live:** https://ebberssolutions.com
 - **Stack:** HTML + CSS + vanilla JS + USWDS 3.9.0 — geen React/Next.js
 - **Deploy:** Netlify (`npm run deploy`)
 - **Preview:** `python3 -m http.server 8080` → http://127.0.0.1:8080
