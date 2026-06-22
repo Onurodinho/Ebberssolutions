@@ -6,6 +6,7 @@ function bootMain() {
   initStatCounters();
   initContactForm();
   initScrollTop();
+  initMobileMenu();
   if (typeof initPhotoSliders === 'function') initPhotoSliders();
 }
 
@@ -264,3 +265,73 @@ function initScrollTop() {
 
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
+
+/* Reliable mobile menu for Safari.
+   Clicking the Menu button (from any scroll position) opens the drawer with the links.
+   Overlay blocks background. Close works on X or overlay.
+   Body scroll is locked while open.
+*/
+function initMobileMenu() {
+  const header = document.getElementById('header');
+  if (!header) return;
+
+  const btn = header.querySelector('.usa-menu-btn');
+  const nav = header.querySelector('.usa-nav');
+  const close = header.querySelector('.usa-nav__close');
+  const overlay = document.querySelector('.usa-overlay');
+
+  if (!btn || !nav) return;
+
+  let scrollY = 0;
+
+  function open() {
+    scrollY = window.scrollY;
+    nav.classList.add('is-visible');
+    if (overlay) overlay.classList.add('is-visible');
+    document.documentElement.classList.add('mobile-menu-open');
+    document.body.classList.add('mobile-menu-open');
+    // Simpler lock for Safari: overflow only, no position shift (avoids "behind white screen" and jump issues)
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    btn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    nav.classList.remove('is-visible');
+    if (overlay) overlay.classList.remove('is-visible');
+    document.documentElement.classList.remove('mobile-menu-open');
+    document.body.classList.remove('mobile-menu-open');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (nav.classList.contains('is-visible')) {
+      closeMenu();
+    } else {
+      open();
+    }
+  });
+
+  if (close) close.addEventListener('click', closeMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('is-visible')) {
+      closeMenu();
+    }
+  });
+
+  // Close after clicking a link (navigation)
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (nav.classList.contains('is-visible')) setTimeout(closeMenu, 80);
+    });
+  });
+}
+ * and scrolling of the page is properly suspended until you close the menu.
+ */

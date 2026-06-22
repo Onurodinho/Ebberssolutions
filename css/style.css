@@ -150,7 +150,7 @@ address {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9000;
+  z-index: 12000;
   height: auto;
   min-height: var(--header-h);
   transition: background var(--transition), box-shadow var(--transition);
@@ -2384,7 +2384,7 @@ address {
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 9100;
+  z-index: 10500; /* above fixed header (10000) and mobile drawer */
   background: rgba(26, 34, 40, 0.94);
   display: flex;
   align-items: center;
@@ -2502,7 +2502,7 @@ address {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9000;
+  z-index: 12000;
   background: transparent;
   border-bottom: none;
 }
@@ -2580,6 +2580,112 @@ address {
   .usa-header.site-header .usa-nav__primary a.site-nav-cta {
     margin-top: 0;
     margin-left: 0.5rem;
+  }
+}
+
+/* ── Mobile USWDS drawer (standard behavior restored) ──
+   Hamburger opens full off-canvas drawer + overlay.
+   Strong explicit rules for Safari/iOS reliability.
+*/
+@media (max-width: 63.99em) {
+  /* Reliable mobile menu: show the Menu button, open a side drawer with the links.
+     The drawer must work from ANY scroll position on Safari. 
+     When you click Menu, the links (Home, Diensten, Collectie, Over ons, Contact) come forward over the current view. */
+
+  .usa-header.site-header .usa-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .usa-header.site-header .usa-nav {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    background: var(--concrete-light) !important;
+    z-index: 99999 !important;
+    transform: translateX(100%) !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.25s var(--ease-out), opacity 0.25s;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: var(--header-h);
+  }
+
+  .usa-header.site-header .usa-nav.is-visible,
+  .usa-header.site-header .usa-nav[aria-hidden="false"] {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .usa-header.site-header .usa-nav__inner {
+    padding: 0.75rem 1rem 2rem;
+  }
+
+  .usa-header.site-header .usa-nav__close {
+    display: block;
+    margin-left: auto;
+    padding: 0.5rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .usa-overlay {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 34, 40, 0.45);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+  }
+
+  .usa-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .usa-header.site-header .usa-nav__primary {
+    display: block;
+  }
+
+  .usa-header.site-header .usa-nav__primary a.usa-nav__link {
+    display: block;
+    padding: 1rem 0.75rem;
+    font-size: 1.1rem;
+    color: var(--steel-700);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* Make sure menu content is prominent and in front */
+  body.mobile-menu-open .usa-header.site-header .usa-nav.is-visible .usa-nav__inner {
+    padding-top: 2rem;
+  }
+
+  .usa-header.site-header .usa-nav__primary a.usa-nav__link.usa-current {
+    color: var(--steel-900);
+    font-weight: 600;
+  }
+
+  .usa-header.site-header .usa-nav__primary a.site-nav-cta {
+    margin-top: 1rem;
+    display: inline-block;
+    background: var(--steel-900);
+    color: var(--concrete-light) !important;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  :root {
+    --header-total-h: 76px;
   }
 }
 
@@ -2687,6 +2793,14 @@ address {
 #scrollTop svg {
   width: 18px;
   height: 18px;
+}
+
+
+
+/* Ensure the mobile drawer and close button are always easy to reach 
+   no matter where you are scrolled on the page. */
+.usa-header.site-header {
+  z-index: 10000;
 }
 
 /* ── Werkwijze (process) section ── */
@@ -3510,6 +3624,16 @@ address {
   box-shadow: var(--shadow-md);
 }
 
+/* Consistent "naar voren" pop for page-hero / compact sliders (mobile + subpages) */
+.page-hero-visual .photo-slider__slide.is-active img {
+  animation: photo-pop-in 1.1s var(--ease-out);
+}
+
+@keyframes photo-pop-in {
+  from { opacity: 0.75; transform: scale(0.985); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 .page-hero-visual .photo-slider__dots {
   bottom: 0.875rem;
   right: 0.875rem;
@@ -3556,7 +3680,8 @@ address {
     display: none;
   }
 
-  .hero-photo .photo-slider__slide.is-active img {
+  .hero-photo .photo-slider__slide.is-active img,
+  .page-hero-visual .photo-slider__slide.is-active img {
     animation: none;
   }
 }
@@ -3587,16 +3712,13 @@ address {
   }
 }
 
-/* ── Unified header: zelfde extended layout als desktop ── */
-.usa-menu-btn,
-.usa-nav__close,
-.usa-overlay {
-  display: none !important;
-}
+/* Mobile menu now uses standard USWDS behavior (hamburger + overlay drawer).
+   We no longer force a horizontal "tab bar" nav on small screens.
+   See mobile drawer overrides below. */
 
 @media (max-width: 63.99em) {
   :root {
-    --header-total-h: 7.5rem;
+    --header-total-h: 76px;
   }
 
   .usa-header.site-header .usa-navbar {
@@ -3614,63 +3736,17 @@ address {
     margin-right: 0;
   }
 
-  .usa-header.site-header .usa-nav {
-    display: block !important;
-    position: static !important;
-    width: 100%;
-    padding: 0;
-    border-top: 1px solid var(--line);
-    background: transparent;
-    overflow: visible;
+  /* simple reliable lock for Safari */
+  html.mobile-menu-open,
+  body.mobile-menu-open {
+    overflow: hidden !important;
   }
 
-  .usa-header.site-header .usa-nav__inner {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 clamp(1rem, 4vw, 2rem);
-  }
-
-  .usa-header.site-header .usa-nav__primary {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-  }
-
-  .usa-header.site-header .usa-nav__primary::-webkit-scrollbar {
-    display: none;
-  }
-
-  .usa-header.site-header .usa-nav__primary-item {
-    flex-shrink: 0;
-  }
-
-  .usa-header.site-header .usa-nav__primary a.usa-nav__link {
-    display: flex;
-    align-items: center;
-    padding: 0.7rem 0.9rem;
-    min-height: 44px;
-    font-size: 0.82rem;
-    white-space: nowrap;
-    border-left: none;
-  }
-
-  .usa-header.site-header .usa-nav__primary a.usa-nav__link.usa-current span {
-    border-bottom: 2px solid var(--copper);
-    padding-bottom: 0.15rem;
-  }
-
-  .usa-header.site-header .usa-nav__primary a.site-nav-cta {
-    margin: 0.35rem 0 0.35rem 0.25rem;
-    padding: 0.5rem 0.9rem;
-    min-height: 36px;
-    font-size: 0.8rem;
-    width: auto;
+  /* Force menu to foreground on any scroll position - high z, solid, covers content */
+  body.mobile-menu-open .usa-header.site-header .usa-nav.is-visible {
+    z-index: 999999 !important;
+    background: var(--concrete-light) !important;
+    box-shadow: 0 0 0 9999px rgba(26, 34, 40, 0.6) !important; /* extra coverage behind */
   }
 }
 
@@ -3848,7 +3924,7 @@ address {
   }
 
   .map-embed-wrap {
-    aspect-ratio: 4 / 3;
+    display: none;
   }
 
   .service-index-link {
