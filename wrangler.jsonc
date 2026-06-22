@@ -11,6 +11,9 @@
     "not_found_handling": "404-page"
   },
   "routes": [
-    { "pattern": "www.ebberssolutions.com", "custom_domain": true }
+    {
+      "pattern": "www.ebberssolutions.com/*",
+      "zone_name": "ebberssolutions.com"
+    }
   ]
 }
