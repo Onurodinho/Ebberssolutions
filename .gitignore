@@ -1,14 +1,4 @@
-# Dependencies & tooling
-node_modules/
-.tools/
-
-# Netlify local state
+.netlify-deploy-key
 .netlify/
-
-# OS & editor
+node_modules/
 .DS_Store
-.vscode/
-.grok/
-
-# Logs
-*.log
