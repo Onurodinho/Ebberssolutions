@@ -684,13 +684,11 @@ function i18nBuildSwitcher(id, modifier) {
 }
 
 function i18nInitSwitcher() {
-  const navbar = document.querySelector('.usa-navbar');
-  if (!navbar || document.getElementById('langSwitcher')) return;
+  const navInner = document.querySelector('.usa-nav__inner');
+  if (!navInner || document.getElementById('langSwitcher')) return;
 
   const barSwitcher = i18nBuildSwitcher('langSwitcher', 'lang-switcher--bar');
-  const menuBtn = navbar.querySelector('.usa-menu-btn');
-  if (menuBtn) navbar.insertBefore(barSwitcher, menuBtn);
-  else navbar.appendChild(barSwitcher);
+  navInner.appendChild(barSwitcher);
 }
 
 function initI18n() {

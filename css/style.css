@@ -2577,6 +2577,24 @@ address {
 }
 
 @media (min-width: 64em) {
+  .usa-header.site-header .usa-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .usa-header.site-header .usa-nav__primary {
+    flex: 0 1 auto;
+  }
+
+  .lang-switcher--bar {
+    margin-left: 0.75rem;
+  }
+
   .usa-header.site-header .usa-nav__primary a.site-nav-cta {
     margin-top: 0;
     margin-left: 0.5rem;
@@ -2611,6 +2629,9 @@ address {
   }
 
   .usa-header.site-header .usa-nav__inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     max-width: var(--container);
     margin: 0 auto;
     padding: 0 clamp(1rem, 4vw, 2rem);
@@ -2618,6 +2639,8 @@ address {
 
   .usa-header.site-header .usa-nav__primary {
     display: flex !important;
+    flex: 1;
+    min-width: 0;
     flex-wrap: nowrap;
     align-items: stretch;
     overflow-x: auto;
@@ -3029,8 +3052,9 @@ address {
 }
 
 .lang-switcher--bar {
+  flex-shrink: 0;
   margin-left: auto;
-  margin-right: 0.75rem;
+  margin-right: 0;
 }
 
 .lang-switcher--drawer {
@@ -3690,11 +3714,6 @@ address {
   .usa-header.site-header .usa-logo.site-logo {
     flex: 1;
     min-width: 0;
-  }
-
-  .lang-switcher--bar {
-    flex-shrink: 0;
-    margin-right: 0;
   }
 }
 
