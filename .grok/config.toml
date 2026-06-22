@@ -1,0 +1,6 @@
+[plugins]
+enabled = ["cloudflare", "vercel", "firecrawl"]
+
+# Cloudflare MCP servers komen uit de cloudflare plugin (.mcp.json):
+# cloudflare-api, cloudflare-docs, cloudflare-bindings, cloudflare-builds, cloudflare-observability
+# Bij eerste gebruik van cloudflare-api: OAuth in browser of API-token in Authorization header.
