@@ -70,7 +70,7 @@ netlify.toml           → headers, redirects, manifest MIME
 
 ## Openstaand (content, niet verzinnen)
 
-- Echt telefoonnummer in `js/config.js` (nu placeholder)
+- ~~Echt telefoonnummer~~ — `+31 6 1390 0094` in `js/config.js` + `content/settings.json`
 - Recensiesectie op homepage (`#recensies`) — kop staat, inhoud volgt; invullen in `home.reviews.*` (i18n.js)
 - Echt logo als SVG beschikbaar is
 
