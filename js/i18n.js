@@ -650,20 +650,18 @@ function i18nApply(lang) {
     btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
   });
 
-  const switcher = document.getElementById('langSwitcher');
-  if (switcher) switcher.setAttribute('aria-label', i18nT('nav.lang', lang));
+  document.querySelectorAll('.lang-switcher').forEach(switcher => {
+    switcher.setAttribute('aria-label', i18nT('nav.lang', lang));
+  });
 
   if (typeof initSiteConfig === 'function') initSiteConfig();
   document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
 }
 
-function i18nInitSwitcher() {
-  const navbar = document.querySelector('.usa-navbar');
-  if (!navbar || document.getElementById('langSwitcher')) return;
-
+function i18nBuildSwitcher(id, modifier) {
   const wrap = document.createElement('div');
-  wrap.className = 'lang-switcher';
-  wrap.id = 'langSwitcher';
+  wrap.className = 'lang-switcher' + (modifier ? ' ' + modifier : '');
+  if (id) wrap.id = id;
   wrap.setAttribute('role', 'group');
   wrap.setAttribute('aria-label', i18nT('nav.lang'));
 
@@ -678,9 +676,22 @@ function i18nInitSwitcher() {
     wrap.appendChild(btn);
   });
 
+  return wrap;
+}
+
+function i18nInitSwitcher() {
+  const navbar = document.querySelector('.usa-navbar');
+  const navInner = document.querySelector('.usa-nav__inner');
+  if (!navbar || document.getElementById('langSwitcher')) return;
+
+  const barSwitcher = i18nBuildSwitcher('langSwitcher', 'lang-switcher--bar');
   const menuBtn = navbar.querySelector('.usa-menu-btn');
-  if (menuBtn) navbar.insertBefore(wrap, menuBtn);
-  else navbar.appendChild(wrap);
+  if (menuBtn) navbar.insertBefore(barSwitcher, menuBtn);
+  else navbar.appendChild(barSwitcher);
+
+  if (navInner && !document.getElementById('langSwitcherNav')) {
+    navInner.appendChild(i18nBuildSwitcher('langSwitcherNav', 'lang-switcher--drawer'));
+  }
 }
 
 function initI18n() {

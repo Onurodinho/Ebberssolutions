@@ -2934,8 +2934,20 @@ address {
 .lang-switcher {
   display: flex;
   gap: 3px;
+}
+
+.lang-switcher--bar {
   margin-left: auto;
   margin-right: 0.75rem;
+}
+
+.lang-switcher--drawer {
+  display: none;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--line);
 }
 
 .lang-btn {
@@ -3135,10 +3147,6 @@ address {
 }
 
 @media (max-width: 640px) {
-  .lang-switcher {
-    margin-right: 0.5rem;
-  }
-
   .service-index .container {
     grid-template-columns: 1fr;
   }
@@ -3551,6 +3559,243 @@ address {
 
   .page-hero-visual {
     order: -1;
+  }
+
+  .werkwijze-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-index .container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-quick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Mobile polish ── */
+@media (max-width: 63.99em) {
+  .lang-switcher--bar {
+    display: none;
+  }
+
+  .lang-switcher--drawer {
+    display: flex;
+  }
+
+  .usa-header.site-header .usa-nav__primary a.usa-nav__link {
+    display: block;
+    padding: 1rem 1.5rem;
+    min-height: 44px;
+  }
+
+  .usa-header.site-header .usa-nav__primary a.site-nav-cta {
+    margin: 0.5rem 1.25rem;
+    text-align: center;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .usa-header.site-header .usa-navbar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .logo-text span {
+    display: none;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-mark svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .logo-text {
+    font-size: 0.95rem;
+  }
+
+  .section {
+    padding: clamp(2.5rem, 8vh, 4rem) 0;
+  }
+
+  .hero-grid {
+    padding: clamp(1.25rem, 5vh, 2.5rem) 0 clamp(1.25rem, 4vh, 2rem);
+    gap: 1.75rem;
+  }
+
+  .page-hero {
+    padding: calc(var(--header-h) + 1.75rem) 0 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2,
+  .page-hero h1 {
+    font-size: clamp(1.65rem, 7vw, 2.25rem);
+  }
+
+  .section-desc {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-trust li {
+    padding: 0.75rem 0;
+  }
+
+  .stats-band {
+    padding: 1.75rem 0;
+  }
+
+  .stat-item {
+    padding: 1.25rem 1rem;
+  }
+
+  .stat-value {
+    font-size: clamp(1.65rem, 7vw, 2.25rem);
+  }
+
+  .bento-card,
+  .home-service-card {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+
+  .home-capabilities {
+    gap: 0.4rem;
+  }
+
+  .home-capabilities li {
+    font-size: 0.58rem;
+    padding: 0.5rem 0.65rem;
+  }
+
+  .cta-inner .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cta-band {
+    padding: clamp(2.5rem, 7vh, 3.5rem) 0;
+  }
+
+  .site-footer {
+    padding-top: clamp(2.5rem, 7vh, 3.5rem);
+  }
+
+  .footer-grid {
+    gap: 1.75rem;
+    padding-bottom: 2rem;
+  }
+
+  .gallery-toolbar {
+    position: static;
+    top: auto;
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .gallery-filter {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-btn {
+    min-height: 44px;
+    padding: 0.65rem 1.1rem;
+  }
+
+  .photo-slider__dots {
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .photo-slider__dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .lang-switcher--drawer .lang-btn {
+    min-width: 48px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox-close {
+    top: max(0.75rem, env(safe-area-inset-top));
+    right: max(0.75rem, env(safe-area-inset-right));
+  }
+
+  .lightbox-prev {
+    left: max(0.5rem, env(safe-area-inset-left));
+  }
+
+  .lightbox-next {
+    right: max(0.5rem, env(safe-area-inset-right));
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox-caption {
+    font-size: 0.78rem;
+    padding: 0 0.5rem;
+  }
+
+  #scrollTop {
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .contact-form {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .contact-quick-btn {
+    min-height: 48px;
+    padding: 0.9rem 1rem;
+  }
+
+  .map-embed-wrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-index-link {
+    padding: 1rem 1.25rem;
+    min-height: 48px;
+  }
+
+  .reviews-band {
+    padding: clamp(2.5rem, 7vh, 3.5rem) 0;
   }
 }
 
