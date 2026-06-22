@@ -61,6 +61,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .skip-link {
   position: absolute;
   top: -100%;
@@ -144,14 +149,13 @@ address {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 9000;
   height: var(--header-h);
   transition: background var(--transition), box-shadow var(--transition);
 }
 
 .site-header.scrolled {
-  background: rgba(243, 240, 235, 0.92);
-  backdrop-filter: blur(16px);
+  background: var(--concrete-light);
   box-shadow: 0 1px 0 var(--line);
 }
 
@@ -2378,7 +2382,7 @@ address {
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 9100;
   background: rgba(26, 34, 40, 0.94);
   display: flex;
   align-items: center;
@@ -2496,14 +2500,13 @@ address {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 400;
+  z-index: 9000;
   background: transparent;
   border-bottom: none;
 }
 
 .usa-header.site-header.scrolled {
-  background: rgba(243, 240, 235, 0.95);
-  backdrop-filter: blur(16px);
+  background: var(--concrete-light);
   box-shadow: 0 1px 0 var(--line);
 }
 
@@ -2651,7 +2654,7 @@ address {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 300;
+  z-index: 8900;
   width: 44px;
   height: 44px;
   background: var(--steel-900);
@@ -3608,8 +3611,17 @@ address {
     background: var(--concrete);
   }
 
+  .usa-header.site-header {
+    background: var(--concrete-light);
+    box-shadow: 0 1px 0 var(--line);
+  }
+
   .usa-header.site-header .usa-navbar {
+    position: relative;
+    z-index: 2;
     gap: 0.75rem;
+    width: 100%;
+    background: var(--concrete-light);
   }
 
   .usa-header.site-header .usa-logo.site-logo {
@@ -3646,7 +3658,6 @@ address {
   }
 
   .usa-header.site-header:has(.usa-nav.is-visible) {
-    z-index: 500;
     background: var(--concrete-light);
     box-shadow: 0 1px 0 var(--line);
   }

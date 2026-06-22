@@ -159,7 +159,7 @@ function initHeader() {
   if (!header) return;
 
   const onScroll = () => {
-    header.classList.toggle('scrolled', window.scrollY > 20);
+    header.classList.toggle('scrolled', window.scrollY > 0);
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
