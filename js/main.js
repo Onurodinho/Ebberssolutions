@@ -3,8 +3,10 @@ function bootMain() {
   initImages();
   initHeader();
   initReveal();
+  initStatCounters();
   initContactForm();
   initScrollTop();
+  if (typeof initPhotoSliders === 'function') initPhotoSliders();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -89,6 +91,45 @@ function setImage(id, src, alt) {
   placeholder.replaceChildren(img);
 }
 
+function initStatCounters() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const values = document.querySelectorAll('.stat-value[data-count]');
+  if (!values.length || prefersReduced) return;
+
+  const animate = el => {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix ?? '';
+    const prefix = el.dataset.prefix ?? '';
+    const duration = 1400;
+    const start = performance.now();
+
+    const tick = now => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(target * eased);
+      el.innerHTML = suffix
+        ? `${prefix}${current}<em>${suffix}</em>`
+        : `${prefix}${current}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  values.forEach(el => observer.observe(el));
+}
+
 function initReveal() {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const elements = document.querySelectorAll('.reveal');
@@ -143,7 +184,7 @@ function initContactForm() {
     bericht: () => EbbersI18n?.t('contact.form.err.message') ?? 'Vul een bericht in (minimaal 10 tekens).',
   };
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     let valid = true;
 
@@ -160,11 +201,44 @@ function initContactForm() {
 
     if (!valid) return;
 
+    const submitBtn = form.querySelector('[type="submit"]');
     const success = document.getElementById('formSuccess');
-    if (success) {
-      success.hidden = false;
-      form.reset();
-      success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const errBox = document.getElementById('formError');
+    if (success) success.hidden = true;
+    if (errBox) errBox.hidden = true;
+    const defaultLabel = submitBtn?.textContent ?? '';
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = EbbersI18n?.t('contact.form.sending') ?? 'Versturen…';
+    }
+
+    try {
+      const body = new URLSearchParams(new FormData(form)).toString();
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
+      });
+
+      if (!response.ok) throw new Error('submit failed');
+
+      if (success) {
+        success.hidden = false;
+        form.reset();
+        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } catch {
+      const err = document.getElementById('formError');
+      if (err) {
+        err.hidden = false;
+        err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = defaultLabel;
+      }
     }
   });
 

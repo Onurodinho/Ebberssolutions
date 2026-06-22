@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html class="no-js" lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1A2228">
+  <script>document.documentElement.classList.remove('no-js');</script>
   <meta name="description" content="Collectie handgemaakte ijzeren stoelen, tafels en meubels van Ebbers Solutions — Neede, Achterhoek.">
   <title>Collectie | Ebbers Solutions</title>
   <meta property="og:type" content="website">
@@ -19,10 +22,13 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
   <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css">
+  <link rel="stylesheet" href="css/h5bp-base.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 <body data-page="collectie">
+  <a class="skip-link" href="#main" data-i18n="common.skipLink">Direct naar inhoud</a>
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -55,12 +61,37 @@
     </nav>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <div class="grid-container container reveal">
-        <p class="section-label" data-i18n="collectie.hero.label">Handgemaakt in Neede</p>
-        <h1 data-i18n="collectie.hero.title">Collectie</h1>
-        <p class="page-hero-desc" data-i18n="collectie.hero.desc">Ijzeren stoelen, tafels en frames — elk stuk uniek, gebouwd in onze werkplaats. Klik op een foto voor het grote formaat.</p>
+  <main id="main">
+    <section class="page-hero page-hero--split">
+      <div class="grid-container container page-hero-grid">
+        <div class="page-hero-copy reveal">
+          <p class="section-label" data-i18n="collectie.hero.label">Handgemaakt in Neede</p>
+          <h1 data-i18n="collectie.hero.title">Collectie</h1>
+          <p class="page-hero-desc" data-i18n="collectie.hero.desc">Ijzeren stoelen, tafels en frames — elk stuk uniek, gebouwd in onze werkplaats. Klik op een foto voor het grote formaat.</p>
+        </div>
+        <div class="page-hero-visual reveal reveal-delay-1">
+          <div class="photo-slider photo-slider--compact photo-slider--contain" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Impressie" aria-roledescription="carousel">
+            <div class="photo-slider__track">
+              <figure class="photo-slider__slide is-active">
+                <img src="assets/images/products/product-02.jpg" alt="Eettafel met zwart ijzeren frame en zes houten stoelen" loading="eager">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-06.jpg" alt="Handgemaakte ijzeren kruk met houten zitting" loading="lazy">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-07.jpg" alt="Industriële stoel met geperforeerde rugleuning" loading="lazy">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-17.jpg" alt="Houten tuinbank met zwart metalen frame" loading="lazy">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-12.jpg" alt="Kettingtafel — industrieel design" loading="lazy">
+              </figure>
+            </div>
+            <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+            <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -179,6 +210,7 @@
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/content-loader.js"></script>
+  <script src="js/photo-slider.js"></script>
   <script src="js/main.js"></script>
   <script src="js/gallery.js"></script>
 </body>

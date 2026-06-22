@@ -70,10 +70,12 @@ function renderPreviewCard(item, featured) {
   const cat = window.EbbersI18n?.cat(item.category) ?? item.category;
   const title = window.EbbersI18n?.product(item.id, 'title') || item.title || item.alt;
   const desc = window.EbbersI18n?.product(item.id, 'desc') || item.desc || '';
+  const customLabel = window.EbbersI18n?.t('home.collection.customBadge') ?? 'Op maat';
 
   return `
     <a href="collectie.html" class="project-card${featured ? ' project-card--featured' : ''}">
       <img src="${item.thumb}" alt="${item.alt}" loading="${featured ? 'eager' : 'lazy'}">
+      <span class="project-card-badge">${customLabel}</span>
       <span class="project-card-tag">${cat}</span>
       <span class="project-card-info">
         <span class="project-card-title">${title}</span>

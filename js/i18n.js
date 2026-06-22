@@ -32,7 +32,8 @@ const I18N_STRINGS = {
     'cta.viewCollection': 'Bekijk collectie', 'cta.allProducts': 'Alle 18 producten bekijken',
     'cta.fullCollection': 'Volledige collectie →',
 
-    'common.scrollTop': 'Terug naar boven', 'common.required': 'verplicht',
+    'common.scrollTop': 'Terug naar boven', 'common.skipLink': 'Direct naar inhoud',
+    'common.required': 'verplicht',
     'common.products': 'producten', 'common.product': 'product',
     'common.zoom': 'Vergroot', 'common.view': 'Bekijk',
 
@@ -50,6 +51,9 @@ const I18N_STRINGS = {
     'home.hero.trust3.title': 'Direct contact', 'home.hero.trust3.desc': 'U spreekt met degene die het maakt',
     'home.hero.tag': 'Collectie 2026', 'home.hero.cardCat': 'Tafels',
     'home.hero.cardTitle': 'Eettafel set', 'home.hero.cardDesc': 'Zwart staal · zes houten stoelen',
+    'home.hero.sliderLabel': 'Uitgelichte producten',
+    'home.hero.sliderDots': 'Kies een afbeelding',
+    'page.hero.sliderLabel': 'Impressie',
     'home.hero.trustLabel': 'Waarom Ebbers Solutions',
     'home.stats.label': 'Bedrijfscijfers',
 
@@ -82,8 +86,13 @@ const I18N_STRINGS = {
     'home.about.p3': 'Actief in de Achterhoek sinds 2017',
     'home.about.link': 'Ons verhaal',
 
+    'home.testimonial.quote': 'Korte lijnen, eerlijk advies en werk dat klopt — precies wat je zoekt in een metaalbedrijf.',
+    'home.testimonial.author': 'Klant uit de Achterhoek',
+    'home.testimonial.role': 'Constructiewerken · Berkelland',
+
     'home.collection.label': 'Ons werk', 'home.collection.title': 'Collectie',
     'home.collection.desc': 'Handgemaakte ijzeren meubels — stoelen, tafels en frames uit de Achterhoek.',
+    'home.collection.customBadge': 'Op maat',
 
     'home.cta.title': 'Project bespreken?',
     'home.cta.desc': 'Vertel ons wat u nodig heeft. Wij reageren snel met een concreet voorstel.',
@@ -158,6 +167,8 @@ const I18N_STRINGS = {
     'contact.form.subjectOther': 'Anders',
     'contact.form.placeholder': 'Beschrijf uw project of vraag...',
     'contact.form.success': 'Bedankt voor uw bericht. Wij nemen zo snel mogelijk contact met u op.',
+    'contact.form.sending': 'Versturen…',
+    'contact.form.error': 'Versturen mislukt. Probeer het opnieuw of mail ons direct.',
     'contact.form.err.name': 'Vul uw naam in (minimaal 2 tekens).',
     'contact.form.err.email': 'Vul een geldig e-mailadres in.',
     'contact.form.err.subject': 'Kies een onderwerp.',
@@ -190,7 +201,8 @@ const I18N_STRINGS = {
     'cta.viewCollection': 'View collection', 'cta.allProducts': 'View all 18 products',
     'cta.fullCollection': 'Full collection →',
 
-    'common.scrollTop': 'Back to top', 'common.required': 'required',
+    'common.scrollTop': 'Back to top', 'common.skipLink': 'Skip to content',
+    'common.required': 'required',
     'common.products': 'products', 'common.product': 'product',
     'common.zoom': 'Enlarge', 'common.view': 'View',
 
@@ -208,6 +220,9 @@ const I18N_STRINGS = {
     'home.hero.trust3.title': 'Direct contact', 'home.hero.trust3.desc': 'You speak to the person who makes it',
     'home.hero.tag': 'Collection 2026', 'home.hero.cardCat': 'Tables',
     'home.hero.cardTitle': 'Dining table set', 'home.hero.cardDesc': 'Black steel · six wooden chairs',
+    'home.hero.sliderLabel': 'Featured products',
+    'home.hero.sliderDots': 'Choose an image',
+    'page.hero.sliderLabel': 'Gallery',
     'home.hero.trustLabel': 'Why Ebbers Solutions',
     'home.stats.label': 'Company figures',
 
@@ -240,8 +255,13 @@ const I18N_STRINGS = {
     'home.about.p3': 'Active in the Achterhoek since 2017',
     'home.about.link': 'Our story',
 
+    'home.testimonial.quote': 'Short lines, honest advice and work that delivers — exactly what you want from a metal workshop.',
+    'home.testimonial.author': 'Client from the Achterhoek',
+    'home.testimonial.role': 'Structural work · Berkelland',
+
     'home.collection.label': 'Our work', 'home.collection.title': 'Collection',
     'home.collection.desc': 'Handmade iron furniture — chairs, tables and frames from the Achterhoek.',
+    'home.collection.customBadge': 'Custom',
 
     'home.cta.title': 'Discuss a project?',
     'home.cta.desc': 'Tell us what you need. We respond quickly with a concrete proposal.',
@@ -316,6 +336,8 @@ const I18N_STRINGS = {
     'contact.form.subjectOther': 'Other',
     'contact.form.placeholder': 'Describe your project or question...',
     'contact.form.success': 'Thank you for your message. We will contact you as soon as possible.',
+    'contact.form.sending': 'Sending…',
+    'contact.form.error': 'Sending failed. Please try again or email us directly.',
     'contact.form.err.name': 'Enter your name (at least 2 characters).',
     'contact.form.err.email': 'Enter a valid email address.',
     'contact.form.err.subject': 'Choose a subject.',
@@ -348,7 +370,8 @@ const I18N_STRINGS = {
     'cta.viewCollection': 'Kollektion ansehen', 'cta.allProducts': 'Alle 18 Produkte ansehen',
     'cta.fullCollection': 'Zur gesamten Kollektion →',
 
-    'common.scrollTop': 'Nach oben', 'common.required': 'Pflichtfeld',
+    'common.scrollTop': 'Nach oben', 'common.skipLink': 'Zum Inhalt springen',
+    'common.required': 'Pflichtfeld',
     'common.products': 'Produkte', 'common.product': 'Produkt',
     'common.zoom': 'Vergrößern', 'common.view': 'Ansehen',
 
@@ -366,6 +389,9 @@ const I18N_STRINGS = {
     'home.hero.trust3.title': 'Persönlich erreichbar', 'home.hero.trust3.desc': 'Sie sprechen direkt mit dem Handwerker, der Ihr Projekt umsetzt',
     'home.hero.tag': 'Kollektion 2026', 'home.hero.cardCat': 'Tische',
     'home.hero.cardTitle': 'Esstischgarnitur', 'home.hero.cardDesc': 'Schwarzer Stahl · sechs Holzstühle',
+    'home.hero.sliderLabel': 'Ausgewählte Produkte',
+    'home.hero.sliderDots': 'Bild auswählen',
+    'page.hero.sliderLabel': 'Eindruck',
     'home.hero.trustLabel': 'Warum Ebbers Solutions',
     'home.stats.label': 'In Zahlen',
 
@@ -398,8 +424,13 @@ const I18N_STRINGS = {
     'home.about.p3': 'Seit 2017 in der Achterhoek (NL) tätig',
     'home.about.link': 'Unsere Geschichte',
 
+    'home.testimonial.quote': 'Kurze Wege, ehrliche Beratung und Arbeit, die stimmt — genau das, was man von einem Metallbetrieb erwartet.',
+    'home.testimonial.author': 'Kunde aus der Achterhoek',
+    'home.testimonial.role': 'Stahlbau · Berkelland',
+
     'home.collection.label': 'Unsere Arbeit', 'home.collection.title': 'Kollektion',
     'home.collection.desc': 'Handgefertigte Eisenmöbel — Stühle, Tische und Gestelle aus der niederländischen Achterhoek.',
+    'home.collection.customBadge': 'Nach Maß',
 
     'home.cta.title': 'Haben Sie ein Projekt im Sinn?',
     'home.cta.desc': 'Schildern Sie uns kurz Ihr Vorhaben. Wir melden uns zeitnah mit einem konkreten Angebot.',
@@ -474,6 +505,8 @@ const I18N_STRINGS = {
     'contact.form.subjectOther': 'Sonstiges',
     'contact.form.placeholder': 'Beschreiben Sie kurz Ihr Projekt oder Ihre Anfrage …',
     'contact.form.success': 'Vielen Dank für Ihre Nachricht. Wir melden uns so schnell wie möglich bei Ihnen.',
+    'contact.form.sending': 'Wird gesendet…',
+    'contact.form.error': 'Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.',
     'contact.form.err.name': 'Bitte geben Sie Ihren Namen ein (mindestens 2 Zeichen).',
     'contact.form.err.email': 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
     'contact.form.err.subject': 'Bitte wählen Sie einen Betreff.',

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html class="no-js" lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1A2228">
+  <script>document.documentElement.classList.remove('no-js');</script>
   <meta name="description" content="Ebbers Solutions — metaalbewerking, constructiewerken en machine-onderhoud in Neede. Vakkundige metalen oplossingen op maat.">
   <title>Ebbers Solutions | Metalen oplossingen op maat</title>
 
@@ -50,10 +53,14 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
   <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css">
+  <link rel="stylesheet" href="css/h5bp-base.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" as="image" href="assets/images/products/product-02.jpg" fetchpriority="high">
 </head>
 <body data-page="home">
+  <a class="skip-link" href="#main" data-i18n="common.skipLink">Direct naar inhoud</a>
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -86,7 +93,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Hero -->
     <section class="hero hero--editorial">
       <div class="grid-container container hero-grid">
@@ -114,13 +121,38 @@
           </ul>
         </div>
         <aside class="hero-panel reveal reveal-delay-2">
-          <div class="hero-photo">
-            <span class="hero-photo-tag" data-i18n="home.hero.tag">Collectie 2026</span>
-            <img src="assets/images/products/product-02.jpg" alt="Complete eettafel met zwart ijzeren frame en zes houten stoelen" width="1280" height="1280" loading="eager">
-            <div class="hero-photo-card">
-              <span class="hero-photo-card-cat" data-i18n="home.hero.cardCat">Tafels</span>
-              <span class="hero-photo-card-title" data-i18n="home.hero.cardTitle">Eettafel set</span>
-              <span class="hero-photo-card-desc" data-i18n="home.hero.cardDesc">Zwart staal · zes houten stoelen</span>
+          <div class="hero-photo-wrap" data-slider-root>
+            <div class="hero-photo">
+              <span class="hero-photo-tag" data-slider-tag data-i18n="home.hero.tag">Collectie 2026</span>
+              <div class="photo-slider" data-interval="5000" data-i18n-aria="home.hero.sliderLabel" aria-label="Uitgelichte producten" aria-roledescription="carousel">
+                <div class="photo-slider__track">
+                  <div class="photo-slider__slide is-active" data-product-id="product-2" data-category="tafels">
+                    <img src="assets/images/products/product-02.jpg" alt="Complete eettafel met zwart ijzeren frame en zes houten stoelen" width="1280" height="1280" loading="eager">
+                  </div>
+                  <div class="photo-slider__slide" data-product-id="product-6" data-category="stoelen">
+                    <img src="assets/images/products/product-06.jpg" alt="Handgemaakte ijzeren kruk met houten zitting" width="1024" height="1280" loading="lazy">
+                  </div>
+                  <div class="photo-slider__slide" data-product-id="product-17" data-category="banken">
+                    <img src="assets/images/products/product-17.jpg" alt="Houten tuinbank met zwart metalen frame" width="1536" height="2048" loading="lazy">
+                  </div>
+                  <div class="photo-slider__slide" data-product-id="product-5" data-category="tafels">
+                    <img src="assets/images/products/product-05.jpg" alt="Eettafel met live-edge houten blad en gebogen metalen poot" width="1280" height="1280" loading="lazy">
+                  </div>
+                  <div class="photo-slider__slide" data-product-id="product-16" data-category="stoelen">
+                    <img src="assets/images/products/product-16.jpg" alt="Houten stoel met ijzeren frame in de werkplaats" width="540" height="720" loading="lazy">
+                  </div>
+                  <div class="photo-slider__slide" data-product-id="product-15" data-category="details">
+                    <img src="assets/images/products/product-15.jpg" alt="Werkplaats Ebbers Solutions — stalen rekken en houten planken" width="705" height="487" loading="lazy">
+                  </div>
+                </div>
+                <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+                <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
+              </div>
+            </div>
+            <div class="hero-photo-card hero-photo-card--below" data-slider-caption>
+              <span class="hero-photo-card-cat" data-slider-cat data-i18n="home.hero.cardCat">Tafels</span>
+              <span class="hero-photo-card-title" data-slider-title data-i18n="home.hero.cardTitle">Eettafel set</span>
+              <span class="hero-photo-card-desc" data-slider-desc data-i18n="home.hero.cardDesc">Zwart staal · zes houten stoelen</span>
             </div>
           </div>
         </aside>
@@ -133,19 +165,19 @@
       <div class="grid-container container">
         <div class="stats-grid">
           <div class="stat-item">
-            <span class="stat-value">8<em>+</em></span>
+            <span class="stat-value" data-count="8" data-suffix="+">8<em>+</em></span>
             <span class="stat-label" data-i18n="stats.years">Jaar ervaring</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">18<em>+</em></span>
+            <span class="stat-value" data-count="18" data-suffix="+">18<em>+</em></span>
             <span class="stat-label" data-i18n="stats.products">Unieke producten</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">3</span>
+            <span class="stat-value" data-count="3">3</span>
             <span class="stat-label" data-i18n="stats.specializations">Specialisaties</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">100<em>%</em></span>
+            <span class="stat-value" data-count="100" data-suffix="%">100<em>%</em></span>
             <span class="stat-label" data-i18n="stats.custom">Maatwerk</span>
           </div>
         </div>
@@ -162,18 +194,33 @@
         </div>
         <div class="bento-grid">
           <article class="bento-card bento-featured reveal">
+            <svg class="bento-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="22" cy="22" r="10"/>
+              <path d="M22 12v4M22 28v4M12 22h4M28 22h4"/>
+              <circle cx="22" cy="22" r="3" fill="currentColor" stroke="none"/>
+            </svg>
             <span class="bento-num" data-i18n="home.services.s1.tag">Onderhoud</span>
             <h3 data-i18n="home.services.s1.title">Machine-onderhoud</h3>
             <p data-i18n="home.services.s1.desc">Een stilstaande machine kost meer dan de reparatie. Wij onderhouden preventief en repareren op spoed — zodat uw productie doorloopt.</p>
             <a href="diensten.html#onderhoud" class="card-link" data-i18n="home.services.s1.link">Hoe wij machines onderhouden</a>
           </article>
           <article class="bento-card reveal reveal-delay-1">
+            <svg class="bento-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M8 32 L22 8 L36 32Z"/>
+              <line x1="14" y1="24" x2="30" y2="24"/>
+              <line x1="18" y1="18" x2="26" y2="18"/>
+            </svg>
             <span class="bento-num" data-i18n="home.services.s2.tag">Constructie</span>
             <h3 data-i18n="home.services.s2.title">Constructiewerken</h3>
             <p data-i18n="home.services.s2.desc">Staalconstructies op maat — van enkelstuks tot kleine series, gebouwd volgens uw tekening of samen uitgewerkt in de werkplaats.</p>
             <a href="diensten.html#constructie" class="card-link" data-i18n="home.services.s2.link">Constructiewerken bekijken</a>
           </article>
           <article class="bento-card reveal reveal-delay-2">
+            <svg class="bento-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M10 30 Q22 8 34 30"/>
+              <line x1="16" y1="22" x2="28" y2="22"/>
+              <circle cx="22" cy="22" r="2" fill="currentColor"/>
+            </svg>
             <span class="bento-num" data-i18n="home.services.s3.tag">Bewerking</span>
             <h3 data-i18n="home.services.s3.title">Metaalbewerking</h3>
             <p data-i18n="home.services.s3.desc">MIG, TIG, plasma- en lasersnijden, kanten en afwerken. Als het van staal is, bewerken wij het — in eigen werkplaats, op maat.</p>
@@ -224,6 +271,17 @@
       </div>
     </section>
 
+    <!-- Testimonial -->
+    <section class="testimonial-band" aria-label="Klantreactie">
+      <div class="grid-container container testimonial-inner reveal">
+        <blockquote class="testimonial-quote" data-i18n="home.testimonial.quote">Korte lijnen, eerlijk advies en werk dat klopt — precies wat je zoekt in een metaalbedrijf.</blockquote>
+        <p class="testimonial-meta">
+          <strong data-i18n="home.testimonial.author">Klant uit de Achterhoek</strong>
+          <span data-i18n="home.testimonial.role">Constructiewerken · Berkelland</span>
+        </p>
+      </div>
+    </section>
+
     <!-- Over ons preview -->
     <section class="section">
       <div class="grid-container container about-preview">
@@ -248,8 +306,22 @@
           <a href="over-ons.html" class="usa-button usa-button--secondary btn btn-secondary" data-i18n="home.about.link">Ons verhaal</a>
         </div>
         <div class="about-visual reveal reveal-delay-1">
-          <div class="img-placeholder img-loaded">
-            <img src="assets/images/products/product-01.jpg" alt="IJzeren frame in de werkplaats Neede" loading="lazy">
+          <div class="photo-frame photo-frame--about">
+            <div class="photo-slider photo-slider--contain" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Werkplaats impressie" aria-roledescription="carousel">
+              <div class="photo-slider__track">
+                <div class="photo-slider__slide is-active">
+                  <img src="assets/images/products/product-01.jpg" alt="IJzeren frame in de werkplaats Neede" width="1280" height="960" loading="lazy">
+                </div>
+                <div class="photo-slider__slide">
+                  <img src="assets/images/products/product-15.jpg" alt="Werkplaats Ebbers Solutions — stalen rekken en houten planken" width="705" height="487" loading="lazy">
+                </div>
+                <div class="photo-slider__slide">
+                  <img src="assets/images/products/product-16.jpg" alt="Houten stoel met ijzeren frame in de werkplaats" width="540" height="720" loading="lazy">
+                </div>
+              </div>
+              <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+              <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -336,6 +408,7 @@
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/content-loader.js"></script>
+  <script src="js/photo-slider.js"></script>
   <script src="js/main.js"></script>
   <script src="js/home-collection.js"></script>
 </body>

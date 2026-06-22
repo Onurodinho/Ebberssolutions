@@ -79,12 +79,14 @@ function renderGallery(items, grid) {
     const catLabel = getCatLabel(cat);
     const title = getProductField(item, 'title') || item.alt;
     const desc = getProductField(item, 'desc') || item.desc || '';
+    const customLabel = getT('home.collection.customBadge');
 
     return `
     <button class="gallery-item${i === featuredAt && activeFilter === 'alles' ? ' gallery-item--featured' : ''}" type="button"
       data-full="${item.src}" data-alt="${item.alt}" data-category="${cat}"
       data-title="${title}" aria-label="${item.alt}">
       <img src="${item.thumb}" alt="${item.alt}" loading="${i < 4 ? 'eager' : 'lazy'}" width="640" height="480">
+      <span class="project-card-badge gallery-item-badge">${customLabel}</span>
       <span class="gallery-item-tag">${catLabel}</span>
       <span class="gallery-item-info">
         <span class="gallery-item-title">${title}</span>

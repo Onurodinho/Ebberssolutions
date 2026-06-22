@@ -1,0 +1,67 @@
+/*! HTML5 Boilerplate v9 — selectieve integratie voor Ebbers Solutions */
+
+/* Tekstselectie in merkkleur */
+::-moz-selection {
+  background: rgba(184, 92, 40, 0.25);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgba(184, 92, 40, 0.25);
+  text-shadow: none;
+}
+
+/* Beelden: geen ongewenste ondermarge (H5BP #440) */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Print */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .skip-link,
+  .site-header,
+  .site-footer,
+  #scrollTop,
+  .photo-slider__dots,
+  .photo-slider__progress,
+  .lang-switcher,
+  .usa-menu-btn,
+  .cta-band {
+    display: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after,
+  a[href^="tel:"]::after,
+  a[href^="mailto:"]::after {
+    content: "";
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+}

@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html class="no-js" lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1A2228">
+  <script>document.documentElement.classList.remove('no-js');</script>
   <meta name="description" content="Diensten van Ebbers Solutions: constructiewerken, metaalbewerking en machine-onderhoud in Neede.">
   <title>Diensten | Ebbers Solutions</title>
   <meta property="og:type" content="website">
@@ -19,10 +22,13 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
   <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css">
+  <link rel="stylesheet" href="css/h5bp-base.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 <body data-page="diensten">
+  <a class="skip-link" href="#main" data-i18n="common.skipLink">Direct naar inhoud</a>
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -55,12 +61,37 @@
     </nav>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <div class="grid-container container reveal">
-        <p class="section-label" data-i18n="diensten.hero.label">Onze expertise</p>
-        <h1 data-i18n="diensten.hero.title">Diensten</h1>
-        <p class="page-hero-desc" data-i18n="diensten.hero.desc">Drie specialisaties onder één dak — van spoedreparatie tot nieuwe constructie.</p>
+  <main id="main">
+    <section class="page-hero page-hero--split">
+      <div class="grid-container container page-hero-grid">
+        <div class="page-hero-copy reveal">
+          <p class="section-label" data-i18n="diensten.hero.label">Onze expertise</p>
+          <h1 data-i18n="diensten.hero.title">Diensten</h1>
+          <p class="page-hero-desc" data-i18n="diensten.hero.desc">Drie specialisaties onder één dak — van spoedreparatie tot nieuwe constructie.</p>
+        </div>
+        <div class="page-hero-visual reveal reveal-delay-1">
+          <div class="photo-slider photo-slider--compact photo-slider--contain" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Impressie" aria-roledescription="carousel">
+            <div class="photo-slider__track">
+              <figure class="photo-slider__slide is-active">
+                <img src="assets/images/products/product-05.jpg" alt="Metalen onderdelen uit de werkplaats" loading="eager">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-09.jpg" alt="IJzeren frame constructie — maatwerk uit Neede" loading="lazy">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-13.jpg" alt="Handgemaakt ijzeren meubelwerk" loading="lazy">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-14.jpg" alt="Close-up van las- en montagewerk" loading="lazy">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-01.jpg" alt="IJzeren frame in de werkplaats Neede" loading="lazy">
+              </figure>
+            </div>
+            <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+            <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -88,8 +119,20 @@
           <a href="contact.html" class="card-link service-link" data-i18n="diensten.s1.link">Offerte voor onderhoud</a>
         </div>
         <div class="service-visual reveal reveal-delay-1">
-          <figure class="service-img">
-            <img src="assets/images/products/product-05.jpg" alt="Metalen onderdelen uit de werkplaats van Ebbers Solutions" loading="lazy">
+          <figure class="service-img photo-slider photo-slider--contain" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Impressie" aria-roledescription="carousel">
+            <div class="photo-slider__track">
+              <div class="photo-slider__slide is-active">
+                <img src="assets/images/products/product-05.jpg" alt="Metalen onderdelen uit de werkplaats van Ebbers Solutions" loading="lazy">
+              </div>
+              <div class="photo-slider__slide">
+                <img src="assets/images/products/product-14.jpg" alt="Close-up van las- en montagewerk" loading="lazy">
+              </div>
+              <div class="photo-slider__slide">
+                <img src="assets/images/products/product-01.jpg" alt="IJzeren frame in de werkplaats Neede" loading="lazy">
+              </div>
+            </div>
+            <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+            <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
             <figcaption data-i18n="diensten.s1.caption">Machine-onderhoud · Neede</figcaption>
           </figure>
         </div>
@@ -112,8 +155,20 @@
           <a href="contact.html" class="card-link service-link" data-i18n="diensten.s2.link">Constructie bespreken</a>
         </div>
         <div class="service-visual reveal reveal-delay-1">
-          <figure class="service-img">
-            <img src="assets/images/products/product-09.jpg" alt="IJzeren frame constructie — maatwerk uit Neede" loading="lazy">
+          <figure class="service-img photo-slider photo-slider--contain" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Impressie" aria-roledescription="carousel">
+            <div class="photo-slider__track">
+              <div class="photo-slider__slide is-active">
+                <img src="assets/images/products/product-09.jpg" alt="IJzeren frame constructie — maatwerk uit Neede" loading="lazy">
+              </div>
+              <div class="photo-slider__slide">
+                <img src="assets/images/products/product-04.jpg" alt="Geometrisch ijzeren stoelframe" loading="lazy">
+              </div>
+              <div class="photo-slider__slide">
+                <img src="assets/images/products/product-11.jpg" alt="Gelast metalen tafelonderstel met rasterpatroon" loading="lazy">
+              </div>
+            </div>
+            <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+            <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
             <figcaption data-i18n="diensten.s2.caption">Constructiewerken · Maatwerk</figcaption>
           </figure>
         </div>
@@ -136,8 +191,20 @@
           <a href="contact.html" class="card-link service-link" data-i18n="diensten.s3.link">Bewerking aanvragen</a>
         </div>
         <div class="service-visual reveal reveal-delay-1">
-          <figure class="service-img">
-            <img src="assets/images/products/product-13.jpg" alt="Metaalbewerking — lassen en precisiewerk" loading="lazy">
+          <figure class="service-img photo-slider photo-slider--contain" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Impressie" aria-roledescription="carousel">
+            <div class="photo-slider__track">
+              <div class="photo-slider__slide is-active">
+                <img src="assets/images/products/product-13.jpg" alt="Metaalbewerking — lassen en precisiewerk" loading="lazy">
+              </div>
+              <div class="photo-slider__slide">
+                <img src="assets/images/products/product-14.jpg" alt="Close-up van las- en montagewerk" loading="lazy">
+              </div>
+              <div class="photo-slider__slide">
+                <img src="assets/images/products/product-15.jpg" alt="Werkplaats Ebbers Solutions — stalen rekken en houten planken" loading="lazy">
+              </div>
+            </div>
+            <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+            <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
             <figcaption data-i18n="diensten.s3.caption">Metaalbewerking · Precisiewerk</figcaption>
           </figure>
         </div>
@@ -203,6 +270,7 @@
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/content-loader.js"></script>
+  <script src="js/photo-slider.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

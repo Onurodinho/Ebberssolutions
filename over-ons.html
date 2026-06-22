@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html class="no-js" lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1A2228">
+  <script>document.documentElement.classList.remove('no-js');</script>
   <meta name="description" content="Over Ebbers Solutions — metaalbewerking en constructiewerken uit Neede, Achterhoek.">
   <title>Over ons | Ebbers Solutions</title>
   <meta property="og:type" content="website">
@@ -19,10 +22,13 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
   <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css">
+  <link rel="stylesheet" href="css/h5bp-base.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 <body data-page="about">
+  <a class="skip-link" href="#main" data-i18n="common.skipLink">Direct naar inhoud</a>
   <div class="usa-overlay"></div>
   <header class="usa-header usa-header--extended site-header" id="header">
     <div class="usa-navbar grid-container container">
@@ -55,12 +61,31 @@
     </nav>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <div class="grid-container container reveal">
-        <p class="section-label" data-i18n="about.hero.label">Wie wij zijn</p>
-        <h1 data-i18n="about.hero.title">Over ons</h1>
-        <p class="page-hero-desc" data-i18n="about.hero.desc">Een werkplaats in Neede met korte lijnen, persoonlijk contact en vakmanschap als standaard.</p>
+  <main id="main">
+    <section class="page-hero page-hero--split">
+      <div class="grid-container container page-hero-grid">
+        <div class="page-hero-copy reveal">
+          <p class="section-label" data-i18n="about.hero.label">Wie wij zijn</p>
+          <h1 data-i18n="about.hero.title">Over ons</h1>
+          <p class="page-hero-desc" data-i18n="about.hero.desc">Een werkplaats in Neede met korte lijnen, persoonlijk contact en vakmanschap als standaard.</p>
+        </div>
+        <div class="page-hero-visual reveal reveal-delay-1">
+          <div class="photo-slider photo-slider--compact photo-slider--contain" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Impressie" aria-roledescription="carousel">
+            <div class="photo-slider__track">
+              <figure class="photo-slider__slide is-active">
+                <img src="assets/images/products/product-01.jpg" alt="IJzeren frame in de werkplaats Neede" loading="eager">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-15.jpg" alt="Werkplaats Ebbers Solutions — stalen rekken en houten planken" loading="lazy">
+              </figure>
+              <figure class="photo-slider__slide">
+                <img src="assets/images/products/product-16.jpg" alt="Houten stoel met ijzeren frame in de werkplaats" loading="lazy">
+              </figure>
+            </div>
+            <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+            <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -72,15 +97,15 @@
             <span class="stat-label" data-i18n="stats.founded">Opgericht</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">8<em>+</em></span>
+            <span class="stat-value" data-count="8" data-suffix="+">8<em>+</em></span>
             <span class="stat-label" data-i18n="stats.years">Jaar ervaring</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">3</span>
+            <span class="stat-value" data-count="3">3</span>
             <span class="stat-label" data-i18n="stats.specializations">Specialisaties</span>
           </div>
           <div class="stat-item">
-            <span class="stat-value">100<em>%</em></span>
+            <span class="stat-value" data-count="100" data-suffix="%">100<em>%</em></span>
             <span class="stat-label" data-i18n="stats.custom">Maatwerk</span>
           </div>
         </div>
@@ -121,8 +146,20 @@
 
     <section class="section section-muted">
       <div class="grid-container container about-image-row">
-        <figure class="service-img reveal">
-          <img src="assets/images/products/product-01.jpg" alt="Werkplaats Ebbers Solutions — metaalbewerking in Neede" loading="lazy">
+        <figure class="service-img photo-slider photo-slider--contain reveal" data-interval="5000" data-i18n-aria="page.hero.sliderLabel" aria-label="Impressie" aria-roledescription="carousel">
+          <div class="photo-slider__track">
+            <div class="photo-slider__slide is-active">
+              <img src="assets/images/products/product-01.jpg" alt="Werkplaats Ebbers Solutions — metaalbewerking in Neede" loading="lazy">
+            </div>
+            <div class="photo-slider__slide">
+              <img src="assets/images/products/product-15.jpg" alt="Werkplaats Ebbers Solutions — stalen rekken en houten planken" loading="lazy">
+            </div>
+            <div class="photo-slider__slide">
+              <img src="assets/images/products/product-16.jpg" alt="Houten stoel met ijzeren frame in de werkplaats" loading="lazy">
+            </div>
+          </div>
+          <div class="photo-slider__progress" aria-hidden="true"><span></span></div>
+          <div class="photo-slider__dots" role="tablist" data-i18n-aria="home.hero.sliderDots" aria-label="Kies een afbeelding"></div>
           <figcaption data-i18n="about.location.caption">Werkplaats · Veldhoekweg 1, Neede</figcaption>
         </figure>
         <div class="about-image-text reveal reveal-delay-1">
@@ -240,6 +277,7 @@
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/content-loader.js"></script>
+  <script src="js/photo-slider.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
