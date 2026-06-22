@@ -9,5 +9,8 @@
     "directory": ".",
     "binding": "ASSETS",
     "not_found_handling": "404-page"
-  }
+  },
+  "routes": [
+    { "pattern": "www.ebberssolutions.com", "custom_domain": true }
+  ]
 }
