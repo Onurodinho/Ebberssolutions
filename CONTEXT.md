@@ -71,7 +71,7 @@ netlify.toml           → headers, redirects, manifest MIME
 ## Openstaand (content, niet verzinnen)
 
 - Echt telefoonnummer in `js/config.js` (nu placeholder)
-- Echte klantquote voor testimonial-sectie
+- Recensiesectie op homepage (`#recensies`) — kop staat, inhoud volgt; invullen in `home.reviews.*` (i18n.js)
 - Echt logo als SVG beschikbaar is
 
 ## Agent workflow (aanbevolen)
