@@ -1,0 +1,23 @@
+# Niet uploaden — alleen statische site
+node_modules/
+.git/
+.github/
+.netlify/
+.grok/
+.tools/
+.vscode/
+skills/
+scripts/
+partials/
+package.json
+package-lock.json
+netlify.toml
+.netlifyignore
+.netlify-deploy-key.pub
+CLAUDE-DESIGN-BRIEF.md
+CLAUDE-DESIGN-BRIEF.txt
+CONTEXT.md
+DESIGN.md
+Agents.md
+README.md
+*.md
