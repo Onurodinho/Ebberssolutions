@@ -6,6 +6,7 @@ function bootMain() {
   initStatCounters();
   initContactForm();
   initScrollTop();
+  initServiceIndex();
   if (typeof initPhotoSliders === 'function') initPhotoSliders();
 }
 
@@ -289,10 +290,84 @@ function initMobileMenu() {
     nav.setAttribute('aria-hidden', 'false');
   }
 
+  function scrollActiveNavIntoView() {
+    if (!mobileMq.matches) return;
+    const current = nav.querySelector('.usa-nav__primary .usa-current');
+    const list = nav.querySelector('.usa-nav__primary');
+    if (!current || !list) return;
+    const left = current.offsetLeft - (list.clientWidth - current.offsetWidth) / 2;
+    list.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  }
+
   syncBarNav();
-  mobileMq.addEventListener('change', syncBarNav);
+  scrollActiveNavIntoView();
+  mobileMq.addEventListener('change', () => {
+    syncBarNav();
+    scrollActiveNavIntoView();
+  });
 
   // USWDS zet nav soms terug op hidden — forceer zichtbaar op mobiel
-  const guard = new MutationObserver(syncBarNav);
+  const guard = new MutationObserver(() => {
+    syncBarNav();
+    scrollActiveNavIntoView();
+  });
   guard.observe(nav, { attributes: true, attributeFilter: ['aria-hidden', 'class'] });
+}
+
+function initServiceIndex() {
+  const bar = document.querySelector('.service-index');
+  if (!bar) return;
+
+  const pairs = [...bar.querySelectorAll('.service-index-link')]
+    .map(link => ({
+      link,
+      section: document.querySelector(link.getAttribute('href')),
+    }))
+    .filter(p => p.section);
+
+  if (!pairs.length) return;
+
+  const offset = () => {
+    const header = document.getElementById('header');
+    return (header?.offsetHeight ?? 0) + bar.offsetHeight + 12;
+  };
+
+  let ticking = false;
+  let lastActiveLink = null;
+
+  const scrollTabIntoView = link => {
+    if (!window.matchMedia('(max-width: 63.99em)').matches) return;
+    const list = bar.querySelector('.container');
+    if (!list || !link) return;
+    const left = link.offsetLeft - (list.clientWidth - link.offsetWidth) / 2;
+    list.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  };
+
+  const update = () => {
+    ticking = false;
+    const y = offset();
+    let active = pairs[0];
+    pairs.forEach(pair => {
+      if (pair.section.getBoundingClientRect().top <= y) active = pair;
+    });
+    pairs.forEach(({ link }) => link.classList.toggle('is-active', link === active.link));
+
+    if (active.link !== lastActiveLink) {
+      lastActiveLink = active.link;
+      scrollTabIntoView(active.link);
+    }
+  };
+
+  pairs.forEach(({ link }) => {
+    link.addEventListener('click', () => scrollTabIntoView(link));
+  });
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  update();
 }

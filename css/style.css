@@ -3126,9 +3126,22 @@ address {
   transition: background var(--transition), color var(--transition);
 }
 
-.service-index-link:hover {
+.service-index-link:hover,
+.service-index-link.is-active {
   background: rgba(184, 92, 40, 0.15);
   color: var(--concrete-light);
+}
+
+.service-index-link.is-active {
+  box-shadow: inset 0 -3px 0 var(--copper-bright);
+}
+
+.service-index ~ section[id] {
+  scroll-margin-top: calc(var(--header-total-h) + 3.5rem);
+}
+
+section[id]:not(#main) {
+  scroll-margin-top: calc(var(--header-total-h) + 0.75rem);
 }
 
 .service-index-num {
@@ -3262,11 +3275,29 @@ address {
   padding-top: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 63.99em) {
   .service-index .container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 0;
   }
 
+  .service-index .container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-index-link {
+    flex: 1 0 auto;
+    min-width: max-content;
+    justify-content: center;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
   .contact-quick-grid {
     grid-template-columns: 1fr;
   }
@@ -3693,10 +3724,6 @@ address {
   }
 
   .reviews-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-index .container {
     grid-template-columns: 1fr;
   }
 
