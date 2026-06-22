@@ -3325,8 +3325,7 @@ body.mobile-menu-open .usa-overlay.is-visible {
   width: 100%;
 }
 
-/* Old custom slider (non-Swiper) uses absolute stacking */
-.photo-slider:not(.swiper) .photo-slider__slide {
+.photo-slider__slide {
   position: absolute;
   inset: 0;
   margin: 0;
@@ -3335,18 +3334,9 @@ body.mobile-menu-open .usa-overlay.is-visible {
   pointer-events: none;
 }
 
-.photo-slider:not(.swiper) .photo-slider__slide.is-active {
+.photo-slider__slide.is-active {
   opacity: 1;
   z-index: 1;
-  pointer-events: auto;
-}
-
-/* Swiper mode: let Swiper handle positioning and fade */
-.photo-slider.swiper .photo-slider__slide {
-  position: relative;
-  inset: auto;
-  opacity: 1;
-  transition: none; /* Swiper controls fade */
   pointer-events: auto;
 }
 
@@ -3435,8 +3425,7 @@ body.mobile-menu-open .usa-overlay.is-visible {
     linear-gradient(160deg, var(--surface) 0%, var(--concrete) 55%, #E0DAD0 100%);
 }
 
-/* only for non-swiper */
-.photo-slider:not(.swiper).photo-slider--contain .photo-slider__slide {
+.photo-slider--contain .photo-slider__slide {
   display: flex;
   align-items: center;
   justify-content: center;
