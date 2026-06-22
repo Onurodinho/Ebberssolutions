@@ -8,13 +8,6 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "not_found_handling": "404-page",
-    "run_worker_first": true
-  },
-  "routes": [
-    {
-      "pattern": "www.ebberssolutions.com/*",
-      "zone_name": "ebberssolutions.com"
-    }
-  ]
+    "not_found_handling": "404-page"
+  }
 }

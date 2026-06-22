@@ -43,23 +43,12 @@ else
   echo "www DNS bestaat al ($EXISTING record(s))."
 fi
 
-echo "Worker custom domain $WWW koppelen …"
-# Workers Domains API — maakt DNS/certificaat indien nodig
-RESULT=$(api PUT "/accounts/$ACCOUNT_ID/workers/domains" \
-  -d "{\"hostname\":\"$WWW\",\"service\":\"$WORKER\",\"zone_id\":\"$ZONE_ID\"}" 2>&1) || true
-
-if echo "$RESULT" | grep -q '"success":true'; then
-  echo "✓ Worker custom domain gekoppeld."
-else
-  echo "Worker-domain API: $(echo "$RESULT" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('errors',d))" 2>/dev/null || echo "$RESULT")"
-  echo "Fallback: redirect rule op zone …"
-  # Dynamic redirect (Rulesets API)
-  RULESET=$(api GET "/zones/$ZONE_ID/rulesets/phases/http_request_dynamic_redirect/entrypoint" 2>/dev/null || echo '{"result":null}')
-  RULESET_ID=$(echo "$RULESET" | python3 -c "import sys,json; r=json.load(sys.stdin).get('result'); print(r['id'] if r else '')" 2>/dev/null || true)
-
-  RULE_BODY=$(cat <<EOF
+echo "Redirect rule zetten (geen Worker custom domain — dat breekt wrangler deploy) …"
+RULE_PAYLOAD=$(cat <<EOF
 {
-  "description": "www naar apex",
+  "name": "www naar apex",
+  "kind": "zone",
+  "phase": "http_request_dynamic_redirect",
   "rules": [
     {
       "expression": "(http.host eq \"$WWW\")",
@@ -79,15 +68,9 @@ else
 }
 EOF
 )
-
-  if [[ -n "$RULESET_ID" ]]; then
-    api PUT "/zones/$ZONE_ID/rulesets/$RULESET_ID" -d "$RULE_BODY" >/dev/null
-  else
-    api POST "/zones/$ZONE_ID/rulesets" \
-      -d "{\"name\":\"www redirect\",\"kind\":\"zone\",\"phase\":\"http_request_dynamic_redirect\",\"rules\":$(echo "$RULE_BODY" | python3 -c "import sys,json; print(json.dumps(json.load(sys.stdin)['rules']))")}" >/dev/null
-  fi
-  echo "✓ Redirect rule gezet."
-fi
+api POST "/zones/$ZONE_ID/rulesets" -d "$RULE_PAYLOAD" >/dev/null 2>&1 || \
+  api PUT "/zones/$ZONE_ID/rulesets/phases/http_request_dynamic_redirect/entrypoint" -d "$RULE_PAYLOAD" >/dev/null
+echo "✓ Redirect rule gezet."
 
 echo ""
 echo "Wacht 30s op propagatie …"
