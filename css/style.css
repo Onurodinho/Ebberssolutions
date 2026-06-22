@@ -3652,37 +3652,63 @@ address {
     color: var(--steel-900);
   }
 
-  /* Overlay onder header houden — anders bedekt die het menu-paneel */
-  .usa-overlay.is-visible {
-    z-index: 350;
+  /*
+   * USWDS Safari scroll-lock zet body op position:fixed met negatieve top —
+   * daardoor schuift een nav IN de body uit beeld na scrollen. Portal naar
+   * body + override hieronder houdt het paneel op viewport-niveau.
+   */
+  html:has(body.usa-js-mobile-nav--active) {
+    overflow: hidden;
   }
 
-  .usa-header.site-header:has(.usa-nav.is-visible) {
+  body.usa-js-mobile-nav--active {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  body.usa-js-mobile-nav--active.is-safari {
+    position: static !important;
+    top: auto !important;
+    overflow: hidden !important;
+  }
+
+  .usa-overlay.is-visible {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+  }
+
+  body.usa-js-mobile-nav--active .usa-header.site-header {
     background: var(--concrete-light);
     box-shadow: 0 1px 0 var(--line);
   }
 
-  .usa-header.site-header .usa-nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: auto;
+  .usa-nav {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: auto !important;
     width: min(18rem, 86vw);
     padding: 0;
     border-left: 1px solid var(--line);
     box-shadow: var(--shadow-lg);
-    z-index: 1;
+    z-index: 10001 !important;
+    background: var(--concrete-light);
   }
 
-  .usa-header.site-header .usa-nav__inner {
+  .usa-nav.is-visible {
+    display: flex !important;
+  }
+
+  .usa-nav .usa-nav__inner {
     display: flex;
     flex-direction: column;
     min-height: 100%;
     padding: max(0.75rem, env(safe-area-inset-top)) 0 0;
   }
 
-  .usa-header.site-header .usa-nav__close {
+  .usa-nav .usa-nav__close {
     float: none;
     align-self: flex-end;
     flex-shrink: 0;
@@ -3696,16 +3722,16 @@ address {
     text-decoration: none;
   }
 
-  .usa-header.site-header .usa-nav__close:hover {
+  .usa-nav .usa-nav__close:hover {
     background: var(--concrete);
   }
 
-  .usa-header.site-header .usa-nav__close img {
+  .usa-nav .usa-nav__close img {
     width: 1.1rem;
     height: 1.1rem;
   }
 
-  .usa-header.site-header .usa-nav__primary {
+  .usa-nav .usa-nav__primary {
     flex: 1;
     width: 100%;
     margin: 0;
@@ -3714,15 +3740,15 @@ address {
     font-size: 1rem;
   }
 
-  .usa-header.site-header .usa-nav__primary-item {
+  .usa-nav .usa-nav__primary-item {
     border-bottom: 1px solid var(--line);
   }
 
-  .usa-header.site-header .usa-nav__primary-item:last-child {
+  .usa-nav .usa-nav__primary-item:last-child {
     border-bottom: none;
   }
 
-  .usa-header.site-header .usa-nav__primary a.usa-nav__link {
+  .usa-nav .usa-nav__primary a.usa-nav__link {
     display: flex;
     align-items: center;
     width: 100%;
@@ -3733,19 +3759,19 @@ address {
     transition: background var(--transition), border-color var(--transition), color var(--transition);
   }
 
-  .usa-header.site-header .usa-nav__primary a.usa-nav__link:hover,
-  .usa-header.site-header .usa-nav__primary a.usa-nav__link.usa-current {
+  .usa-nav .usa-nav__primary a.usa-nav__link:hover,
+  .usa-nav .usa-nav__primary a.usa-nav__link.usa-current {
     background: var(--surface);
     border-left-color: var(--copper);
     color: var(--steel-900);
   }
 
-  .usa-header.site-header .usa-nav__primary a.usa-nav__link.usa-current span {
+  .usa-nav .usa-nav__primary a.usa-nav__link.usa-current span {
     border-bottom: none;
     padding-bottom: 0;
   }
 
-  .usa-header.site-header .usa-nav__primary a.site-nav-cta {
+  .usa-nav .usa-nav__primary a.site-nav-cta {
     margin: 1rem 1.25rem 0.5rem;
     width: calc(100% - 2.5rem);
     min-height: 48px;
