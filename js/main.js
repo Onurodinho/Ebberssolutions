@@ -282,11 +282,14 @@ function initMobileMenu() {
 
   if (!btn || !nav) return;
 
+  nav.setAttribute('aria-hidden', 'true');
+
   let scrollY = 0;
 
   function open() {
     scrollY = window.scrollY;
     nav.classList.add('is-visible');
+    nav.setAttribute('aria-hidden', 'false');
     if (overlay) overlay.classList.add('is-visible');
     document.documentElement.classList.add('mobile-menu-open');
     document.body.classList.add('mobile-menu-open');
@@ -312,6 +315,7 @@ function initMobileMenu() {
 
   function closeMenu() {
     nav.classList.remove('is-visible');
+    nav.setAttribute('aria-hidden', 'true');
     if (overlay) overlay.classList.remove('is-visible');
     document.documentElement.classList.remove('mobile-menu-open');
     document.body.classList.remove('mobile-menu-open');

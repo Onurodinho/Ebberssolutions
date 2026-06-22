@@ -2677,11 +2677,16 @@ address {
   }
 
   .usa-header.site-header .usa-nav__primary a.usa-nav__link {
-    display: block;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
     padding: 0.75rem 0.5rem;
     font-size: 0.95rem;
     color: var(--steel-700);
     border-bottom: 1px solid var(--line);
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
   }
 
   /* Make the menu list nice when full screen on mobile */
@@ -2823,10 +2828,13 @@ address {
 
 
 
-/* Ensure the mobile drawer and close button are always easy to reach 
-   no matter where you are scrolled on the page. */
-.usa-header.site-header {
-  z-index: 10000;
+/* Mobile menu open: lift entire header above page content (sliders, hero, etc.) */
+body.mobile-menu-open .usa-header.site-header {
+  z-index: 200000 !important;
+}
+
+body.mobile-menu-open .usa-overlay.is-visible {
+  z-index: 199999 !important;
 }
 
 /* ── Werkwijze (process) section ── */

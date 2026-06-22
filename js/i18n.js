@@ -643,6 +643,10 @@ function i18nApply(lang) {
     if (ogTitle) ogTitle.content = i18nT(I18N_META[page].title, lang);
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.content = i18nT(I18N_META[page].desc, lang);
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.content = i18nT(I18N_META[page].title, lang);
+    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDesc) twitterDesc.content = i18nT(I18N_META[page].desc, lang);
   }
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
