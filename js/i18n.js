@@ -681,17 +681,12 @@ function i18nBuildSwitcher(id, modifier) {
 
 function i18nInitSwitcher() {
   const navbar = document.querySelector('.usa-navbar');
-  const navInner = document.querySelector('.usa-nav__inner');
   if (!navbar || document.getElementById('langSwitcher')) return;
 
   const barSwitcher = i18nBuildSwitcher('langSwitcher', 'lang-switcher--bar');
   const menuBtn = navbar.querySelector('.usa-menu-btn');
   if (menuBtn) navbar.insertBefore(barSwitcher, menuBtn);
   else navbar.appendChild(barSwitcher);
-
-  if (navInner && !document.getElementById('langSwitcherNav')) {
-    navInner.appendChild(i18nBuildSwitcher('langSwitcherNav', 'lang-switcher--drawer'));
-  }
 }
 
 function initI18n() {

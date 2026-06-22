@@ -1,5 +1,4 @@
 function bootMain() {
-  initMobileNavPortal();
   initSiteConfig();
   initImages();
   initHeader();
@@ -153,42 +152,6 @@ function initReveal() {
   );
 
   elements.forEach(el => observer.observe(el));
-}
-
-/**
- * Verplaats nav + overlay naar body op mobiel zodat Safari's scroll-lock
- * (body position:fixed + negatieve top) het menu niet uit beeld schuift.
- */
-function initMobileNavPortal() {
-  const header = document.getElementById('header');
-  const nav = header?.querySelector('.usa-nav');
-  const overlay = document.querySelector('.usa-overlay');
-  if (!header || !nav) return;
-
-  const mq = window.matchMedia('(max-width: 63.99em)');
-  const overlayHome = overlay?.parentElement;
-
-  function portal() {
-    if (mq.matches) {
-      if (overlay && overlay.parentElement !== document.body) {
-        document.body.appendChild(overlay);
-      }
-      if (nav.parentElement !== document.body) {
-        document.body.appendChild(nav);
-      }
-      return;
-    }
-
-    if (nav.parentElement !== header) {
-      header.appendChild(nav);
-    }
-    if (overlay && overlayHome && overlay.parentElement !== overlayHome) {
-      overlayHome.insertBefore(overlay, overlayHome.firstChild);
-    }
-  }
-
-  portal();
-  mq.addEventListener('change', portal);
 }
 
 function initHeader() {
