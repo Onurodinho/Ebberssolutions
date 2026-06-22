@@ -140,9 +140,8 @@
           </div>
         </div>
 
-        <form class="usa-form contact-form reveal reveal-delay-1" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-          <input type="hidden" name="form-name" value="contact">
-          <p class="usa-sr-only"><label>Niet invullen: <input name="bot-field"></label></p>
+        <form class="usa-form contact-form reveal reveal-delay-1" id="contactForm" name="contact" method="POST" novalidate>
+          <p class="usa-sr-only"><label>Niet invullen: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <h2 data-i18n="contact.form.title">Stuur een bericht</h2>
           <div class="usa-form-group">
             <label class="usa-label" for="naam"><span data-i18n="contact.form.name">Naam</span> <abbr data-i18n="common.required" title="verplicht" class="usa-hint usa-hint--required">*</abbr></label>
@@ -242,6 +241,6 @@
   <script src="js/content-loader.js"></script>
   <!-- Swiper plugin for reliable 5s auto photo rotation (works on mobile Safari too) -->
   <script src="js/photo-slider.js?v=20260623b"></script>
-  <script src="js/main.js?v=20260623b"></script>
+  <script src="js/main.js?v=20260623c"></script>
 </body>
 </html>

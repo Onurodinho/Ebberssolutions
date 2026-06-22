@@ -222,11 +222,11 @@ function initContactForm() {
     }
 
     try {
-      const body = new URLSearchParams(new FormData(form)).toString();
-      const response = await fetch('/', {
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) throw new Error('submit failed');
