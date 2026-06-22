@@ -272,7 +272,7 @@ function initScrollTop() {
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-/* Mobile menu — Safari/iOS: portal nav + overlay naar body (buiten header stacking context). */
+/* Mobile menu — vaste drawer + overlay; capture-fase voorkomt USWDS dubbelklik op X. */
 function initMobileMenu() {
   const header = document.getElementById('header');
   if (!header || header.dataset.mobileMenuInit === 'true') return;
@@ -286,121 +286,85 @@ function initMobileMenu() {
   if (!btn || !nav) return;
 
   const mobileMq = window.matchMedia('(max-width: 63.99em)');
-  const navHome = { parent: nav.parentNode, next: nav.nextSibling, marker: null };
-  const overlayHome = overlay
-    ? { parent: overlay.parentNode, next: overlay.nextSibling, marker: null }
-    : null;
-
   let scrollY = 0;
-  let openState = false;
 
   nav.setAttribute('aria-hidden', 'true');
   btn.setAttribute('aria-expanded', 'false');
   btn.setAttribute('type', 'button');
 
-  function headerOffset() {
-    return header.getBoundingClientRect().height || 76;
-  }
-
-  function portalEl(el, home) {
-    if (!el || el.parentNode === document.body) return;
-    const marker = document.createComment('portal');
-    home.parent.insertBefore(marker, home.next);
-    document.body.appendChild(el);
-    home.marker = marker;
-  }
-
-  function restoreEl(el, home) {
-    if (!el || !home?.marker?.parentNode) return;
-    home.marker.parentNode.insertBefore(el, home.marker);
-    home.marker.remove();
-    home.marker = null;
+  function isOpen() {
+    return nav.classList.contains('is-visible');
   }
 
   function lockScroll() {
     scrollY = window.scrollY;
     document.documentElement.classList.add('mobile-menu-open');
     document.body.classList.add('mobile-menu-open');
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.width = '100%';
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
   }
 
   function unlockScroll() {
     document.documentElement.classList.remove('mobile-menu-open');
     document.body.classList.remove('mobile-menu-open');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    document.body.style.width = '';
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     window.scrollTo(0, scrollY);
   }
 
   function open() {
-    if (!mobileMq.matches || openState) return;
-    openState = true;
+    if (!mobileMq.matches || isOpen()) return;
 
-    const top = headerOffset();
-    document.documentElement.style.setProperty('--mobile-nav-top', `${top}px`);
-
-    portalEl(overlay, overlayHome);
-    portalEl(nav, navHome);
-
-    nav.classList.add('is-visible', 'mobile-nav-portal');
+    nav.classList.add('is-visible');
     nav.setAttribute('aria-hidden', 'false');
-    if (overlay) overlay.classList.add('is-visible', 'mobile-overlay-portal');
+    if (overlay) overlay.classList.add('is-visible');
     lockScroll();
     btn.setAttribute('aria-expanded', 'true');
   }
 
   function closeMenu() {
-    if (!openState) return;
-    openState = false;
+    if (!isOpen()) return;
 
-    nav.classList.remove('is-visible', 'mobile-nav-portal');
+    nav.classList.remove('is-visible');
     nav.setAttribute('aria-hidden', 'true');
-    if (overlay) overlay.classList.remove('is-visible', 'mobile-overlay-portal');
+    if (overlay) overlay.classList.remove('is-visible');
     unlockScroll();
     btn.setAttribute('aria-expanded', 'false');
+  }
 
-    restoreEl(nav, navHome);
-    restoreEl(overlay, overlayHome);
+  function stopUsaNav(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    e.stopPropagation();
   }
 
   function toggleMenu(e) {
     if (!mobileMq.matches) return;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    e.stopPropagation();
-    if (openState) closeMenu();
+    stopUsaNav(e);
+    if (isOpen()) closeMenu();
     else open();
   }
 
-  btn.addEventListener('click', toggleMenu, true);
+  function onClose(e) {
+    stopUsaNav(e);
+    closeMenu();
+  }
 
-  if (close) close.addEventListener('click', closeMenu);
-  if (overlay) overlay.addEventListener('click', closeMenu);
+  btn.addEventListener('click', toggleMenu, true);
+  if (close) close.addEventListener('click', onClose, true);
+  if (overlay) overlay.addEventListener('click', onClose, true);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && openState) closeMenu();
+    if (e.key === 'Escape' && isOpen()) closeMenu();
   });
 
   nav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      if (openState) setTimeout(closeMenu, 80);
+      if (isOpen()) setTimeout(closeMenu, 80);
     });
   });
 
   mobileMq.addEventListener('change', (e) => {
-    if (!e.matches && openState) closeMenu();
-  });
-
-  window.addEventListener('resize', () => {
-    if (openState) document.documentElement.style.setProperty('--mobile-nav-top', `${headerOffset()}px`);
+    if (!e.matches && isOpen()) closeMenu();
   });
 }

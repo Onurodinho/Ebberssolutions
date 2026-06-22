@@ -1,8 +1,15 @@
 /**
- * Photo slider — auto-rotating crossfade carousel (5s).
- * Geen externe CDN — werkt op Cloudflare Workers static assets.
+ * Photo slider — auto-rotating crossfade carousel.
+ * Desktop 5s, mobiel 2.5s. Geen externe CDN.
  */
 const SLIDER_DEFAULT_INTERVAL = 5000;
+const SLIDER_MOBILE_INTERVAL = 2500;
+const MOBILE_MQ = window.matchMedia('(max-width: 63.99em)');
+
+function sliderInterval(root) {
+  const configured = parseInt(root.dataset.interval, 10) || SLIDER_DEFAULT_INTERVAL;
+  return MOBILE_MQ.matches ? SLIDER_MOBILE_INTERVAL : configured;
+}
 
 function initPhotoSliders() {
   document.querySelectorAll('.photo-slider').forEach(initPhotoSlider);
@@ -28,7 +35,7 @@ function initPhotoSlider(root) {
 
   if (slides.length < 2) return;
 
-  const interval = parseInt(root.dataset.interval, 10) || SLIDER_DEFAULT_INTERVAL;
+  const interval = sliderInterval(root);
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (prefersReduced) return;
