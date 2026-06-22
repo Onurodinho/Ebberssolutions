@@ -32,11 +32,16 @@ function initPhotoSliders() {
       autoplay: {
         delay: 5000,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true
+        pauseOnMouseEnter: false,
+        // ensure continuous on touch/mobile
+        waitForTransition: true
       },
       loop: true,
       speed: 1100,
       keyboard: { enabled: true },
+      // touch friendly
+      simulateTouch: true,
+      touchRatio: 1,
       pagination: el.querySelector('.photo-slider__dots') ? {
         el: el.querySelector('.photo-slider__dots'),
         clickable: true,
@@ -58,6 +63,10 @@ function initPhotoSliders() {
           allSlides.forEach((s, idx) => {
             s.classList.toggle('is-active', idx === swiper.activeIndex);
           });
+          // force start autoplay (helps some mobile cases)
+          if (swiper.autoplay) {
+            swiper.autoplay.start();
+          }
         }
       }
     });

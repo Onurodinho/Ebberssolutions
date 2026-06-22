@@ -294,6 +294,20 @@ function initMobileMenu() {
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     btn.setAttribute('aria-expanded', 'true');
+
+    // Force the nav to full foreground on Safari - break any stacking context
+    const headerH = header.offsetHeight || 76;
+    nav.style.position = 'fixed';
+    nav.style.zIndex = '999999';
+    nav.style.left = '0';
+    nav.style.top = headerH + 'px';
+    nav.style.width = '100%';
+    nav.style.height = `calc(100vh - ${headerH}px)`;
+    nav.style.transform = 'none';
+    nav.style.opacity = '1';
+    nav.style.visibility = 'visible';
+    nav.style.boxShadow = '0 0 0 9999px rgba(26, 34, 40, 0.6)';
+    nav.style.paddingTop = '1rem';
   }
 
   function closeMenu() {
@@ -305,16 +319,31 @@ function initMobileMenu() {
     document.body.style.overflow = '';
     window.scrollTo(0, scrollY);
     btn.setAttribute('aria-expanded', 'false');
+
+    // Reset forced styles
+    nav.style.position = '';
+    nav.style.zIndex = '';
+    nav.style.left = '';
+    nav.style.top = '';
+    nav.style.width = '';
+    nav.style.height = '';
+    nav.style.transform = '';
+    nav.style.opacity = '';
+    nav.style.visibility = '';
+    nav.style.boxShadow = '';
+    nav.style.paddingTop = '';
   }
 
   btn.addEventListener('click', (e) => {
     e.preventDefault();
+    e.stopImmediatePropagation();
+    e.stopPropagation();
     if (nav.classList.contains('is-visible')) {
       closeMenu();
     } else {
       open();
     }
-  });
+  }, true); // capture to beat USWDS
 
   if (close) close.addEventListener('click', closeMenu);
   if (overlay) overlay.addEventListener('click', closeMenu);
@@ -333,5 +362,3 @@ function initMobileMenu() {
     });
   });
 }
- * and scrolling of the page is properly suspended until you close the menu.
- */
