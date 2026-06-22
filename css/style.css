@@ -3640,21 +3640,28 @@ address {
     color: var(--steel-900);
   }
 
+  /* Overlay onder header houden — anders bedekt die het menu-paneel */
   .usa-overlay.is-visible {
-    z-index: 450;
+    z-index: 350;
   }
 
   .usa-header.site-header:has(.usa-nav.is-visible) {
+    z-index: 500;
     background: var(--concrete-light);
     box-shadow: 0 1px 0 var(--line);
   }
 
   .usa-header.site-header .usa-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
     width: min(18rem, 86vw);
     padding: 0;
     border-left: 1px solid var(--line);
     box-shadow: var(--shadow-lg);
-    z-index: 500;
+    z-index: 1;
   }
 
   .usa-header.site-header .usa-nav__inner {

@@ -83,9 +83,16 @@ function initPhotoSlider(root) {
     timer = setInterval(next, interval);
   }
 
-  root.addEventListener('mouseenter', () => { paused = true; });
-  root.addEventListener('mouseleave', () => { paused = false; });
-  root.addEventListener('focusin', () => { paused = true; });
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (canHover) {
+    root.addEventListener('mouseenter', () => { paused = true; });
+    root.addEventListener('mouseleave', () => { paused = false; });
+  }
+
+  root.addEventListener('focusin', e => {
+    if (e.target.closest('.photo-slider__dot')) paused = true;
+  });
   root.addEventListener('focusout', e => {
     if (!root.contains(e.relatedTarget)) paused = false;
   });
