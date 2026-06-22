@@ -291,4 +291,8 @@ function initMobileMenu() {
 
   syncBarNav();
   mobileMq.addEventListener('change', syncBarNav);
+
+  // USWDS zet nav soms terug op hidden — forceer zichtbaar op mobiel
+  const guard = new MutationObserver(syncBarNav);
+  guard.observe(nav, { attributes: true, attributeFilter: ['aria-hidden', 'class'] });
 }

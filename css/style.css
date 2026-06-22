@@ -2595,7 +2595,8 @@ address {
     --header-total-h: 7.5rem;
   }
 
-  .usa-header.site-header .usa-nav {
+  .usa-header.site-header .usa-nav,
+  .usa-header.site-header .usa-nav[aria-hidden="true"] {
     display: block !important;
     position: static !important;
     width: 100%;
@@ -2606,6 +2607,7 @@ address {
     transform: none !important;
     opacity: 1 !important;
     visibility: visible !important;
+    pointer-events: auto !important;
   }
 
   .usa-header.site-header .usa-nav__inner {
