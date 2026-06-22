@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "preview": "python3 -m http.server 8080",
-    "deploy": "netlify deploy --prod --dir=.",
-    "deploy:drop": "netlify deploy --prod --dir=. --allow-anonymous",
+    "deploy": "npx wrangler pages deploy . --project-name=ebberssolutions --branch=main",
+    "deploy:netlify": "netlify deploy --prod --dir=.",
     "github:setup": "bash scripts/setup-github.sh"
   },
   "keywords": [],
