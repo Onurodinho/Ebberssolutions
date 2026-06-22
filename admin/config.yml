@@ -42,19 +42,19 @@ collections:
               - { label: Postcode, name: postcode, widget: string }
               - { label: Plaats, name: city, widget: string }
               - { label: Regio / bereikbaarheid, name: region, widget: string }
-              - { label: Telefoon (weergave), name: phone, widget: string, hint: "Bijv. +31 (0)543 123 456" }
-              - { label: Telefoon (link), name: phoneHref, widget: string, hint: "Alleen cijfers, bijv. +31543123456" }
+              - { label: Telefoon (weergave), name: phone, widget: string, hint: "Bijv. +31 6 1390 0094" }
+              - { label: Telefoon (link), name: phoneHref, widget: string, hint: "Internationaal, bijv. +31613900094" }
               - { label: E-mail, name: email, widget: string }
               - { label: Openingstijden, name: hours, widget: string }
 
   - name: teksten
-    label: Teksten (Nederlands)
+    label: Website teksten
     files:
       - name: nl
-        label: Homepage & contact
+        label: Nederlands
         file: content/nl.json
         format: json
-        fields:
+        fields: &teksten_fields
           - label: Algemeen
             name: algemeen
             widget: object
@@ -119,6 +119,23 @@ collections:
             widget: object
             fields:
               - { label: Intro onder titel, name: intro, widget: text }
+          - label: Recensies (homepage)
+            name: recensies
+            widget: object
+            fields:
+              - { label: Kleine kop, name: label, widget: string }
+              - { label: Titel, name: titel, widget: string }
+              - { label: Tekst onder titel, name: notitie, widget: text, hint: "Bijv. Recensies volgen binnenkort." }
+      - name: en
+        label: Engels
+        file: content/en.json
+        format: json
+        fields: *teksten_fields
+      - name: de
+        label: Duits
+        file: content/de.json
+        format: json
+        fields: *teksten_fields
 
   - name: collectie
     label: Collectie

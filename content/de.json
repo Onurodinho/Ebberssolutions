@@ -1,0 +1,55 @@
+{
+  "algemeen": {
+    "tagline": "Maßgeschneiderte Metalllösungen aus Neede.",
+    "openingstijden": "Mo – Fr: 07:30 – 16:30"
+  },
+  "homepage": {
+    "hero": {
+      "eyebrow": "Handwerkskunst · Neede · seit 2017",
+      "titel": "EISEN.<em>Handwerk.</em>Maßgefertigt.",
+      "intro": "Maschinenwartung, Stahlkonstruktionen und Metallbearbeitung für Unternehmen — plus handgefertigte Stühle, Tische und Gestelle aus unserer Werkstatt in Neede.",
+      "trust1_titel": "Handgefertigt",
+      "trust1_tekst": "Jedes Stück entsteht in unserer Werkstatt in Neede",
+      "trust2_titel": "Individuell",
+      "trust2_tekst": "Abmessungen, Holzart und Design nach Ihren Wünschen",
+      "trust3_titel": "Persönlich erreichbar",
+      "trust3_tekst": "Sie sprechen direkt mit dem Handwerker, der Ihr Projekt umsetzt"
+    },
+    "diensten": {
+      "label": "Was wir tun",
+      "titel": "Drei Spezialisierungen,<br>eine Werkstatt.",
+      "intro": "Ein Ansprechpartner für Wartung, Konstruktion und Metallbearbeitung. Rufen Sie uns an — wir finden die passende Lösung.",
+      "onderhoud_titel": "Maschinenwartung",
+      "onderhoud_tekst": "Stillstehende Maschinen kosten mehr als jede Reparatur. Wir warten präventiv und beheben Störungen im Eilfall — damit Ihre Produktion ohne Unterbrechung weiterläuft.",
+      "constructie_titel": "Stahlkonstruktionen",
+      "constructie_tekst": "Stahlkonstruktionen nach Maß — von Einzelanfertigungen bis Kleinserien, nach Ihrer Zeichnung oder gemeinsam mit Ihnen in der Werkstatt ausgearbeitet.",
+      "bewerking_titel": "Metallbearbeitung",
+      "bewerking_tekst": "MIG-, TIG-, Plasma- und Laserschneiden, Abkanten und Oberflächenveredelung. Wenn es Stahl ist, bearbeiten wir es — in unserer eigenen Werkstatt, nach Maß."
+    },
+    "over_ons": {
+      "label": "Über Ebbers Solutions",
+      "titel": "Eine Werkstatt.<br>Persönlicher Kontakt.",
+      "intro": "Am Industriepark in Neede fertigen wir für Unternehmen, die Wert auf Qualität und direkten Kontakt legen.",
+      "punt1": "Persönlicher Kontakt zum Handwerker, der Ihr Projekt betreut",
+      "punt2": "Individuelle Lösungen statt Standardware, die nicht passt",
+      "punt3": "Seit 2017 in der Achterhoek (NL) tätig"
+    },
+    "collectie": {
+      "label": "Unsere Arbeit",
+      "titel": "Kollektion",
+      "intro": "Handgefertigte Eisenmöbel — Stühle, Tische und Gestelle aus der niederländischen Achterhoek."
+    },
+    "cta": {
+      "titel": "Haben Sie ein Projekt im Sinn?",
+      "tekst": "Schildern Sie uns kurz Ihr Vorhaben. Wir melden uns zeitnah mit einem konkreten Angebot."
+    }
+  },
+  "contact": {
+    "intro": "Rufen Sie an, schreiben Sie eine E-Mail oder nutzen Sie das Formular. Wir antworten so schnell wie möglich."
+  },
+  "recensies": {
+    "label": "Bewertungen",
+    "titel": "Was Kunden sagen",
+    "notitie": "Bewertungen folgen in Kürze."
+  }
+}

@@ -71,7 +71,9 @@ netlify.toml           → headers, redirects, manifest MIME
 ## Openstaand (content, niet verzinnen)
 
 - ~~Echt telefoonnummer~~ — `+31 6 1390 0094` in `js/config.js` + `content/settings.json`
-- Recensiesectie op homepage (`#recensies`) — kop staat, inhoud volgt; invullen in `home.reviews.*` (i18n.js)
+- Recensiesectie — Peter bewerkt via `/admin` → Website teksten → Recensies (NL/EN/DE)
+- `/admin` — Identity + Git Gateway; setup via `scripts/setup-peter-access.py`
+- Formuliernotificatie e-mail — eenmalig in Netlify UI (Forms → Email notification)
 - Echt logo als SVG beschikbaar is
 
 ## Agent workflow (aanbevolen)

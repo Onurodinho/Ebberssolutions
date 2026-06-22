@@ -1,0 +1,55 @@
+{
+  "algemeen": {
+    "tagline": "Custom metal solutions from Neede.",
+    "openingstijden": "Mon – Fri: 07:30 – 16:30"
+  },
+  "homepage": {
+    "hero": {
+      "eyebrow": "Craftsmanship · Neede · since 2017",
+      "titel": "IRON.<em>Craft.</em>Made to order.",
+      "intro": "Machine maintenance, construction works and metalworking for businesses — plus handmade chairs, tables and frames from our workshop in Neede.",
+      "trust1_titel": "Handmade",
+      "trust1_tekst": "Every piece from our workshop in Neede",
+      "trust2_titel": "Custom",
+      "trust2_tekst": "Size, wood type and design to your wishes",
+      "trust3_titel": "Direct contact",
+      "trust3_tekst": "You speak to the person who makes it"
+    },
+    "diensten": {
+      "label": "What we do",
+      "titel": "Three specialisations,<br>one workshop.",
+      "intro": "One point of contact for maintenance, construction and processing. You call us — we solve it.",
+      "onderhoud_titel": "Machine maintenance",
+      "onderhoud_tekst": "A stopped machine costs more than the repair. We maintain preventively and repair urgently — so your production keeps running.",
+      "constructie_titel": "Construction works",
+      "constructie_tekst": "Custom steel structures — from one-offs to small series, built to your drawing or developed together in the workshop.",
+      "bewerking_titel": "Metalworking",
+      "bewerking_tekst": "MIG, TIG, plasma and laser cutting, bending and finishing. If it's steel, we process it — in our own workshop, to order."
+    },
+    "over_ons": {
+      "label": "About Ebbers Solutions",
+      "titel": "A workshop.<br>Direct contact.",
+      "intro": "Based at the industrial estate in Neede, we work for companies that value quality and short lines.",
+      "punt1": "You speak to the person who makes your project",
+      "punt2": "Custom work without standard solutions that don't fit",
+      "punt3": "Active in the Achterhoek since 2017"
+    },
+    "collectie": {
+      "label": "Our work",
+      "titel": "Collection",
+      "intro": "Handmade iron furniture — chairs, tables and frames from the Achterhoek."
+    },
+    "cta": {
+      "titel": "Discuss a project?",
+      "tekst": "Tell us what you need. We respond quickly with a concrete proposal."
+    }
+  },
+  "contact": {
+    "intro": "Call, email or fill in the form. We respond as quickly as possible."
+  },
+  "recensies": {
+    "label": "Reviews",
+    "titel": "What clients say",
+    "notitie": "Reviews coming soon."
+  }
+}

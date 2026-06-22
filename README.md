@@ -15,10 +15,8 @@ Via het beheerpaneel kun je zelf wijzigingen doorvoeren — zonder code. Na opsl
 | Menu in beheer | Wat zit erin? |
 |---|---|
 | **Bedrijfsgegevens** | Telefoon, e-mail, adres, openingstijden, KVK |
-| **Teksten (Nederlands)** | Homepage-teksten en contactpagina |
+| **Website teksten** | Homepage, contact en recensies in **NL, EN en DE** |
 | **Collectie** | Producten toevoegen, foto's, titels, beschrijvingen |
-
-Engels en Duits worden nog niet via het beheer bewerkt — daarvoor kan Onur helpen.
 
 ### Site + admin werkt niet?
 
@@ -61,7 +59,7 @@ Het script zet de site live, schakelt Identity + Git Gateway in en nodigt Peter 
 1. Ga naar https://ebberssolutions.com/admin
 2. Klik **Login with Netlify Identity**
 3. Log in met e-mail + wachtwoord
-4. Kies links een onderdeel (Bedrijfsgegevens, Teksten, Collectie)
+4. Kies links een onderdeel (Bedrijfsgegevens, Website teksten, Collectie)
 5. Pas aan en klik **Publish** (rechtsboven)
 6. Wacht ~1 minuut — ververs de website om het resultaat te zien
 
@@ -77,12 +75,16 @@ Het script zet de site live, schakelt Identity + Git Gateway in en nodigt Peter 
    - **Categorie**: tafels, stoelen, banken of details
 4. **Publish** — het product verschijnt automatisch op de collectiepagina
 
-### Formulierberichten bekijken
+### Formulierberichten (e-mailnotificatie)
 
-Contactformulier-berichten komen binnen in Netlify:
+Eenmalig instellen in Netlify (kan niet via code):
 
-**Site configuration → Forms → contact**
+1. [Netlify Dashboard](https://app.netlify.com) → **ebbers-solutions** → **Forms**
+2. **Form notification settings** → **Add notification** → **Email notification**
+3. E-mail: `peterebbers67@gmail.com` → opslaan
+
+Daarna krijgt Peter elk contactformulier direct per mail. Alle inzendingen blijven ook zichtbaar onder **Forms → contact**.
 
 ### Hulp nodig?
 
-Voor design-wijzigingen, Engels/Duits vertalen of technische problemen: neem contact op met Onur.
+Voor design-wijzigingen of technische problemen: neem contact op met Onur.

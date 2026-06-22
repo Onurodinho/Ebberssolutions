@@ -46,5 +46,10 @@
   },
   "contact": {
     "intro": "Bel, mail of vul het formulier in. Wij reageren zo snel mogelijk."
+  },
+  "recensies": {
+    "label": "Recensies",
+    "titel": "Wat klanten zeggen",
+    "notitie": "Recensies volgen binnenkort."
   }
 }

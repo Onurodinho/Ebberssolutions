@@ -1,9 +1,9 @@
 /**
  * Laadt beheerbare content uit content/*.json (Decap CMS).
- * Overschrijft defaults uit config.js en i18n.js.
+ * Overschrijft defaults uit config.js en i18n.js per taal.
  */
 (function () {
-  function mapNlContent(data) {
+  function mapCmsContent(data) {
     if (!data) return {};
     const h = data.homepage || {};
     const hero = h.hero || {};
@@ -13,6 +13,7 @@
     const cta = h.cta || {};
     const algemeen = data.algemeen || {};
     const contact = data.contact || {};
+    const recensies = data.recensies || {};
 
     return {
       'config.tagline': algemeen.tagline,
@@ -47,6 +48,9 @@
       'home.cta.title': cta.titel,
       'home.cta.desc': cta.tekst,
       'contact.hero.desc': contact.intro,
+      'home.reviews.label': recensies.label,
+      'home.reviews.title': recensies.titel,
+      'home.reviews.note': recensies.notitie,
     };
   }
 
@@ -56,12 +60,12 @@
     if (data.contact) Object.assign(SITE_CONFIG.contact, data.contact);
   }
 
-  function applyNlStrings(data) {
-    if (!data || typeof I18N_STRINGS === 'undefined') return;
-    const mapped = mapNlContent(data);
+  function applyLangStrings(lang, data) {
+    if (!data || typeof I18N_STRINGS === 'undefined' || !I18N_STRINGS[lang]) return;
+    const mapped = mapCmsContent(data);
     Object.entries(mapped).forEach(([key, value]) => {
-      if (value != null && value !== '' && I18N_STRINGS.nl[key] !== undefined) {
-        I18N_STRINGS.nl[key] = value;
+      if (value != null && value !== '' && I18N_STRINGS[lang][key] !== undefined) {
+        I18N_STRINGS[lang][key] = value;
       }
     });
   }
@@ -86,16 +90,24 @@
   }
 
   async function loadCmsContent() {
-    const [settingsRes, nlRes] = await Promise.allSettled([
+    const [settingsRes, nlRes, enRes, deRes] = await Promise.allSettled([
       fetch('content/settings.json').then(r => (r.ok ? r.json() : null)),
       fetch('content/nl.json').then(r => (r.ok ? r.json() : null)),
+      fetch('content/en.json').then(r => (r.ok ? r.json() : null)),
+      fetch('content/de.json').then(r => (r.ok ? r.json() : null)),
     ]);
 
     if (settingsRes.status === 'fulfilled' && settingsRes.value) {
       applySettings(settingsRes.value);
     }
     if (nlRes.status === 'fulfilled' && nlRes.value) {
-      applyNlStrings(nlRes.value);
+      applyLangStrings('nl', nlRes.value);
+    }
+    if (enRes.status === 'fulfilled' && enRes.value) {
+      applyLangStrings('en', enRes.value);
+    }
+    if (deRes.status === 'fulfilled' && deRes.value) {
+      applyLangStrings('de', deRes.value);
     }
 
     await loadManifestCount();

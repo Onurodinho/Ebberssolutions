@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE_ID = "1819af13-e955-477e-9570-cdaa6c1e24aa"
 SITE_NAME = "ebbers-solutions"
 PETER_EMAIL = "peterebbers67@gmail.com"
+SITE_URL = "https://ebberssolutions.com"
 GITHUB_REPO = "Onurodinho/Ebberssolutions"
 API = "https://api.netlify.com/api/v1"
 
@@ -168,9 +169,50 @@ def enable_git_gateway(client: NetlifyClient, site_id: str) -> None:
 
 def invite_peter(client: NetlifyClient, site_id: str, identity_id: str) -> None:
     print(f"Peter uitnodigen ({PETER_EMAIL}) …")
-    client.request("POST", f"/sites/{site_id}/identity/{identity_id}/users/invite", {
-        "email": PETER_EMAIL,
-    })
+    payloads = [
+        f"/sites/{site_id}/identity/{identity_id}/invite",
+        f"/sites/{site_id}/identity/{identity_id}/users/invite",
+        f"/sites/{site_id}/identity/invite",
+    ]
+    last_err = None
+    for path in payloads:
+        try:
+            client.request("POST", path, {"email": PETER_EMAIL})
+            return
+        except RuntimeError as err:
+            if "HTTP 422" in str(err) or "already" in str(err).lower():
+                print("  Peter was al uitgenodigd of bestaat al")
+                return
+            last_err = err
+    if last_err:
+        raise last_err
+
+
+def check_contact_form(client: NetlifyClient, site_id: str) -> None:
+    print("Contactformulier controleren …")
+    try:
+        _, forms = client.request("GET", f"/sites/{site_id}/forms")
+    except RuntimeError as err:
+        print(f"  Forms API niet bereikbaar: {err}")
+        print_form_notification_guide()
+        return
+
+    contact = next((f for f in (forms or []) if f.get("name") == "contact"), None)
+    if contact:
+        print(f"  Formulier 'contact' gevonden (id: {contact.get('id')})")
+    else:
+        print("  Formulier 'contact' nog niet zichtbaar — wacht op deploy en run script opnieuw.")
+    print_form_notification_guide()
+
+
+def print_form_notification_guide() -> None:
+    print("")
+    print("Formuliernotificaties (eenmalig in Netlify UI — geen API beschikbaar):")
+    print("  1. https://app.netlify.com → ebbers-solutions → Forms")
+    print("  2. Klik 'Form notification settings' of 'Add notification'")
+    print("  3. Kies 'Email notification'")
+    print(f"  4. E-mailadres: {PETER_EMAIL}")
+    print("  5. Opslaan — daarna krijgt Peter elk formulierbericht per mail")
 
 
 def main() -> int:
@@ -204,15 +246,21 @@ def main() -> int:
     identity_id = enable_identity(client, site_id)
     enable_git_gateway(client, site_id)
     invite_peter(client, site_id, identity_id)
+    check_contact_form(client, site_id)
 
-    admin_url = f"{site.get('ssl_url') or 'https://' + SITE_NAME + '.netlify.app'}/admin/"
+    admin_url = f"{SITE_URL}/admin/"
     print("")
     print("Klaar!")
-    print(f"  Website:  {site.get('ssl_url')}")
+    print(f"  Website:  {SITE_URL}")
     print(f"  Beheer:   {admin_url}")
     print(f"  Peter:    uitnodiging gestuurd naar {PETER_EMAIL}")
     print("")
-    print("Peter opent /admin → Login with Netlify Identity → wachtwoord instellen via e-mail.")
+    print("Peter:")
+    print("  1. Open uitnodigingsmail → wachtwoord instellen")
+    print(f"  2. Ga naar {admin_url}")
+    print("  3. Login with Netlify Identity")
+    print("  4. Bewerk Bedrijfsgegevens, Website teksten (NL/EN/DE) of Collectie")
+    print("  5. Klik Publish — binnen ~1 minuut live")
     return 0
 
 
