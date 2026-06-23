@@ -1,4 +1,4 @@
-name: Deploy naar Netlify
+name: Deploy naar Cloudflare
 
 on:
   push:
@@ -8,25 +8,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Deploy naar Cloudflare
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy naar Netlify
-        uses: nwtgck/actions-netlify@v3.0
-        with:
-          publish-dir: .
-          production-deploy: true
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy ${{ github.sha }}"
-          enable-pull-request-comment: false
-          enable-commit-comment: false
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Controleer Cloudflare credentials
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ] || [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN en CLOUDFLARE_ACCOUNT_ID ontbreken in GitHub Secrets."
+            echo "Zie scripts/setup-cloudflare-pages.sh voor instructies."
+            exit 1
+          fi
 
-      - name: Identity + Peter uitnodigen
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: python3 scripts/setup-peter-access.py || true
+      - name: Publish
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: versions upload && versions deploy --yes && triggers deploy
