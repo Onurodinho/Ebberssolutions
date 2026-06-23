@@ -425,7 +425,7 @@ const I18N_STRINGS = {
     'home.capabilities.c4': 'Interieur & Möbel',
     'home.hero.trust1.title': 'Handgefertigt', 'home.hero.trust1.desc': 'Jedes Stück entsteht in unserer Werkstatt in Neede',
     'home.hero.trust2.title': 'Individuell', 'home.hero.trust2.desc': 'Abmessungen, Holzart und Design nach Ihren Wünschen',
-    'home.hero.trust3.title': 'Persönlich erreichbar', 'home.hero.trust3.desc': 'Sie sprechen direkt mit dem Handwerker, der Ihr Projekt umsetzt',
+    'home.hero.trust3.title': 'Direkter Kontakt', 'home.hero.trust3.desc': 'Sie sprechen mit dem Handwerker, der Ihr Projekt umsetzt',
     'home.hero.tag': 'Kollektion 2026', 'home.hero.cardCat': 'Tische',
     'home.hero.cardTitle': 'Esstischgarnitur', 'home.hero.cardDesc': 'Schwarzer Stahl · sechs Holzstühle',
     'home.hero.sliderLabel': 'Ausgewählte Produkte',
@@ -684,11 +684,13 @@ function i18nBuildSwitcher(id, modifier) {
 }
 
 function i18nInitSwitcher() {
-  const navInner = document.querySelector('.usa-nav__inner');
-  if (!navInner || document.getElementById('langSwitcher')) return;
+  const host =
+    document.querySelector('.usa-header.site-header .usa-navbar') ||
+    document.querySelector('.usa-nav__inner');
+  if (!host || document.getElementById('langSwitcher')) return;
 
   const barSwitcher = i18nBuildSwitcher('langSwitcher', 'lang-switcher--bar');
-  navInner.appendChild(barSwitcher);
+  host.appendChild(barSwitcher);
 }
 
 function initI18n() {
