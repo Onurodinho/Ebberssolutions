@@ -180,11 +180,14 @@ address {
   color: var(--steel-900);
 }
 
-.logo-mark-img {
-  width: 30px;
-  height: 30px;
+.site-header .logo .logo-mark-img,
+.footer-brand .logo .logo-mark-img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  max-width: none !important;
   border-radius: var(--radius-sm);
-  object-fit: contain;
   flex-shrink: 0;
 }
 
@@ -4104,7 +4107,8 @@ section[id]:not(#main) {
   .usa-header.site-header .usa-logo.site-logo {
     flex: 0 1 auto;
     min-width: auto;
-    max-width: 55%;
+    max-width: none;
+    overflow: visible;
   }
 }
 
@@ -4121,9 +4125,11 @@ section[id]:not(#main) {
     padding-right: 1rem;
   }
 
-  .logo-mark-img {
-    width: 26px;
-    height: 26px;
+  .site-header .logo .logo-mark-img,
+  .footer-brand .logo .logo-mark-img {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
   }
 
   .logo-text {
