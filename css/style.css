@@ -181,25 +181,27 @@ address {
 }
 
 .logo-mark-img {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--radius-sm);
-  object-fit: cover;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
 .logo-text {
   font-family: var(--font-display);
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.1;
+  line-height: 1.15;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logo-text span {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2537,8 +2539,9 @@ address {
 .usa-header.site-header .usa-logo.site-logo {
   display: flex;
   align-items: center;
-  flex: 1;
-  min-width: 0;
+  flex: 0 1 auto;
+  min-width: auto;
+  max-width: 100%;
 }
 
 .usa-header.site-header .usa-menu-btn {
@@ -4099,8 +4102,9 @@ section[id]:not(#main) {
   }
 
   .usa-header.site-header .usa-logo.site-logo {
-    flex: 1;
-    min-width: 0;
+    flex: 0 1 auto;
+    min-width: auto;
+    max-width: 55%;
   }
 }
 
@@ -4118,12 +4122,12 @@ section[id]:not(#main) {
   }
 
   .logo-mark-img {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
   }
 
   .logo-text {
-    font-size: 0.84rem;
+    font-size: 0.88rem;
   }
 
   .section {
