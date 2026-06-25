@@ -270,19 +270,27 @@ function initMobileMenu() {
 
   const mobileMq = window.matchMedia('(max-width: 63.99em)');
 
+  let scrollNavRaf = 0;
+
   function syncBarNav() {
     if (!mobileMq.matches) return;
     nav.classList.remove('is-visible');
-    nav.setAttribute('aria-hidden', 'false');
+    if (nav.getAttribute('aria-hidden') !== 'false') {
+      nav.setAttribute('aria-hidden', 'false');
+    }
   }
 
   function scrollActiveNavIntoView() {
     if (!mobileMq.matches) return;
-    const current = nav.querySelector('.usa-nav__primary .usa-current');
-    const list = nav.querySelector('.usa-nav__primary');
-    if (!current || !list) return;
-    const left = current.offsetLeft - (list.clientWidth - current.offsetWidth) / 2;
-    list.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    if (scrollNavRaf) return;
+    scrollNavRaf = requestAnimationFrame(() => {
+      scrollNavRaf = 0;
+      const current = nav.querySelector('.usa-nav__primary .usa-current');
+      const list = nav.querySelector('.usa-nav__primary');
+      if (!current || !list) return;
+      const left = current.offsetLeft - (list.clientWidth - current.offsetWidth) / 2;
+      list.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    });
   }
 
   syncBarNav();
@@ -293,7 +301,14 @@ function initMobileMenu() {
   });
 
   // USWDS zet nav soms terug op hidden — forceer zichtbaar op mobiel
-  const guard = new MutationObserver(() => {
+  const guard = new MutationObserver((mutations) => {
+    const needsSync = mutations.some((m) => {
+      if (m.attributeName === 'aria-hidden') {
+        return nav.getAttribute('aria-hidden') === 'true';
+      }
+      return m.attributeName === 'class' && nav.classList.contains('is-visible');
+    });
+    if (!needsSync) return;
     syncBarNav();
     scrollActiveNavIntoView();
   });

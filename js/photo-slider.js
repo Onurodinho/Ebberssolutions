@@ -87,8 +87,19 @@ function initPhotoSlider(root) {
 
   function resetTimer() {
     clearInterval(timer);
+    timer = null;
+    if (document.hidden) return;
     timer = setInterval(next, interval);
   }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearInterval(timer);
+      timer = null;
+      return;
+    }
+    resetTimer();
+  }, { passive: true });
 
   const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
@@ -112,9 +123,12 @@ function restartProgress(root, interval) {
   const bar = root.querySelector('.photo-slider__progress span');
   if (!bar) return;
 
+  const anim = `slider-progress ${interval}ms linear forwards`;
+  bar.style.webkitAnimation = 'none';
   bar.style.animation = 'none';
   void bar.offsetWidth;
-  bar.style.animation = `slider-progress ${interval}ms linear forwards`;
+  bar.style.webkitAnimation = anim;
+  bar.style.animation = anim;
 }
 
 function updateSliderCaption(root) {
