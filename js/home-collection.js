@@ -18,13 +18,15 @@ function scheduleHomeCollection() {
   initHomeCollection();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.__cmsLoaded) {
-    scheduleHomeCollection();
-    return;
-  }
-  document.addEventListener('contentready', scheduleHomeCollection, { once: true });
-});
+function scheduleHomeCollectionBoot() {
+  if (document.documentElement.dataset.homeCollectionBooted === 'true') return;
+  if (!window.__cmsLoaded) return;
+  document.documentElement.dataset.homeCollectionBooted = 'true';
+  scheduleHomeCollection();
+}
+
+document.addEventListener('DOMContentLoaded', scheduleHomeCollectionBoot);
+document.addEventListener('contentready', scheduleHomeCollectionBoot);
 
 document.addEventListener('langchange', initHomeCollection);
 

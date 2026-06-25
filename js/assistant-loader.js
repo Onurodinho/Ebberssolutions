@@ -31,9 +31,6 @@
     document.addEventListener('contentready', scheduleAssistant, { once: true });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', onReady);
-  } else {
-    onReady();
-  }
+  document.addEventListener('DOMContentLoaded', onReady);
+  document.addEventListener('contentready', onReady);
 })();

@@ -1,7 +1,7 @@
 /**
  * Laadt beheerbare content uit content/*.json (Decap CMS).
  * Overschrijft defaults uit config.js en i18n.js per taal.
- * i18n start direct; CMS wordt op de achtergrond geladen (alleen actieve taal).
+ * i18n start op DOMContentLoaded; CMS volgt op de achtergrond (alleen actieve taal).
  */
 (function () {
   const cmsCache = { nl: null, en: null, de: null };
@@ -113,7 +113,12 @@
   }
 
   function boot() {
-    if (typeof initI18n === 'function') initI18n();
+    try {
+      if (typeof initI18n === 'function') initI18n();
+    } catch (err) {
+      console.error('Ebbers: i18n init mislukt', err);
+    }
+
     window.__cmsLoaded = true;
     document.dispatchEvent(new CustomEvent('contentready'));
 
@@ -129,9 +134,5 @@
     });
   });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
+  document.addEventListener('DOMContentLoaded', boot);
 })();

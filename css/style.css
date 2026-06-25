@@ -1961,6 +1961,13 @@ address {
   transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
 }
 
+/* Hero/page-hero: altijd zichtbaar zonder JS (voorkomt lege pagina) */
+.hero .reveal,
+.page-hero .reveal {
+  opacity: 1;
+  transform: none;
+}
+
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
