@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('contentready', bootMain, { once: true });
 });
 
+document.addEventListener('cmsready', () => {
+  initSiteConfig();
+});
+
 function initSiteConfig() {
   if (typeof SITE_CONFIG === 'undefined') return;
 

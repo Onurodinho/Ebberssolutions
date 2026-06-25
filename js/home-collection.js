@@ -28,6 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('langchange', initHomeCollection);
 
+function updateProductCounts(count) {
+  if (!count || typeof I18N_STRINGS === 'undefined') return;
+  I18N_STRINGS.nl['cta.allProducts'] = `Alle ${count} producten bekijken`;
+  I18N_STRINGS.en['cta.allProducts'] = `View all ${count} products`;
+  I18N_STRINGS.de['cta.allProducts'] = `Alle ${count} Produkte ansehen`;
+  if (window.EbbersI18n) {
+    document.querySelectorAll('[data-i18n="cta.allProducts"]').forEach((el) => {
+      el.textContent = window.EbbersI18n.t('cta.allProducts');
+    });
+  }
+}
+
 async function initHomeCollection() {
   const grid = document.getElementById('homeCollection');
   if (!grid) return;
@@ -36,6 +48,7 @@ async function initHomeCollection() {
     const res = await fetch('assets/images/products/manifest.json');
     const data = await res.json();
     const items = normalizeManifestItems(data);
+    updateProductCounts(items.length);
     const preview = pickPreviewItems(items, 4);
     grid.innerHTML = preview.map((item, i) => renderPreviewCard(item, i === 0)).join('');
   } catch {

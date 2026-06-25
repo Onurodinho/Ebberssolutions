@@ -1,8 +1,11 @@
 /**
  * Laadt beheerbare content uit content/*.json (Decap CMS).
  * Overschrijft defaults uit config.js en i18n.js per taal.
+ * i18n start direct; CMS wordt op de achtergrond geladen (alleen actieve taal).
  */
 (function () {
+  const cmsCache = { nl: null, en: null, de: null };
+
   function mapCmsContent(data) {
     if (!data) return {};
     const h = data.homepage || {};
@@ -70,55 +73,65 @@
     });
   }
 
-  function updateProductCounts(count) {
-    if (!count || typeof I18N_STRINGS === 'undefined') return;
-    I18N_STRINGS.nl['cta.allProducts'] = `Alle ${count} producten bekijken`;
-    I18N_STRINGS.en['cta.allProducts'] = `View all ${count} products`;
-    I18N_STRINGS.de['cta.allProducts'] = `Alle ${count} Produkte ansehen`;
-  }
-
-  async function loadManifestCount() {
+  async function fetchLangCms(lang) {
+    if (cmsCache[lang]) return cmsCache[lang];
     try {
-      const res = await fetch('assets/images/products/manifest.json');
-      if (!res.ok) return;
+      const res = await fetch(`content/${lang}.json`);
+      if (!res.ok) return null;
       const data = await res.json();
-      const items = Array.isArray(data) ? data : data.products;
-      if (Array.isArray(items)) updateProductCounts(items.length);
+      cmsCache[lang] = data;
+      return data;
     } catch {
-      /* fallback naar i18n defaults */
+      return null;
     }
   }
 
-  async function loadCmsContent() {
-    const [settingsRes, nlRes, enRes, deRes] = await Promise.allSettled([
-      fetch('content/settings.json').then(r => (r.ok ? r.json() : null)),
-      fetch('content/nl.json').then(r => (r.ok ? r.json() : null)),
-      fetch('content/en.json').then(r => (r.ok ? r.json() : null)),
-      fetch('content/de.json').then(r => (r.ok ? r.json() : null)),
-    ]);
-
-    if (settingsRes.status === 'fulfilled' && settingsRes.value) {
-      applySettings(settingsRes.value);
-    }
-    if (nlRes.status === 'fulfilled' && nlRes.value) {
-      applyLangStrings('nl', nlRes.value);
-    }
-    if (enRes.status === 'fulfilled' && enRes.value) {
-      applyLangStrings('en', enRes.value);
-    }
-    if (deRes.status === 'fulfilled' && deRes.value) {
-      applyLangStrings('de', deRes.value);
-    }
-
-    await loadManifestCount();
+  async function loadCmsForLang(lang) {
+    const data = await fetchLangCms(lang);
+    if (data) applyLangStrings(lang, data);
+    return data;
   }
 
-  async function boot() {
-    await loadCmsContent();
+  async function loadCmsContent(lang) {
+    try {
+      const settingsRes = await fetch('content/settings.json');
+      if (settingsRes.ok) {
+        applySettings(await settingsRes.json());
+      }
+    } catch {
+      /* defaults uit config.js */
+    }
+
+    await loadCmsForLang(lang);
+  }
+
+  function refreshAfterCms(lang) {
+    if (typeof window.EbbersI18n !== 'undefined') {
+      window.EbbersI18n.apply(lang);
+    }
+    document.dispatchEvent(new CustomEvent('cmsready', { detail: { lang } }));
+  }
+
+  function boot() {
     if (typeof initI18n === 'function') initI18n();
     window.__cmsLoaded = true;
     document.dispatchEvent(new CustomEvent('contentready'));
+
+    const lang = window.EbbersI18n ? window.EbbersI18n.getLang() : 'nl';
+    loadCmsContent(lang).then(() => refreshAfterCms(lang));
   }
 
-  document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('langchange', (e) => {
+    const lang = e.detail?.lang;
+    if (!lang) return;
+    loadCmsForLang(lang).then((data) => {
+      if (data) refreshAfterCms(lang);
+    });
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 })();
