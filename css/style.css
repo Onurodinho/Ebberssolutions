@@ -182,14 +182,14 @@ address {
 
 .logo-img {
   display: block;
-  height: 48px;
+  height: 36px;
   width: auto;
-  max-width: min(210px, 58vw);
+  max-width: min(160px, 50vw);
 }
 
 .logo-mark-img {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-sm);
   object-fit: cover;
   flex-shrink: 0;
@@ -4125,13 +4125,13 @@ section[id]:not(#main) {
   }
 
   .logo-img {
-    height: 40px;
-    max-width: min(180px, 62vw);
+    height: 30px;
+    max-width: min(140px, 54vw);
   }
 
   .logo-mark-img {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
   }
 
   .logo-text {
