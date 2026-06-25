@@ -28,6 +28,10 @@ export default {
       return handleContact(request, env);
     }
 
+    if (url.pathname === '/api/assistant/lead') {
+      return handleAssistantLead(request, env);
+    }
+
     if (url.pathname === '/api/assistant') {
       return handleAssistant(request, env);
     }
@@ -167,6 +171,7 @@ async function handleAssistant(request, env) {
     return json({ error: 'invalid_message' }, 400);
   }
 
+  const visitor = sanitizeVisitor(body.visitor);
   const fallback = assistantFallback(message, lang);
 
   if (!env.AI) {
@@ -174,7 +179,7 @@ async function handleAssistant(request, env) {
   }
 
   const messages = [
-    { role: 'system', content: assistantSystemPrompt(lang) },
+    { role: 'system', content: assistantSystemPrompt(lang, visitor) },
     ...history,
     { role: 'user', content: message },
   ];
@@ -196,7 +201,91 @@ async function handleAssistant(request, env) {
   return json({ reply: fallback, source: 'fallback' });
 }
 
-function assistantSystemPrompt(lang) {
+async function handleAssistantLead(request, env) {
+  if (request.method !== 'POST') {
+    return json({ error: 'method_not_allowed' }, 405);
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: 'invalid_body' }, 400);
+  }
+
+  const visitor = sanitizeVisitor(body);
+  if (!visitor) {
+    return json({ error: 'invalid_visitor' }, 400);
+  }
+
+  const page = trim(body.page).slice(0, 200) || '/';
+  const lang = ['nl', 'en', 'de'].includes(body.lang) ? body.lang : 'nl';
+
+  if (!env.EMAIL) {
+    return json({ ok: true, notified: false });
+  }
+
+  const to = env.CONTACT_TO || COMPANY.email;
+  const fromEmail = env.CONTACT_FROM || 'contact@ebberssolutions.com';
+
+  const text = [
+    'Nieuwe chatbezoeker via ebberssolutions.com',
+    '',
+    `Naam: ${visitor.name}`,
+    `E-mail: ${visitor.email}`,
+    visitor.phone ? `Telefoon: ${visitor.phone}` : null,
+    visitor.company ? `Bedrijf: ${visitor.company}` : null,
+    `Taal: ${lang}`,
+    `Pagina: ${page}`,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  const html = [
+    '<h2>Nieuwe chatbezoeker via ebberssolutions.com</h2>',
+    '<table cellpadding="4" cellspacing="0">',
+    row('Naam', visitor.name),
+    row('E-mail', visitor.email),
+    visitor.phone ? row('Telefoon', visitor.phone) : '',
+    visitor.company ? row('Bedrijf', visitor.company) : '',
+    row('Taal', lang),
+    row('Pagina', page),
+    '</table>',
+  ].join('');
+
+  try {
+    await env.EMAIL.send({
+      to,
+      from: { email: fromEmail, name: 'Ebbers Solutions' },
+      replyTo: { email: visitor.email, name: visitor.name },
+      subject: `[Chat] ${visitor.name} — website assistent`,
+      text,
+      html,
+    });
+    return json({ ok: true, notified: true });
+  } catch (err) {
+    console.error('assistant lead email failed', err);
+    return json({ ok: true, notified: false });
+  }
+}
+
+function sanitizeVisitor(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+  const name = trim(raw.name);
+  const email = trim(raw.email);
+  const phone = trim(raw.phone);
+  const company = trim(raw.company);
+  if (name.length < 2) return null;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
+  return {
+    name: name.slice(0, 80),
+    email: email.slice(0, 120),
+    phone: phone.slice(0, 24),
+    company: company.slice(0, 80),
+  };
+}
+
+function assistantSystemPrompt(lang, visitor) {
   const langHint =
     lang === 'en'
       ? 'Default to English when the user language is unclear.'
@@ -226,6 +315,19 @@ function assistantSystemPrompt(lang) {
     '- Never invent prices, delivery dates, or stock availability.',
     '- Mention phone or email when the visitor wants to reach Peter directly.',
     '- You cannot book appointments or process orders — only inform and refer.',
+    visitor
+      ? [
+          '',
+          'Current visitor (use their name naturally when helpful):',
+          `- Name: ${visitor.name}`,
+          `- Email: ${visitor.email}`,
+          visitor.phone ? `- Phone: ${visitor.phone}` : null,
+          visitor.company ? `- Company: ${visitor.company}` : null,
+          '- For quotes or follow-up, encourage contact form, phone, or email — you already have their email.',
+        ]
+          .filter(Boolean)
+          .join('\n')
+      : '',
   ].join('\n');
 }
 

@@ -2856,7 +2856,7 @@ html.assistant-open #scrollTop {
   right: 0;
   bottom: calc(100% + 0.75rem);
   width: min(22rem, calc(100vw - 2rem));
-  max-height: min(32rem, calc(100vh - 8rem));
+  max-height: min(36rem, calc(100vh - 6rem));
   display: flex;
   flex-direction: column;
   background: var(--surface);
@@ -3023,6 +3023,112 @@ html.assistant-open #scrollTop {
   min-height: 44px;
   padding: 0.55rem 1rem;
   white-space: nowrap;
+}
+
+.assistant-intro {
+  padding: 0.85rem 1rem 1rem;
+  background: var(--concrete-light);
+  overflow-y: auto;
+  max-height: min(24rem, 55vh);
+}
+
+.assistant-intro-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--steel-900);
+}
+
+.assistant-intro-desc {
+  margin: 0 0 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--steel-500);
+}
+
+.assistant-intro-error {
+  margin: 0 0 0.65rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  background: rgba(184, 92, 40, 0.1);
+  color: var(--copper);
+  font-size: 0.8rem;
+}
+
+.assistant-intro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.assistant-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--steel-700);
+}
+
+.assistant-field input {
+  min-height: 42px;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--steel-900);
+  background: var(--surface);
+}
+
+.assistant-field input:focus {
+  outline: 2px solid var(--copper);
+  outline-offset: 1px;
+  border-color: var(--copper);
+}
+
+.assistant-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--steel-500);
+}
+
+.assistant-consent input {
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.assistant-intro-submit {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 0.15rem;
+}
+
+.assistant-chat[hidden],
+.assistant-intro[hidden] {
+  display: none !important;
+}
+
+.assistant-change {
+  display: block;
+  margin: 0.35rem 1rem 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--steel-500);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.assistant-change:hover,
+.assistant-change:focus-visible {
+  color: var(--copper);
 }
 
 @media (prefers-reduced-motion: reduce) {
