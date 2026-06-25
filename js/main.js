@@ -149,6 +149,7 @@ function initStatCounters() {
 }
 
 function initReveal() {
+  document.documentElement.classList.add('js-reveal');
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const elements = document.querySelectorAll('.reveal');
 

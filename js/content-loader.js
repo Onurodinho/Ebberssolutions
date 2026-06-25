@@ -107,7 +107,7 @@
 
   function refreshAfterCms(lang) {
     if (typeof window.EbbersI18n !== 'undefined') {
-      window.EbbersI18n.apply(lang);
+      window.EbbersI18n.apply(lang, { silent: true });
     }
     document.dispatchEvent(new CustomEvent('cmsready', { detail: { lang } }));
   }
@@ -130,7 +130,8 @@
     const lang = e.detail?.lang;
     if (!lang) return;
     loadCmsForLang(lang).then((data) => {
-      if (data) refreshAfterCms(lang);
+      if (!data || typeof window.EbbersI18n === 'undefined') return;
+      window.EbbersI18n.apply(lang, { silent: true });
     });
   });
 

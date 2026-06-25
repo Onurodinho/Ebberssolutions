@@ -1956,16 +1956,14 @@ address {
 
 /* ── Scroll reveal ── */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html.js-reveal .reveal:not(.visible) {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
-}
-
-/* Hero/page-hero: altijd zichtbaar zonder JS (voorkomt lege pagina) */
-.hero .reveal,
-.page-hero .reveal {
-  opacity: 1;
-  transform: none;
 }
 
 .reveal.visible {
@@ -3706,7 +3704,8 @@ section[id]:not(#main) {
 }
 
 .hero-photo .photo-slider__track::before {
-  display: none;
+  display: block;
+  aspect-ratio: 1 / 1;
 }
 
 .hero-photo .photo-slider__slide {
