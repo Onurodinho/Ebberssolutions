@@ -1,6 +1,7 @@
 /**
  * Laadt beheerbare content uit content/*.json (Decap CMS).
  * Overschrijft defaults uit config.js en i18n.js per taal.
+ * Pagina start direct; CMS-overrides volgen op de achtergrond.
  */
 (function () {
   function mapCmsContent(data) {
@@ -113,11 +114,23 @@
     await loadManifestCount();
   }
 
-  async function boot() {
-    await loadCmsContent();
-    if (typeof initI18n === 'function') initI18n();
+  function boot() {
+    try {
+      if (typeof initI18n === 'function') initI18n();
+    } catch (err) {
+      console.error('Ebbers: i18n init mislukt', err);
+    }
+
     window.__cmsLoaded = true;
     document.dispatchEvent(new CustomEvent('contentready'));
+
+    loadCmsContent()
+      .then(() => {
+        const lang = window.EbbersI18n ? window.EbbersI18n.getLang() : 'nl';
+        if (window.EbbersI18n) window.EbbersI18n.apply(lang, { silent: true });
+        if (typeof initSiteConfig === 'function') initSiteConfig();
+      })
+      .catch((err) => console.error('Ebbers: CMS laden mislukt', err));
   }
 
   document.addEventListener('DOMContentLoaded', boot);

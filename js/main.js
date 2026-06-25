@@ -1,4 +1,7 @@
 function bootMain() {
+  if (document.documentElement.dataset.mainBooted === 'true') return;
+  document.documentElement.dataset.mainBooted = 'true';
+
   initSiteConfig();
   initImages();
   initHeader();
@@ -16,14 +19,17 @@ function bootMobileMenuEarly() {
   initMobileMenu();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function scheduleMainBoot() {
   bootMobileMenuEarly();
   if (window.__cmsLoaded) {
     bootMain();
     return;
   }
   document.addEventListener('contentready', bootMain, { once: true });
-});
+}
+
+document.addEventListener('DOMContentLoaded', scheduleMainBoot);
+document.addEventListener('contentready', scheduleMainBoot);
 
 function initSiteConfig() {
   if (typeof SITE_CONFIG === 'undefined') return;
@@ -146,6 +152,15 @@ function initReveal() {
     elements.forEach(el => el.classList.add('visible'));
     return;
   }
+
+  const viewportLimit = window.innerHeight * 1.05;
+  elements.forEach((el) => {
+    if (el.getBoundingClientRect().top < viewportLimit) {
+      el.classList.add('visible');
+    }
+  });
+
+  document.documentElement.classList.add('js-anim');
 
   const observer = new IntersectionObserver(
     entries => {
