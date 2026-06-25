@@ -36,7 +36,24 @@ export default {
       return handleAssistant(request, env);
     }
 
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+    const path = url.pathname;
+    const isHtml =
+      path === '/' ||
+      path.endsWith('.html') ||
+      (!path.includes('.') && !path.startsWith('/api/'));
+
+    if (request.method === 'GET' && isHtml) {
+      const headers = new Headers(response.headers);
+      headers.set('Cache-Control', 'no-cache, must-revalidate');
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+      });
+    }
+
+    return response;
   },
 };
 

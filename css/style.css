@@ -1954,21 +1954,11 @@ address {
   color: rgba(232, 227, 219, 0.3);
 }
 
-/* ── Scroll reveal ── */
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
-html.js-anim .reveal:not(.visible) {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
-}
-
+/* ── Scroll reveal (altijd zichtbaar — geen JS-afhankelijkheid) ── */
+.reveal,
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .reveal-delay-1 { transition-delay: 0.1s; }
