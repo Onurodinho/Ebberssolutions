@@ -5,6 +5,7 @@
   "compatibility_date": "2026-06-22",
   "workers_dev": true,
   "observability": { "enabled": true },
+  "ai": { "binding": "AI" },
   "send_email": [{ "name": "EMAIL" }],
   "vars": {
     "CONTACT_FROM": "contact@ebberssolutions.com",
