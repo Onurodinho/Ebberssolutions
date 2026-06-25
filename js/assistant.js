@@ -225,8 +225,14 @@
 
     document.body.appendChild(root);
 
+    /* Critical layout — zichtbaar ook als style.css nog uit cache komt */
+    root.style.cssText =
+      'position:fixed;bottom:max(1rem,env(safe-area-inset-bottom));right:max(1rem,env(safe-area-inset-right));z-index:13000;font-family:system-ui,sans-serif;';
+
     panel = root.querySelector('#assistant-panel');
     toggle = root.querySelector('#assistant-toggle');
+    toggle.style.cssText =
+      'width:52px;height:52px;border:none;border-radius:3px;background:#B85C28;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(26,34,40,0.14);';
     messagesEl = root.querySelector('.assistant-messages');
     form = root.querySelector('.assistant-form');
     input = root.querySelector('#assistant-input');
