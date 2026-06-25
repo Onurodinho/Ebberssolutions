@@ -6,7 +6,12 @@
   "workers_dev": true,
   "observability": { "enabled": true },
   "ai": { "binding": "AI" },
-  "send_email": [{ "name": "EMAIL" }],
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": ["peterebbers67@gmail.com"]
+    }
+  ],
   "vars": {
     "CONTACT_FROM": "contact@ebberssolutions.com",
     "CONTACT_TO": "peterebbers67@gmail.com"
@@ -18,6 +23,10 @@
     "run_worker_first": true
   },
   "routes": [
+    {
+      "pattern": "ebberssolutions.com/*",
+      "zone_name": "ebberssolutions.com"
+    },
     {
       "pattern": "www.ebberssolutions.com/*",
       "zone_name": "ebberssolutions.com"

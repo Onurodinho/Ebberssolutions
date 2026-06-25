@@ -79,8 +79,7 @@ async function handleContact(request, env) {
   }
 
   const subjectLabel = SUBJECT_LABELS[onderwerp];
-  const to = env.CONTACT_TO || 'peterebbers67@gmail.com';
-  const fromEmail = env.CONTACT_FROM || 'contact@ebberssolutions.com';
+  const { to, fromEmail } = getMailConfig(env);
 
   const text = [
     `Nieuw bericht via ebberssolutions.com`,
@@ -222,11 +221,10 @@ async function handleAssistantLead(request, env) {
   const lang = ['nl', 'en', 'de'].includes(body.lang) ? body.lang : 'nl';
 
   if (!env.EMAIL) {
-    return json({ ok: true, notified: false });
+    return json({ error: 'email_not_configured' }, 503);
   }
 
-  const to = env.CONTACT_TO || COMPANY.email;
-  const fromEmail = env.CONTACT_FROM || 'contact@ebberssolutions.com';
+  const { to, fromEmail } = getMailConfig(env);
 
   const text = [
     'Nieuwe chatbezoeker via ebberssolutions.com',
@@ -262,11 +260,18 @@ async function handleAssistantLead(request, env) {
       text,
       html,
     });
-    return json({ ok: true, notified: true });
+    return json({ ok: true, notified: true, to });
   } catch (err) {
     console.error('assistant lead email failed', err);
-    return json({ ok: true, notified: false });
+    return json({ error: 'send_failed' }, 500);
   }
+}
+
+function getMailConfig(env) {
+  return {
+    to: trim(env.CONTACT_TO) || COMPANY.email,
+    fromEmail: trim(env.CONTACT_FROM) || 'contact@ebberssolutions.com',
+  };
 }
 
 function sanitizeVisitor(raw) {
