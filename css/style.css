@@ -180,31 +180,19 @@ address {
   color: var(--steel-900);
 }
 
-.logo-mark {
+.logo-img {
+  display: block;
+  height: 48px;
+  width: auto;
+  max-width: min(210px, 58vw);
+}
+
+.logo-mark-img {
   width: 42px;
   height: 42px;
-  background: var(--steel-900);
   border-radius: var(--radius-sm);
-  display: grid;
-  place-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.logo-mark::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--copper);
-}
-
-.logo-mark svg {
-  width: 22px;
-  height: 22px;
-  color: var(--concrete-light);
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -1902,8 +1890,8 @@ address {
   margin-bottom: 1.25rem;
 }
 
-.footer-brand .logo-mark {
-  background: rgba(255, 255, 255, 0.08);
+.footer-brand .logo-mark-img {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .footer-brand p {
@@ -4136,14 +4124,14 @@ section[id]:not(#main) {
     padding-right: 1rem;
   }
 
-  .logo-mark {
-    width: 36px;
-    height: 36px;
+  .logo-img {
+    height: 40px;
+    max-width: min(180px, 62vw);
   }
 
-  .logo-mark svg {
-    width: 18px;
-    height: 18px;
+  .logo-mark-img {
+    width: 36px;
+    height: 36px;
   }
 
   .logo-text {
