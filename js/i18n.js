@@ -686,14 +686,10 @@ function i18nCat(category, lang = currentLang) {
   return i18nT(`cat.${category}`, lang);
 }
 
-function i18nApply(lang, options = {}) {
+function i18nApply(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
-  try {
-    localStorage.setItem(I18N_STORAGE_KEY, lang);
-  } catch {
-    /* private mode */
-  }
+  localStorage.setItem(I18N_STORAGE_KEY, lang);
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
     el.textContent = i18nT(el.dataset.i18n, lang);
@@ -744,9 +740,7 @@ function i18nApply(lang, options = {}) {
   });
 
   if (typeof initSiteConfig === 'function') initSiteConfig();
-  if (!options.silent) {
-    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
-  }
+  document.dispatchEvent(new CustomEvent('langchange', { detail: { lang } }));
 }
 
 function i18nBuildSwitcher(id, modifier) {

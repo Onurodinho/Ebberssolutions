@@ -1956,11 +1956,6 @@ address {
 
 /* ── Scroll reveal ── */
 .reveal {
-  opacity: 1;
-  transform: none;
-}
-
-html.js-reveal .reveal:not(.visible) {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
@@ -3704,8 +3699,7 @@ section[id]:not(#main) {
 }
 
 .hero-photo .photo-slider__track::before {
-  display: block;
-  aspect-ratio: 1 / 1;
+  display: none;
 }
 
 .hero-photo .photo-slider__slide {

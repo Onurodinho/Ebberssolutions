@@ -1,7 +1,4 @@
 function bootMain() {
-  if (document.documentElement.dataset.mainBooted === 'true') return;
-  document.documentElement.dataset.mainBooted = 'true';
-
   initSiteConfig();
   initImages();
   initHeader();
@@ -19,20 +16,13 @@ function bootMobileMenuEarly() {
   initMobileMenu();
 }
 
-function scheduleMainBoot() {
+document.addEventListener('DOMContentLoaded', () => {
   bootMobileMenuEarly();
   if (window.__cmsLoaded) {
     bootMain();
     return;
   }
   document.addEventListener('contentready', bootMain, { once: true });
-}
-
-document.addEventListener('DOMContentLoaded', scheduleMainBoot);
-document.addEventListener('contentready', scheduleMainBoot);
-
-document.addEventListener('cmsready', () => {
-  initSiteConfig();
 });
 
 function initSiteConfig() {
@@ -149,7 +139,6 @@ function initStatCounters() {
 }
 
 function initReveal() {
-  document.documentElement.classList.add('js-reveal');
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const elements = document.querySelectorAll('.reveal');
 
@@ -157,13 +146,6 @@ function initReveal() {
     elements.forEach(el => el.classList.add('visible'));
     return;
   }
-
-  const viewportLimit = window.innerHeight * 1.05;
-  elements.forEach((el) => {
-    if (el.getBoundingClientRect().top < viewportLimit) {
-      el.classList.add('visible');
-    }
-  });
 
   const observer = new IntersectionObserver(
     entries => {
